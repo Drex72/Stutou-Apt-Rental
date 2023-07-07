@@ -1,0 +1,26 @@
+/* Checkbox */
+.checkboxContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+}
+
+.formCheckboxLabel {
+  color: rgb(102, 102, 102);
+  font-size: 10px;
+  letter-spacing: 0.67px;
+  line-height: 26px;
+  font-weight: 400;
+}
+
+.errorMessage {
+  color: #be1e2d;
+  font-size: 0.8rem;
+  text-transform: capitalize;
+  margin-top: 0.7em;
+}
+
+.errorInput {
+  animation: shake 0.2s ease-in-out 0s 2;
+  box-shadow: 0 0 0.5em #be1e2d;
+}

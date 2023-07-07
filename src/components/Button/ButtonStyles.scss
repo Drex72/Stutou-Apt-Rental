@@ -1,0 +1,55 @@
+@import '../../styles/_color-palette.scss';
+
+.custom-button {
+  border-radius: 4px;
+  font-weight: normal;
+  line-height: 120%;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  vertical-align: middle;
+  text-align: center;
+  position: relative;
+
+  span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5em;
+  }
+
+  &:disabled {
+    pointer-events: none;
+  }
+
+  &_contained {
+    &:not(:disabled) {
+      background-color: map-get($color-palette-1, primary);
+      color: #ffffff;
+    }
+
+    &:hover {
+      // background-color: #295f2f;
+      background-color: map-get($color-palette-1, secondary);
+      box-shadow: 8px 8px 20px rgba(55, 126, 63, 0.15);
+    }
+
+    &:disabled {
+      background-color: #e1ece2;
+      color: #c3c3cb;
+    }
+  }
+
+  &_outlined {
+    background-color: #ffffff !important;
+    border: 1.5px solid map-get($color-palette-1, primary) !important;
+    color: #000;
+  }
+
+  &_text {
+    border: none;
+    background: transparent;
+    color: #62cf3a;
+  }
+}

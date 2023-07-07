@@ -1,0 +1,9 @@
+.form-input__error {
+  text-transform: capitalize;
+  font-size: 0.75rem;
+  color: #f6374e;
+
+  &-hidden {
+    display: none;
+  }
+}

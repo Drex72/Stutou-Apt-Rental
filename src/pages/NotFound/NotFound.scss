@@ -1,0 +1,35 @@
+.not_found_container {
+  height: 100vh;
+  display: flex;
+
+  .not_found_left_container {
+    background-color: white;
+    width: 50%;
+  }
+  .not_found_headers {
+    width: 65%;
+  }
+  .not_found_headers_container {
+    height: 70vh;
+    display: flex;
+    align-items: center;
+  }
+  .not_found_left_inner_container {
+    height: 100vh;
+    width: 85%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    margin-block: 2rem;
+  }
+  .not_found_right_container {
+    width: 50%;
+    background: #ebf2ec;
+  }
+  .not_found_logo {
+    width: 10%;
+    img {
+      width: 100%;
+    }
+  }
+}

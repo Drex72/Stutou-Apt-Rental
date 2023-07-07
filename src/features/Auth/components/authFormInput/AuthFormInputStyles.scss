@@ -1,0 +1,84 @@
+.auth-form-component {
+  margin-block: 2em;
+  &_label {
+    color: rgb(102, 102, 102);
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 400;
+    line-height: 120%;
+    margin-bottom: 0.2em;
+
+    .input_required_asterisk {
+      color: #f6374e;
+      font-size: 16px;
+      margin: 0 0.5em;
+    }
+  }
+
+  &_input-container {
+    padding: 0;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #a3a3a3;
+    color: rgb(102, 102, 102);
+    border-radius: 5px;
+    position: relative;
+    width: 100%;
+
+    &:focus {
+      border-color: #377e3f;
+    }
+
+    &__errored {
+      border-color: #e48181;
+
+      &:focus {
+        border-color: #f6374e;
+      }
+    }
+
+    &__input {
+      display: block;
+      padding-block: 15px;
+      caret-color: #377e3f;
+      width: 100%;
+      outline: none;
+      background-color: white;
+      font-size: 1rem;
+      line-height: 120%;
+      transition: all 0.3s ease-in;
+      border: none;
+
+      &:focus {
+        border-color: #377e3f;
+      }
+      &::placeholder {
+        color: #b5b2b6;
+        font-size: 15px;
+        letter-spacing: 4px;
+      }
+    }
+
+    .right-icon {
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+}
+
+// @media screen and (min-width: 768px) {
+//   .formInputLabel,
+//   .inputBox {
+//     font-size: 15px;
+//   }
+
+//   .formCheckboxLabel {
+//     font-size: 14px;
+//   }
+
+//   .inputBox {
+//     min-width: 400px;
+//   }
+// }
