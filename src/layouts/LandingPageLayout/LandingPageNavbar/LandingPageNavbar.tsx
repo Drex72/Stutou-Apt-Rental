@@ -1,10 +1,16 @@
 import "./LandingPageNavbarStyles.scss";
 import { motion } from "framer-motion";
 import Animations from "../../../utils/Animations";
-import Logo from "../../../assets/platform-logo.svg";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Hamburger from "hamburger-react";
 import { AllRouteConstants } from "../../../router/RouteConstants";
+import SignUpOptionsPopver from "../../../features/Auth/components/SignUpOptionsPopver";
+import usePopOver from "../../../hooks/usePopOver";
+import { Link as ScrollLink } from 'react-scroll';
+import { useEffect, useState } from "react";
+import LogoComponent from "../../../components/Logo/Logo";
+
+
 
 interface ILandingPageNavbar {
   openSideBar: () => void;
@@ -13,19 +19,33 @@ interface ILandingPageNavbar {
 
 const LandingPageNavbar = (props: ILandingPageNavbar) => {
   const { sidebarOpened, openSideBar } = props;
-  const navigate = useNavigate();
   const { pathname } = useLocation();
-
   const currentPath = pathname.split("/")[1];
-
   const { stagger, fadeInUp, btnGroup } = new Animations();
 
-  const goToLogin = () =>
-    navigate(AllRouteConstants.landingPage.index);
-  const goToSignup = () => navigate(AllRouteConstants.landingPage.index);
+  const { handleClick, handleClose, id, anchorEl, open } = usePopOver()
+
+  const [navbarScrolled, setNavbarScrolled] = useState(false)
+
+  // Check if window is scrolled more than 500px, 
+
+  const handleScroll = () => {
+    const scrolledHeight = window.scrollY
+    if (scrolledHeight > 50) {
+      setNavbarScrolled(true)
+    } else {
+      setNavbarScrolled(false)
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
 
   return (
-    <motion.header variants={stagger()} className="landing_page_navbar">
+    <motion.header variants={stagger()} className={`landing_page_navbar ${navbarScrolled ? 'solid' : ''}`}>
       <nav className="landing_page_navbar-container">
         <motion.div
           className="landing_page_navbar_left"
@@ -33,9 +53,7 @@ const LandingPageNavbar = (props: ILandingPageNavbar) => {
           animate="animate"
           variants={fadeInUp()}
         >
-          <div className="logo_wrapper">
-            <img src={Logo} alt="logo" />
-          </div>
+          <LogoComponent />
 
           <motion.ul
             initial="initial"
@@ -44,13 +62,20 @@ const LandingPageNavbar = (props: ILandingPageNavbar) => {
             variants={stagger()}
           >
             <li className={currentPath === "" ? "active" : ""}>
-              <Link to="/">Home</Link>
+              <ScrollLink to="home" smooth={true} duration={500}>
+                <Link to="/">Home</Link>
+              </ScrollLink>
+
             </li>
             <li className={currentPath === "about-us" ? "active" : ""}>
-              <Link to="/about-us">About</Link>
+              <ScrollLink to="about-us" smooth={true} duration={500}>
+                <Link to="/">About</Link>
+              </ScrollLink>
             </li>
             <li className={currentPath === "contact-us" ? "active" : ""}>
-              <Link to="/contact-us">Contact Us</Link>
+              <ScrollLink to="contact-us" smooth={true} duration={500}>
+                <Link to="/">Contact Us</Link>
+              </ScrollLink>
             </li>
           </motion.ul>
         </motion.div>
@@ -62,17 +87,36 @@ const LandingPageNavbar = (props: ILandingPageNavbar) => {
           variants={btnGroup()}
         >
           <Link
-            to="https://d2surso6f0jxm9.cloudfront.net/auth/signin"
+            to={AllRouteConstants.auth.login}
             className="landing_page_navbar_right-login_button button"
           >
             Log in
           </Link>
-          <Link
-            to="https://d2surso6f0jxm9.cloudfront.net/auth/signup"
-            className="landing_page_navbar_right-signup_button button"
-          >
-            Sign Up
-          </Link>
+          <>
+            <button
+              className="landing_page_navbar_right-signup_button button"
+              aria-describedby={id}
+              onClick={handleClick}
+            >
+              Sign Up
+            </button>
+
+            <SignUpOptionsPopver
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'left',
+              }}
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'center',
+              }}
+              anchorEl={anchorEl}
+              handleClose={handleClose}
+              id={id!}
+              open={open}
+            />
+
+          </>
         </motion.span>
 
         <motion.span className="landing_page_navbar-hamburger">

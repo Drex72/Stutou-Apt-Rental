@@ -135,7 +135,7 @@ export const StudentRegistration = () => {
                                 to={AllRouteConstants.auth.login}
                                 className="auth-link"
                             >
-                                Log up
+                                Log In
                             </Link>
                         </p>
                     </div>

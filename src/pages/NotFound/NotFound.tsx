@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import NotFoundImage from "../../assets/images/404_Image.png";
-import platformlogo from "../../assets/platform-logo.svg";
+// import platformlogo from "../../assets/platform-logo.svg";
 import "./NotFound.scss";
 import Button from "../../components/Button/Button";
 import Header from "../../components/Header/Header";
@@ -13,7 +13,7 @@ const NotFound = () => {
       <div className="not_found_left_container">
         <div className="not_found_left_inner_container">
           <div className="not_found_logo">
-            <img src={platformlogo} alt="logo" />
+            {/* <img src={platformlogo} alt="logo" /> */}
           </div>
           <div className="not_found_headers_container">
             <section className="not_found_headers">
@@ -25,7 +25,7 @@ const NotFound = () => {
               <Button
                 width="70%"
                 label="Go to Home Page"
-                variant="primary"
+                variant="contained"
                 onClick={() => navigate(AllRouteConstants.landingPage.index)}
               />
             </section>

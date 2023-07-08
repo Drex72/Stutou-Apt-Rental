@@ -4,11 +4,17 @@ $black: #000000;
 $white: #fff;
 @import '../../../styles/color-palette';
 
+$color: map-get($color-palette-1, primary);
+
 .dflex {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
+}
+
+.solid {
+  background: rgba(#000, 0.9);
 }
 
 .landing_page_navbar {
@@ -17,6 +23,28 @@ $white: #fff;
   align-items: center;
   justify-content: center;
   width: 100%;
+  padding-block: .5em;
+  position: fixed;
+  transition: all 200ms ease-in-out;
+  z-index: 1000;
+
+
+
+  /********************************/
+  /*   Navbar Inner Container     */
+  /********************************/
+
+  &-container {
+    width: 90%;
+    margin: 0 auto;
+    justify-content: space-between;
+    @extend .dflex;
+
+  }
+
+  /********************************/
+  /*          Navbar Left        */
+  /********************************/
 
   &_left {
     display: flex;
@@ -24,6 +52,11 @@ $white: #fff;
     gap: 5em;
     width: 30%;
     justify-content: space-between;
+
+
+    /********************************/
+    /*          Navbar Left Items        */
+    /********************************/
 
     &-list_container {
       padding: 0;
@@ -47,7 +80,7 @@ $white: #fff;
 
       .active {
         a {
-          color: #377e3f;
+          color: $color;
         }
       }
     }
@@ -77,20 +110,20 @@ $white: #fff;
     }
 
     &-login_button {
-      color: #377e3f;
+      color: $color;
       background: transparent;
 
       &:hover {
-        border: 1px solid #377e3f;
+        border: 1px solid $color;
       }
     }
 
     &-signup_button {
-      background-color: map-get($color-palette-3, primary);
+      background-color: $color;
       color: white;
 
       &:hover {
-        background-color: #295f2f;
+        background-color: $color;
         box-shadow: 8px 8px 20px rgba(55, 126, 63, 0.15);
       }
     }
@@ -98,23 +131,6 @@ $white: #fff;
 
   &-hamburger {
     display: block;
-  }
-
-  &-container {
-    width: 90%;
-    margin: 0 auto;
-    justify-content: space-between;
-    @extend .dflex;
-  }
-
-  .mb_logo_wrapper {
-    width: 80px;
-    height: 80px;
-
-    img {
-      width: 100%;
-      height: 100%;
-    }
   }
 }
 

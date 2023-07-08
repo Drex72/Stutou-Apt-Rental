@@ -1,10 +1,22 @@
-import React from "react";
 import "./PageLoaderStyles.scss";
 
 const PageLoader = () => {
   return (
-    <div className="col-sm-2">
-      <div className="sp sp-circle"></div>
+    <div className="loader_container">
+      <div>
+        <div className="loadingio-spinner-double-ring-o1501i3ad2m">
+          <div className="ldio-89lkaiw9jyt">
+            <div></div>
+            <div></div>
+            <div>
+              <div></div>
+            </div>
+            <div>
+              <div></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

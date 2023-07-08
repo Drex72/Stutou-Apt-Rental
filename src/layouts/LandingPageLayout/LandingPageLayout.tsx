@@ -39,10 +39,10 @@ const LandingPageLayout = () => {
         </div>
       </CSSTransition>
 
-      <LandingPageNavbar
+      {/* <LandingPageNavbar
         openSideBar={handleOpenSide}
         sidebarOpened={sidebarOpened}
-      />
+      /> */}
       <Outlet />
       <LandingPageFooter />
     </div>

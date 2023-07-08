@@ -1,38 +1,96 @@
+import React from "react";
 import "./LandingPageFooterStyles.scss";
-import {
-  AiFillInstagram,
-  AiOutlineTwitter,
-} from "react-icons/ai";
-import { FaFacebookF } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import Logo from "../../../components/Logo/Logo";
+import { SocialIcon } from "react-social-icons";
+import { AllRouteConstants } from "../../../router/RouteConstants";
+import { Link as ScrollLink } from 'react-scroll';
 
-const LandingPageFooter = () => {
+
+const Footer = () => {
   return (
-    <div className="mb_landing_page_footer">
-      <div className="mb_landing_page_footer-top_content">
-        <h3 className="mb_landing_page_footer-top_content_header">
-          Mobilearning
-        </h3>
-        <div className="mb_landing_page_footer-top_content_icon_container">
-          <div className="icon_bg">
-            <AiFillInstagram className="icon" />
+    <div className="footer animate__animated">
+      <div className="footer_inner_container">
+        <div className="footer_inner_container_rows">
+          <Link to="/" className="footer_logo_container">
+            <Logo dark />
+          </Link>
+          <div className="footer_inner_container_column">
+            <h5>Account</h5>
+            <li className="list_item">
+              <a href={AllRouteConstants.auth.signup.student}>Create an Account</a>
+            </li>
+
+            <li className="list_item">
+              <a href={AllRouteConstants.auth.login}>Login</a>
+            </li>
+
+            <li className="list_item">
+              <a href="/#">Customer Care</a>
+            </li>
           </div>
-          <div className="icon_bg">
-            <FaFacebookF className="icon" />
+          <div className="footer_inner_container_column">
+            <h5>Services</h5>
+            <li className="list_item">
+              <a href="/signup">Find a pet care Provider</a>
+            </li>
+
+            <li className="list_item">
+              <a href="/login">Book Appointment</a>
+            </li>
+
+            <li className="list_item">
+              <a href="/#">Customer Care</a>
+            </li>
           </div>
-          <div className="icon_bg">
-            <AiOutlineTwitter className="icon" />
+
+          <div className="footer_inner_container_column">
+            <h5>Company</h5>
+            <li className="list_item">
+              <ScrollLink to="about-us" smooth={true} duration={500}>
+                <Link to="/">About Us</Link>
+              </ScrollLink>
+            </li>
+            <li className="list_item">
+              <ScrollLink to="contact-us" smooth={true} duration={500}>
+                <Link to="/">Contact Us</Link>
+              </ScrollLink>
+            </li>
+          </div>
+          <div className="footer_inner_container_column">
+            <h5>Socials</h5>
+            <li className="list_item social_list_item">
+              <div className="icon">
+                <SocialIcon url="https://facebook.com/petCareConnect" />
+              </div>
+
+              <a href="#">Facebook</a>
+            </li>
+
+            <li className="list_item social_list_item">
+              <div className="icon">
+                <SocialIcon url="https://instagram.com/petCareConnect" />
+              </div>
+
+              <a href="#">Instagram</a>
+            </li>
+            <li className="list_item social_list_item">
+              <div className="icon">
+                <SocialIcon url="https://twitter.com/petCareConnect" />
+              </div>
+
+              <a href="#">Twitter</a>
+            </li>
           </div>
         </div>
+
+        <div className="footer_inner_container_foot">
+          <p>Privacy Policy</p>
+          <p>Terms and Condition</p>
+        </div>
       </div>
-      <div className="border"></div>
-      <ul className="mb_landing_page_footer-bottom_content">
-        <li>Terms of Service</li>
-        <li>Cookie Policy</li>
-        <li>Faq</li>
-        <li>Support</li>
-      </ul>
     </div>
   );
 };
 
-export default LandingPageFooter;
+export default Footer;

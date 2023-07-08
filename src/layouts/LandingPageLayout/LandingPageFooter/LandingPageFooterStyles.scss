@@ -1,59 +1,80 @@
-.mb_landing_page_footer {
-  background: #212121;
-  padding-block: 4em 1em;
-  color: #bcbcbc;
+.footer_logo_container {
+  text-decoration: none;
+  .logo_header {
+    font-size: 30px;
+  }
+}
+.footer {
+  // background: #f6f9fc;
+  background: linear-gradient(45deg, #5CA6CE 52%, #fff 45%);
+  padding-bottom: 3em;
+  padding-top: 8em;
 
-  &-top_content {
+  &_inner_container {
     width: 90%;
+    padding-right: 10em;
     margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
 
-    &_header {
-      color: #bcbcbc;
-      font-size: 25px;
-      font-weight: 600;
-      margin: 0;
+    &_column {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-bottom: 3em;
+      h5 {
+        color: #000;
+        font-weight: 500;
+        font-size: 1.3rem;
+        margin: 0;
+      }
+      .social_list_item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        .social-icon {
+          width: 30px !important;
+          height: 30px !important;
+        }
+      }
+
+      .list_item {
+        list-style: none;
+
+        a {
+          text-decoration: none;
+          color: #000;
+          font-weight: 400;
+          font-size: 1rem;
+        }
+      }
     }
 
-    &_icon_container {
+    &_rows {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    &_foot {
       display: flex;
       align-items: center;
-      gap: 1em;
-
-      .icon_bg {
-        background: rgba(255, 255, 255, 0.2);
-        padding: 0.4em 0.6em;
-        border-radius: 50%;
-        cursor: pointer;
-      }
-
-      .icon {
-        color: white;
-        font-size: 25px;
-      }
+      justify-content: space-between;
+      width: 20%;
     }
   }
+}
 
-  &-bottom_content {
-    width: 90%;
-    margin: 0 auto;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    color: #939393;
-    font-weight: 300;
-    font-size: 15px;
-    margin-bottom: 2em;
-
-    li {
-      list-style-type: none;
+@media screen and (max-width: 768px) {
+  .footer {
+    &_inner_container {
+      padding: 0;
+      &_rows {
+        flex-direction: column;
+        gap: 2em;
+      }
+      &_foot {
+        width: 100%;
+      }
     }
-  }
-  .border {
-    border: 0.75px solid #424242;
-    margin-block: 2em;
   }
 }
