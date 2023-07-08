@@ -8,6 +8,10 @@ $color: map-get($color-palette-1, primary);
         position: relative;
     }
 
+    /********************************/
+    /*   Hero Inner Container       */
+    /********************************/
+
     &_content_container {
         width: 80%;
         margin: 0 auto;
@@ -19,6 +23,10 @@ $color: map-get($color-palette-1, primary);
         transform: translate3d(-50%, -50%, 0);
     }
 
+
+    /********************************/
+    /*         Hero Heading         */
+    /********************************/
     &_heading {
         font-size: 4.5em;
         font-weight: bold;

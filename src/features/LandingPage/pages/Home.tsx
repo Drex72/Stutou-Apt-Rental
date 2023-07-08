@@ -4,6 +4,7 @@ import { getAllImages } from "../hooks/useFetch"
 import { HeroImage } from "../../../utils/getImageLinksFromApi"
 import PageLoader from "../../../components/PageLoader/PageLoader"
 import { Element } from 'react-scroll';
+import HowItWorks from "../components/HowItWorks/HowItWorks"
 
 
 export const Home = () => {
@@ -33,10 +34,10 @@ export const Home = () => {
         <PageLoader />
       ) : (
         <div>
-
           <Element name="home">
             <HeroSlider images={images.data} />
           </Element>
+          <HowItWorks />
           <Element name="about-us">
             <HeroSlider images={images.data} />
           </Element>
