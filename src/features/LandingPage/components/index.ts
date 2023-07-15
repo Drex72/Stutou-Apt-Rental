@@ -1,0 +1,5 @@
+export * from './Testimonials/TestimonialContainer'
+export * from './AccomodationEasy/AccomodationEasy'
+export * from './Hero/Hero'
+export * from './HowItWorks/HowItWorks'
+export * from './FAQ/FAQ'

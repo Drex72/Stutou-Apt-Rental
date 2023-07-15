@@ -1,9 +1,11 @@
+import ScrollAnimation from 'react-animate-on-scroll'
 import './HowItWorkStyles.scss'
 
 interface IHowItWorksProgress {
     icon: any
     title: string
     content: string
+    delay: number
 }
 interface IHowItWorksProgressProps {
     content: IHowItWorksProgress[]
@@ -14,31 +16,36 @@ const HowItWorksProgressBar = (props: IHowItWorksProgressProps) => {
     const { content } = props
     return (
         <div>
-            <ol className="how_it_works_progressBar">
-                {content.map((item, index) => (
 
-                    <li key={index} className="how_it_works_progressBar-step is-complete">
-                        <svg className="how_it_works_progressBar-icon">
-                            <use xlinkHref="#checkmark-bold" />
-                        </svg>
-                    </li>
-                ))}
-            </ol>
+            <ScrollAnimation animateIn="fadeInLeft" animateOnce={true}>
+                <ol className="how_it_works_progressBar">
+                    {content.map((item, index) => (
+                        <li key={index} className="how_it_works_progressBar-step is-complete">
+                            <svg className="how_it_works_progressBar-icon">
+                                <use xlinkHref="#checkmark-bold" />
+                            </svg>
+                        </li>
+                    ))}
+                </ol>
+            </ScrollAnimation>
+
 
             <div className="how_it_works_progressCard">
                 {content.map((item, index) => {
-                    const { content, icon, title } = item
+                    const { content, icon, title ,delay} = item
                     return (
                         (
-                            <div className='card'>
-                                <div className="card_inner_container">
-                                    <div className="how_it_works_progressCard-icon">
-                                        {icon}
+                            <ScrollAnimation animateIn="fadeInUp" delay={delay} animateOnce={true}>
+                                <div className='card' key={index}>
+                                    <div className="card_inner_container">
+                                        <div className="how_it_works_progressCard-icon">
+                                            {icon}
+                                        </div>
+                                        <h2 className="how_it_works_progressCard-heading">{title}</h2>
+                                        <p className="how_it_works_progressCard-content">{content}</p>
                                     </div>
-                                    <h2 className="how_it_works_progressCard-heading">{title}</h2>
-                                    <p className="how_it_works_progressCard-content">{content}</p>
                                 </div>
-                            </div>
+                            </ScrollAnimation>
                         )
                     )
                 })}

@@ -1,4 +1,4 @@
-import HeroSlider, { Overlay, Slide, MenuNav } from "hero-slider";
+import HeroSlider, { Overlay, Slide } from "hero-slider";
 import './Herostyles.scss'
 import { HeroImage } from "../../../../utils/getImageLinksFromApi";
 import { motion } from 'framer-motion'
@@ -7,8 +7,9 @@ import { AllRouteConstants } from "../../../../router/RouteConstants";
 import { TextSequence } from "../Letter";
 import LandingPageNavbar from "../../../../layouts/LandingPageLayout/LandingPageNavbar/LandingPageNavbar";
 
-const HeroSliders = ({ images }: { images: HeroImage[] }) => {
+export const Hero = ({ images }: { images: HeroImage[] }) => {
     const navigate = useNavigate()
+    console.log(images)
 
     const firstNameLetters = ["Discover", "Your", "Ideal", "Accommodation."];
 
@@ -36,7 +37,6 @@ const HeroSliders = ({ images }: { images: HeroImage[] }) => {
 
             >
                 <Overlay className="hero-overlay">
-                    <nav></nav>
                     <LandingPageNavbar sidebarOpened={false} openSideBar={() => console.log('hey')} />
                     <div className="hero_content_container">
                         <div>
@@ -62,7 +62,6 @@ const HeroSliders = ({ images }: { images: HeroImage[] }) => {
                         background={{
                             backgroundAnimation: 'zoom',
                             backgroundImageSrc: image.url,
-
                         }}
                     />
 
@@ -72,4 +71,3 @@ const HeroSliders = ({ images }: { images: HeroImage[] }) => {
     );
 };
 
-export default HeroSliders;

@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react"
-import HeroSlider from "../components/Hero/Hero"
+import { Hero, HowItWorks, AccomodationEasy, TestimonialContainer, FAQ } from "../components"
 import { getAllImages } from "../hooks/useFetch"
 import { HeroImage } from "../../../utils/getImageLinksFromApi"
 import PageLoader from "../../../components/PageLoader/PageLoader"
-import { Element } from 'react-scroll';
-import HowItWorks from "../components/HowItWorks/HowItWorks"
 
 
 export const Home = () => {
@@ -20,6 +18,7 @@ export const Home = () => {
     try {
       const val = await getAllImages('houses')
       setImages({ data: val.data!, loading: val.loading })
+      console.log(val.data)
     } catch (error) {
 
     }
@@ -34,16 +33,11 @@ export const Home = () => {
         <PageLoader />
       ) : (
         <div>
-          <Element name="home">
-            <HeroSlider images={images.data} />
-          </Element>
+          <Hero images={images.data} />
+          <AccomodationEasy />
           <HowItWorks />
-          <Element name="about-us">
-            <HeroSlider images={images.data} />
-          </Element>
-          <Element name="contact-us">
-            <HeroSlider images={images.data} />
-          </Element>
+          <TestimonialContainer />
+          <FAQ />
         </div>
       )}
     </div>

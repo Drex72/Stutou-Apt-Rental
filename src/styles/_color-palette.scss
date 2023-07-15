@@ -6,34 +6,58 @@ $color-palette-1: (
     background:#FFFFFF
 );
 
-$color-palette-2: (
-    primary: #6FA8AA,
-    secondary: #F7F6F2,
-    accent-primary: #D9C9BA,
-    accent-secondary:#2E383F,
-    background:#FFFFFF
+$themes: (
+    light: (primary: #5CA6CE,
+        secondary: #F2F6F7,
+        textColor: #000,
+        bg: white,
+        logo: #5CA6CE,
+        bgSoft: #f6f3f3,
+        textColorSoft: #555,
+        border: lightgray,
+    ),
+    dark: (textColor: whitesmoke,
+        bg: #222,
+        logo: white,
+        bgSoft: #333,
+        textColorSoft: lightgray,
+        border: #444,
+    ),
 );
 
-$color-palette-3: (
-    primary: #FFC857,
-    secondary: #0D98BA,
-    accent-primary: #FF6B6B,
-    accent-secondary:#363636,
-    background:#F5F5F5
-);
+@mixin themify($themes) {
 
-$color-palette-4: (
-    primary: #373F51,
-    secondary: #F5F5F5,
-    accent-primary: #FF6978,
-    accent-secondary:#A8D8EA,
-    background:#FFFFFF
-);
+    @each $theme,
+    $map in $themes {
+        .theme-#{$theme} & {
+            $theme-map: () !global;
 
-$color-palette-5: (
-    primary: #6D996B,
-    secondary: #F8F8F8,
-    accent-primary: #D96C06,
-    accent-secondary:#A7D3A7,
-    background:#FFFFFF
-);
+            @each $key,
+            $submap in $map {
+                $value: map-get(map-get($themes, $theme), "#{$key}");
+                $theme-map: map-merge($theme-map,
+                    ($key: $value,
+                    )) !global;
+            }
+
+            @content;
+            $theme-map: null !global;
+        }
+    }
+}
+
+@function themed($key) {
+    @return map-get($theme-map, $key);
+}
+
+@mixin mobile {
+    @media (max-width: 480px) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (max-width: 960px) {
+        @content;
+    }
+}

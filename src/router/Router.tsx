@@ -6,6 +6,7 @@ import { AllRouteConstants } from "./RouteConstants";
 import LandingPageRoutes from "../features/LandingPage/routes/Routes";
 import AuthLayout from "../layouts/authLayout/AuthLayout";
 import AuthRoutes from "../features/Auth/routes/Routes";
+import SocialMediaLayout from "../layouts/SocialMediaLayout/SocialMediaLayout";
 
 /**
  * These are the routes Container for all the routes in the application
@@ -35,6 +36,14 @@ function Router() {
           element={<AuthLayout />}
         >
           {AuthRoutes()}
+        </Route>
+
+        {/* Routes for the Social Media App (The Same concept for the Landing Page) */}
+        <Route
+          path={AllRouteConstants.main.index}
+          element={<SocialMediaLayout />}
+        >
+          {/* {AuthRoutes()} */}
         </Route>
 
 

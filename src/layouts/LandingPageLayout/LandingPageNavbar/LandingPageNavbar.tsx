@@ -73,9 +73,7 @@ const LandingPageNavbar = (props: ILandingPageNavbar) => {
               </ScrollLink>
             </li>
             <li className={currentPath === "contact-us" ? "active" : ""}>
-              <ScrollLink to="contact-us" smooth={true} duration={500}>
-                <Link to="/">Contact Us</Link>
-              </ScrollLink>
+              <Link to={AllRouteConstants.landingPage.contactUs}>Contact Us</Link>
             </li>
           </motion.ul>
         </motion.div>

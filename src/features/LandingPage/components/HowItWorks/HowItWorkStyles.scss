@@ -6,6 +6,8 @@ $white: map-get($color-palette-1, secondary);
 
 .how_it_works {
     padding: 3em 0 0;
+    background: aliceblue;
+
 
     /********************************/
     /*         Progress Bar         */
@@ -28,6 +30,13 @@ $white: map-get($color-palette-1, secondary);
             text-transform: uppercase;
             font-weight: 800;
         }
+
+        &_heading_container {
+            width: 97%;
+            margin: 0 auto;
+        }
+
+
     }
 
     /********************************/
