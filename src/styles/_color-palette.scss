@@ -15,6 +15,7 @@ $themes: (
         bgSoft: #f6f3f3,
         textColorSoft: #555,
         border: lightgray,
+        bgOverlay:#f3f2ef
     ),
     dark: (textColor: whitesmoke,
         bg: #222,
@@ -22,6 +23,7 @@ $themes: (
         bgSoft: #333,
         textColorSoft: lightgray,
         border: #444,
+        bgOverlay:#000
     ),
 );
 

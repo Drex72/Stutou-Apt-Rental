@@ -43,87 +43,92 @@ export const ContactUs = () => {
   };
 
   return (
-    <motion.div className="mb_contact_us">
-      <div className="mb_contact_us_content_wrapper">
-        <motion.div className="mb_contact_us_content_wrapper-left">
-          <motion.img
-            src={ContactUsImage}
-            alt="bg"
-            initial={{ x: -200, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.3, delay: 0.3 }}
-          />
-        </motion.div>
-        <motion.div
-          className="mb_contact_us_content_wrapper-right"
-          initial={{ y: -300, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{
-            duration: 0.5,
-            delay: 0.5,
-          }}
-        >
-          <h2 className="mb_contact_us_content_wrapper-right_header">
-            Get in Touch
-          </h2>
+    <div>
+      <LandingPageNavbar heroPage={false} sidebarOpened={false} openSideBar={() => console.log('hey')} />
+      <motion.div className="mb_contact_us">
 
-          <motion.form
-            className="mb_contact_us_content_wrapper-right_form"
-            onSubmit={handleSubmit}
-            initial="initial"
-            animate="animate"
-          >
-            <div className="inputs">
-              <Input
-                id="Name"
-                label="Name"
-                error={contactUsForm.formErrors.name}
-                inputClassName="contact_us_input_field"
-                inputProps={{
-                  name: "name",
-                  placeholder: "Enter your Name",
-                  value: contactUsForm.form.name,
-                  onChange: handleChange,
-                }}
-              />
-
-              <Input
-                id="email"
-                label="Email Address"
-                error={contactUsForm.formErrors.email}
-                inputClassName="contact_us_input_field"
-                inputProps={{
-                  name: "email",
-                  placeholder: "Enter your email address",
-                  value: contactUsForm.form.email,
-                  onChange: handleChange,
-                }}
-              />
-
-              <TextArea
-                id="message"
-                label="Message"
-                error={contactUsForm.formErrors.message}
-                inputClassName="contact_us_input_field"
-                textareaProps={{
-                  placeholder: "Leave a Message",
-                  value: contactUsForm.form.message,
-                  onChange: handleChange,
-                  name: "message",
-                }}
-              />
-            </div>
-
-            <div style={{ height: 16 }} />
-
-            <Button
-              variant="contained"
-              label={"Send Message"}
-              buttonClassName="contact_us_button"
+        <div className="mb_contact_us_content_wrapper">
+          <motion.div className="mb_contact_us_content_wrapper-left">
+            <motion.img
+              src={ContactUsImage}
+              alt="bg"
+              initial={{ x: -200, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.3, delay: 0.3 }}
             />
-          </motion.form>
-        </motion.div>
-      </div>
-    </motion.div>
+          </motion.div>
+          <motion.div
+            className="mb_contact_us_content_wrapper-right"
+            initial={{ y: -300, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{
+              duration: 0.5,
+              delay: 0.5,
+            }}
+          >
+            <h2 className="mb_contact_us_content_wrapper-right_header">
+              Get in Touch
+            </h2>
+
+            <motion.form
+              className="mb_contact_us_content_wrapper-right_form"
+              onSubmit={handleSubmit}
+              initial="initial"
+              animate="animate"
+            >
+              <div className="inputs">
+                <Input
+                  id="Name"
+                  label="Name"
+                  error={contactUsForm.formErrors.name}
+                  inputClassName="contact_us_input_field"
+                  inputProps={{
+                    name: "name",
+                    placeholder: "Enter your Name",
+                    value: contactUsForm.form.name,
+                    onChange: handleChange,
+                  }}
+                />
+
+                <Input
+                  id="email"
+                  label="Email Address"
+                  error={contactUsForm.formErrors.email}
+                  inputClassName="contact_us_input_field"
+                  inputProps={{
+                    name: "email",
+                    placeholder: "Enter your email address",
+                    value: contactUsForm.form.email,
+                    onChange: handleChange,
+                  }}
+                />
+
+                <TextArea
+                  id="message"
+                  label="Message"
+                  error={contactUsForm.formErrors.message}
+                  inputClassName="contact_us_input_field"
+                  textareaProps={{
+                    placeholder: "Leave a Message",
+                    value: contactUsForm.form.message,
+                    onChange: handleChange,
+                    name: "message",
+                  }}
+                />
+              </div>
+
+              <div style={{ height: 16 }} />
+
+              <Button
+                variant="contained"
+                label={"Send Message"}
+                buttonClassName="contact_us_button"
+              />
+            </motion.form>
+          </motion.div>
+        </div>
+      </motion.div>
+
+    </div>
   );
 };

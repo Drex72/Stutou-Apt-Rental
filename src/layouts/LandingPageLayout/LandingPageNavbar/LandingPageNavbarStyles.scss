@@ -13,9 +13,7 @@ $color: map-get($color-palette-1, primary);
   width: 100%;
 }
 
-.solid {
-  background: rgba(#000, 0.9);
-}
+
 
 .landing_page_navbar {
   height: 90px;
@@ -24,9 +22,14 @@ $color: map-get($color-palette-1, primary);
   justify-content: center;
   width: 100%;
   padding-block: .5em;
-  position: fixed;
-  transition: all 200ms ease-in-out;
-  z-index: 1000;
+  background: rgba(#000, 0.9);
+
+  &_hero {
+    background: transparent;
+    position: fixed;
+    transition: all 200ms ease-in-out;
+    z-index: 1000;
+  }
 
 
 
@@ -132,6 +135,10 @@ $color: map-get($color-palette-1, primary);
   &-hamburger {
     display: block;
   }
+}
+
+.solid {
+  background: rgba(#000, 0.9);
 }
 
 @media screen and (min-width: 768px) {

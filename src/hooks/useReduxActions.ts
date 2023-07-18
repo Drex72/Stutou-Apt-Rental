@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux'
 import { ActionCreatorsMapObject, bindActionCreators } from 'redux'
 import { authenticationSlice } from '../redux/authenticationSlice'
 import { themeSlice } from '../redux/themeSlice'
+import { postsSlice } from '../redux/postsSlice'
 
 export const useReduxActions = (action: ActionCreatorsMapObject<any>) => {
   const dispatch = useDispatch()
@@ -22,4 +23,10 @@ export const useThemeActions = () => {
   const dispatch = useDispatch()
 
   return bindActionCreators(Object.assign({}, themeSlice.actions), dispatch)
+}
+
+export const usePostActions = () => {
+  const dispatch = useDispatch()
+
+  return bindActionCreators(Object.assign({}, postsSlice.actions), dispatch)
 }

@@ -15,10 +15,11 @@ import LogoComponent from "../../../components/Logo/Logo";
 interface ILandingPageNavbar {
   openSideBar: () => void;
   sidebarOpened: boolean;
+  heroPage?: boolean
 }
 
 const LandingPageNavbar = (props: ILandingPageNavbar) => {
-  const { sidebarOpened, openSideBar } = props;
+  const { sidebarOpened, openSideBar, heroPage } = props;
   const { pathname } = useLocation();
   const currentPath = pathname.split("/")[1];
   const { stagger, fadeInUp, btnGroup } = new Animations();
@@ -45,7 +46,13 @@ const LandingPageNavbar = (props: ILandingPageNavbar) => {
 
 
   return (
-    <motion.header variants={stagger()} className={`landing_page_navbar ${navbarScrolled ? 'solid' : ''}`}>
+    <motion.header
+      initial="initial"
+      animate="animate"
+      variants={stagger()}
+      className={`landing_page_navbar ${heroPage ? 'landing_page_navbar_hero' : ''}  ${navbarScrolled ? 'solid' : ''}`}
+    >
+
       <nav className="landing_page_navbar-container">
         <motion.div
           className="landing_page_navbar_left"

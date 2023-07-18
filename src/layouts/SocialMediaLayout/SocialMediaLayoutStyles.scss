@@ -1,0 +1,25 @@
+@import "../../styles/color-palette";
+
+
+
+.social_media_layout_body {
+    @include themify($themes) {
+        background-color: themed("bgOverlay");
+        color: themed("textColor");
+
+        &_container {
+            width: 80%;
+            margin: 0 auto;
+            padding-block: 2em;
+            display: flex;
+            align-items: flex-start;
+            gap: 1em;
+        }
+    }
+
+}
+
+.social_media_layout_outlet_container {
+    height: 100vh;
+    overflow-y: scroll;
+}

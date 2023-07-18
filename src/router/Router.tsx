@@ -7,6 +7,7 @@ import LandingPageRoutes from "../features/LandingPage/routes/Routes";
 import AuthLayout from "../layouts/authLayout/AuthLayout";
 import AuthRoutes from "../features/Auth/routes/Routes";
 import SocialMediaLayout from "../layouts/SocialMediaLayout/SocialMediaLayout";
+import SocialMediaRoutes from "../features/Main/routes/Routes";
 
 /**
  * These are the routes Container for all the routes in the application
@@ -43,7 +44,7 @@ function Router() {
           path={AllRouteConstants.main.index}
           element={<SocialMediaLayout />}
         >
-          {/* {AuthRoutes()} */}
+          {SocialMediaRoutes()}
         </Route>
 
 

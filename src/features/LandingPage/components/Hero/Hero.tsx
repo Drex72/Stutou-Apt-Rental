@@ -37,7 +37,7 @@ export const Hero = ({ images }: { images: HeroImage[] }) => {
 
             >
                 <Overlay className="hero-overlay">
-                    <LandingPageNavbar sidebarOpened={false} openSideBar={() => console.log('hey')} />
+                    <LandingPageNavbar heroPage={true} sidebarOpened={false} openSideBar={() => console.log('hey')} />
                     <div className="hero_content_container">
                         <div>
                             <h1 className="hero_heading">

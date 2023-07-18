@@ -7,6 +7,8 @@ export interface IBasicUserInterface {
 
 export interface IUserInformation extends IBasicUserInterface {
   id: string | number;
+  avatar:string
+
 }
 
 export interface IAuthenticationResponse {
@@ -16,6 +18,6 @@ export interface IAuthenticationResponse {
       accessToken: string;
       refreshToken: string;
     };
-    admin: IUserInformation;
+    user: IUserInformation;
   };
 }

@@ -1,5 +1,4 @@
 import { useAppSelector } from './hooks/useAppSelector';
-import SocialMediaLayoutNavbar from './layouts/SocialMediaLayout/SocialMediaLayoutNavbar/SocialMediaLayoutNavbar';
 import Router from './router/Router'
 import './styles/_color-palette.scss';
 

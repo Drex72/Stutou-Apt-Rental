@@ -32,11 +32,11 @@ const Footer = () => {
           <div className="footer_inner_container_column">
             <h5>Services</h5>
             <li className="list_item">
-              <a href="/signup">Find a pet care Provider</a>
+              <a href="/signup">Find an Apartment</a>
             </li>
 
             <li className="list_item">
-              <a href="/login">Book Appointment</a>
+              <a href="/login">Lease an Apartment</a>
             </li>
 
             <li className="list_item">

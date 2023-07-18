@@ -1,20 +1,20 @@
 export const testimonials = [
   {
     message:
-      'We have been using Medusa at Tekla and that has proven to be the platform for ecommerce. A simple user interface with no mysterious hidden fees and just straight to the point of what every ecommerce manager needs.',
-    name: 'Ante Primorac',
-    role: 'Tech Lead @ Agilo'
+      "I couldn't have asked for a better platform than StuApt to find my student accommodation in Aberdeen. The user-friendly interface and verified listings made the process so simple. I found the perfect place within days. StuApt is a game-changer for students like me!",
+    name: 'Lisa Williams',
+    role: 'University Student'
   },
   {
     message:
-      "Thanks to Medusa's architecture and integrations, we've created tailored commerce solutions for our clients in record time. The platform's flexibility makes adapting to new requirements painless.",
-    name: 'Lijana Norkaityte',
-    role: 'eCom manager @ Tekla Fabrics'
+      'StuApt is my go-to platform for finding accommodations during my travels. The diverse options and seamless booking experience are impressive. I found fantastic stays in Aberdeen with ease. Highly recommended for fellow travelers!',
+    name: 'Michael Turner',
+    role: 'Travel Enthusiast'
   },
   {
     message:
-      'I found Medusa a few months ago and fell in love with the openness,architecture, and goals of it.',
-    name: 'Levi Whalen',
+      "Moving to Aberdeen for work was a breeze, all thanks to StuApt. The platform's reliability and secure payment options gave me peace of mind.",
+    name: 'Jennifer Harper',
     role: 'Product Manager @ Nacelle'
   },
   {

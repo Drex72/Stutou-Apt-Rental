@@ -6,10 +6,11 @@ import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
-import { Link } from "react-router-dom";
 import { useAppSelector } from "../../../hooks/useAppSelector";
 import { useThemeActions } from "../../../hooks/useReduxActions";
 import "./SocialMediaLayoutNavbarStyles.scss";
+import { AllRouteConstants } from "../../../router/RouteConstants";
+import { Link } from "react-router-dom";
 
 
 
@@ -20,9 +21,10 @@ const SocialMediaLayoutNavbar = () => {
   return (
     <div className="navbar">
       <div className="left">
-        {/* <Link to="/" style={{ textDecoration: "none" }}> */}
-          <span>lamasocial</span>
-        {/* </Link> */}
+        <Link to={AllRouteConstants.main.index} style={{ textDecoration: "none" }}>
+          <span>StuApt</span>
+          {/* <LogoComponent /> */}
+        </Link>
         <HomeOutlinedIcon />
         {theme === 'dark' ? (
           <WbSunnyOutlinedIcon onClick={() => toggleTheme('light')} />
