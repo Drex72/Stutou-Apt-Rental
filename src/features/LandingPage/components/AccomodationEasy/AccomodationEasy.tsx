@@ -1,6 +1,6 @@
 import ScrollAnimation from "react-animate-on-scroll";
 import './AccomodationEasyStyles.scss'
-import Houses from '../../../../assets/images/houses.png'
+import Houses from '../../../../assets/images/houses2.png'
 
 export const AccomodationEasy = () => {
     return (

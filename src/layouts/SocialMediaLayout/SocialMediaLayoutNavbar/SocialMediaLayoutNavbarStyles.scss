@@ -16,6 +16,13 @@
     z-index: 999;
 
 
+    .theme_toggler,
+    .notification_icon {
+      cursor: pointer;
+    }
+
+
+
     .left {
       display: flex;
       align-items: center;

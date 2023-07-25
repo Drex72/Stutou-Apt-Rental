@@ -11,12 +11,25 @@ import { useThemeActions } from "../../../hooks/useReduxActions";
 import "./SocialMediaLayoutNavbarStyles.scss";
 import { AllRouteConstants } from "../../../router/RouteConstants";
 import { Link } from "react-router-dom";
-
+import Popover from "@mui/material/Popover";
+import { useState } from "react";
+import Notifications from "../../../features/Main/components/Notifications/Notifications";
 
 
 const SocialMediaLayoutNavbar = () => {
   const { theme } = useAppSelector(state => state.theme)
   const { toggleTheme } = useThemeActions()
+
+  const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
+  const handleShowNotification = (event: any) => {
+    setAnchorEl(event.currentTarget as any);
+  };
+  const handleCloseNotification = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? "simple-popover" : undefined;
 
   return (
     <div className="navbar">
@@ -26,11 +39,14 @@ const SocialMediaLayoutNavbar = () => {
           {/* <LogoComponent /> */}
         </Link>
         <HomeOutlinedIcon />
-        {theme === 'dark' ? (
-          <WbSunnyOutlinedIcon onClick={() => toggleTheme('light')} />
-        ) : (
-          <DarkModeOutlinedIcon onClick={() => toggleTheme('dark')} />
-        )}
+        <div className="theme_toggler">
+          {theme === 'dark' ? (
+            <WbSunnyOutlinedIcon onClick={() => toggleTheme('light')} />
+          ) : (
+            <DarkModeOutlinedIcon onClick={() => toggleTheme('dark')} />
+          )}
+
+        </div>
         <GridViewOutlinedIcon />
         <div className="search">
           <SearchOutlinedIcon />
@@ -39,8 +55,26 @@ const SocialMediaLayoutNavbar = () => {
       </div>
       <div className="right">
         <PersonOutlinedIcon />
-        <EmailOutlinedIcon />
-        <NotificationsOutlinedIcon />
+        <>
+          <NotificationsOutlinedIcon className="notification_icon" aria-describedby={id} onClick={handleShowNotification} />
+
+          <Popover
+            id={id}
+            open={open}
+            anchorEl={anchorEl}
+            onClose={handleCloseNotification}
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'center',
+            }}
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'center',
+            }}
+          >
+            <Notifications />
+          </Popover>
+        </>
         <div className="user">
           {/* <img
             src={"/upload/" + currentUser.profilePic}

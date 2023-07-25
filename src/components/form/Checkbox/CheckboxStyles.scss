@@ -1,41 +1,47 @@
+@import "../../../styles/color-palette";
+
+
 .ml-input-checkbox {
-  position: relative;
-  border: 1px solid #000;
-  border-radius: 4px;
-  background: none;
-  cursor: pointer;
-  line-height: 0;
-  margin: 0 0.6em 0 0;
-  outline: 0;
-  padding: 0 !important;
-  vertical-align: text-top;
-  height: 18px;
-  width: 18px;
-  -webkit-appearance: none;
-  opacity: 0.5;
-  transition: all 200ms ease-in-out;
+  @include themify($themes) {
 
-  &:hover {
-    opacity: 1;
-  }
+    position: relative;
+    border: 1px solid themed("primary");
+    border-radius: 4px;
+    background: none;
+    cursor: pointer;
+    line-height: 0;
+    margin: 0 0.6em 0 0;
+    outline: 0;
+    padding: 0 !important;
+    vertical-align: text-top;
+    height: 18px;
+    width: 18px;
+    -webkit-appearance: none;
+    opacity: 0.5;
+    transition: all 200ms ease-in-out;
 
-  &:checked {
-    background-color: var(--green);
-    opacity: 1;
-    border: none;
-  }
+    &:hover {
+      opacity: 1;
+    }
 
-  &:before {
-    content: "";
-    position: absolute;
-    right: 50%;
-    top: 50%;
-    width: 3px;
-    height: 8px;
-    border: solid #fff;
-    border-width: 0 2px 2px 0;
-    margin: -1px -1px 0 -1px;
-    transform: rotate(45deg) translate(-50%, -50%);
-    z-index: 2;
+    &:checked {
+      background-color: themed("primary");
+      opacity: 1;
+      border: none;
+    }
+
+    &:before {
+      content: "";
+      position: absolute;
+      right: 50%;
+      top: 50%;
+      width: 3px;
+      height: 8px;
+      border: solid themed("bg");
+      border-width: 0 2px 2px 0;
+      margin: -1px -1px 0 -1px;
+      transform: rotate(45deg) translate(-50%, -50%);
+      z-index: 2;
+    }
   }
 }

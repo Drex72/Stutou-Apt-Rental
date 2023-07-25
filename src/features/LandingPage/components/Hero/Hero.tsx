@@ -55,7 +55,7 @@ export const Hero = ({ images }: { images: HeroImage[] }) => {
                     </div>
                 </Overlay>
 
-                {images.map((image, index) => (
+                {images?.map((image, index) => (
                     <Slide
                         label={image.description}
                         key={index}

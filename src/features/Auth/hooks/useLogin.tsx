@@ -5,11 +5,10 @@ import { emailValidator } from "../../../utils/validators/emailValidator";
 import { emptyValidator } from "../../../utils/validators/emptyValidator";
 import { ILoginInput } from "../interfaces/ILoginInput";
 import { useAuthActions } from "../../../hooks/useReduxActions";
-import { IAuthenticationResponse } from "../../../interfaces/IUserInterface";
 import authService from "../../../services/authenticationService";
 import { AllRouteConstants } from "../../../router/RouteConstants";
 
-const useLogin = (rememberMe?: boolean) => {
+const useLogin = () => {
     const navigate = useNavigate();
     const { login } = useAuthActions();
 
@@ -21,23 +20,24 @@ const useLogin = (rememberMe?: boolean) => {
 
     const signin = (data: ILoginInput) => authService.login(data);
 
-    const loginApiRequest = useApi<IAuthenticationResponse, ILoginInput>(signin);
+    const loginApiRequest = useApi<ILoginAPIResponse, ILoginInput>(signin);
 
     const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
         e.preventDefault();
         loginForm.resetFormErrors();
-        // loginApiRequest.reset();
-        // const valid = loginForm.validate();
-        // if (valid) {
-        //     try {
-        //         const user = await loginApiRequest.request(loginForm.form);
-        //         if (user) {
-        //             login({ response: user, rememberMe: rememberMe! });
-        //             // navigate(AllRouteConstants.main.dashboard);
-        //         }
-        //     } catch (error) { }
-        // }
-        navigate(AllRouteConstants.main.index);
+        loginApiRequest.reset();
+        const valid = loginForm.validate();
+        if (valid) {
+            try {
+                const user = await loginApiRequest.request(loginForm.form);
+                console.log(user)
+                if (user) {
+                    login(user);
+                    navigate(AllRouteConstants.main.index);
+                    console.log('hey')
+                }
+            } catch (error) { }
+        }
 
     };
 

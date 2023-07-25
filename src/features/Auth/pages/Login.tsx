@@ -1,22 +1,17 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, } from "react-router-dom";
 import visible from "../../../assets/icons/visible.svg";
 import notvisible from "../../../assets/icons/not-visible.svg";
 import { ILoginInput } from "../interfaces/ILoginInput";
-import Popover from "@mui/material/Popover";
 import "../styles/LoginStyles.scss";
 import FormError from "../../../components/form/formError/FormError";
 import useLogin from "../hooks/useLogin";
 import Button from "../../../components/Button/Button";
 import Input from "../../../components/form/Input/Input";
-import Google from "../../../assets/icons/google.svg";
 import { AllRouteConstants } from "../../../router/RouteConstants";
-import usePopOver from "../../../hooks/usePopOver";
 import usePasswordType from "../hooks/usePasswordType";
 
 export const Login = () => {
-  const navigate = useNavigate()
   const { handleSubmit, loginForm, loading, error } = useLogin()
-  const { handleClick, handleClose, id, anchorEl, open } = usePopOver()
   const { passwordType, togglePassword } = usePasswordType()
 
   const formChange = (key: keyof ILoginInput, value: any) => {
@@ -84,9 +79,9 @@ export const Login = () => {
             loading={loading}
           />
 
-          <FormError error={error?.error} />
+          <FormError error={error?.message} />
         </form>
-
+        {/* 
         <div className="auth-or_container">
           <div className="auth-or_line"></div>
           <span className="auth-or_text">OR</span>
@@ -102,47 +97,13 @@ export const Login = () => {
           }
           variant="outlined"
           type="submit"
-        />
+        /> */}
 
         <div className="auth-footer">
-          <div>
-            <p className="auth-signup">
-              Don't have an Account? <button
-                aria-describedby={id}
-                onClick={handleClick}
-                className="auth-link"
-              >
-                Sign up
-              </button>
-            </p>
-
-            <Popover
-              id={id}
-              open={open}
-              anchorEl={anchorEl}
-              onClose={handleClose}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              transformOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              className="auth-signup_popover"
-            >
-              <div className="auth-signup_popover_container">
-                <button onClick={() => navigate(AllRouteConstants.auth.signup.student)}>
-                  Sign up as Student
-                </button>
-                <button onClick={() => navigate(AllRouteConstants.auth.signup.houseOwner)}>
-                  Sign up as House Owner
-                </button>
-              </div>
-            </Popover>
-
-          </div>
-
+          <p className="auth-signup">
+            Don't have an Account?
+            <Link className="auth-link" to={AllRouteConstants.auth.signup}>Sign up</Link>
+          </p>
           <Link className="auth-link" to={AllRouteConstants.auth.forgotPassword}>Forgot Password</Link>
 
         </div>

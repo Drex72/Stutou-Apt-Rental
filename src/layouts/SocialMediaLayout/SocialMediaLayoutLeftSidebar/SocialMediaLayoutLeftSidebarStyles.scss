@@ -1,7 +1,19 @@
+@import "../../../styles/color-palette";
+
+
+
+@media screen and (max-width: 768px) {
+    .social_media_layout_left_sidebar {
+        display: none;
+    }
+}
+
+
 .social_media_layout_left_sidebar {
-    width: 20%;
-    border: 2px solid blue;
-    height: 100vh;
-    max-height: 100vh;
-    overflow-y: scroll;
+    @include themify($themes) {
+        color: themed("textColor");
+        width: 300px;
+        height: 100vh;
+        overflow-y: scroll;
+    }
 }

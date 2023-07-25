@@ -3,29 +3,21 @@ export interface ILogin {
   password: string
 }
 
-interface UserRegister extends ILogin {
-  firstName: string
-  lastName: string
+export interface BasicUser extends Omit<ILogin, 'password'> {
+  id:string
+  firstname: string
+  lastname: string
+  status: 'owner' | 'student'
+
 }
 
-export interface IStudentRegister extends UserRegister {
-
+export interface UserRegister extends ILogin {
+  firstname: string
+  lastname: string
+  status: 'owner' | 'student'
 }
 
-export interface IHouseOwnerRegister extends UserRegister {
-  
-}
-
-export interface IVerifyUser {
-  token: string
-  password: string
-}
-
-export interface IResetPassword {
-  resetToken: string
-  password: string
-}
 
 export interface IForgotPassword {
-  email: string
+  email: string;
 }

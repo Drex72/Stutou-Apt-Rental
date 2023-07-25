@@ -1,65 +1,53 @@
 /* eslint-disable no-param-reassign */
-import { createSlice } from "@reduxjs/toolkit";
-import accessToken from "../utils/accessToken/AccessToken";
-import {
-  IAuthenticationResponse,
-  IUserInformation,
-} from "../interfaces/IUserInterface";
+import { createSlice } from '@reduxjs/toolkit'
+import { BasicUser } from '../interfaces/IAuthInterface'
 
-const initialStateValue: IUserInformation = {
-  id: "",
-  firstName: "",
-  lastName: "",
-  otherName: "",
-  email: "",
-};
+const initialStateValue: BasicUser = {
+  id: '',
+  firstname: '',
+  lastname: '',
+  email: '',
+  status: 'student'
+}
 
 export const authenticationSlice = createSlice({
-  name: "admin",
+  name: 'auth',
   initialState: {
-    value: initialStateValue,
+    userInfo: initialStateValue,
     userloggedIn: false,
-    adminRememberMe: false,
+    userToken: '' as string
   },
   reducers: {
     login: (
       state,
       action: {
-        payload: { response: IAuthenticationResponse; rememberMe: boolean };
+        payload: ILoginAPIResponse
       }
     ) => {
-      const { token, admin } = action.payload.response.data;
+      const { token, userId } = action.payload
+      state.userToken = token
+      state.userInfo = { ...state.userInfo, id: userId }
+    },
 
-      state.userloggedIn = true;
-      state.adminRememberMe = action.payload.rememberMe;
-
-      if (action.payload.rememberMe) {
-        // Stores Refresh Token in Local Storage
-        localStorage.setItem("refreshToken", token.refreshToken);
-      } else {
-        sessionStorage.setItem("refreshToken", token.refreshToken);
+    getUserDetails: (
+      state,
+      action: {
+        payload: IGetStudentAPIResponse
       }
+    ) => {
+      const { _id, email, firstname, lastname, status } = action.payload.data
 
-      // Stores Access Token In Memory with a Setter
-      accessToken.setAccessToken(token.accessToken);
-      state.value = admin;
-    },
+      state.userInfo = {
+        id: _id,
+        email,
+        firstname,
+        lastname,
+        status
+      }
+    }
+  }
+})
 
-    logout: (state) => {
-      state.userloggedIn = false;
-      state.adminRememberMe = false;
+export const { login, getUserDetails } = authenticationSlice.actions
 
-      state.value = initialStateValue;
-
-      // Removes Refresh Token in Local Storage
-      localStorage.removeItem("refreshToken");
-
-      // Resets Access Token
-      accessToken.resetAccessToken();
-    },
-  },
-});
-
-export const { login, logout } = authenticationSlice.actions;
-
-export default authenticationSlice.reducer;
+export default authenticationSlice.reducer

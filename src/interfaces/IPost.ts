@@ -2,7 +2,7 @@ import { IUserInformation } from './IUserInterface'
 
 export interface IPost {
   id: string
-  img: string
+  img: string | null
   desc: string
   userInfo: IUserInformation
   likes: number

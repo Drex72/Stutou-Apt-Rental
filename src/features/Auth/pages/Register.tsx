@@ -5,18 +5,19 @@ import "../styles/LoginStyles.scss";
 import FormError from "../../../components/form/formError/FormError";
 import Button from "../../../components/Button/Button";
 import Input from "../../../components/form/Input/Input";
-import Google from "../../../assets/icons/google.svg";
+// import Google from "../../../assets/icons/google.svg";
 import { AllRouteConstants } from "../../../router/RouteConstants";
-import useStudentRegistration from '../hooks/useStudentRegistration'
-import { IStudentRegister } from "../../../interfaces/IAuthInterface";
 import usePasswordType from "../hooks/usePasswordType";
+import useRegistration from "../hooks/useRegistration";
+import { UserRegister } from "../../../interfaces/IAuthInterface";
 
-export const StudentRegistration = () => {
-    const { error, handleSubmit, loading, studentSignUpForm } = useStudentRegistration()
+export const Register = () => {
+    const { error, handleSubmit, loading, signUpForm } = useRegistration()
     const { passwordType, togglePassword } = usePasswordType()
+    const { form, onChange, formErrors } = signUpForm
 
-    const formChange = (key: keyof IStudentRegister, value: any) => {
-        studentSignUpForm.onChange(key, value);
+    const formChange = (key: keyof UserRegister, value: any) => {
+        onChange(key, value);
         return;
     };
 
@@ -24,7 +25,7 @@ export const StudentRegistration = () => {
         <div className="animate__animated animate__fadeIn">
             <div className="auth-box">
                 <h1 className="auth-title">
-                    Student Sign Up
+                    Sign Up
                 </h1>
 
                 <form className="auth-form" onSubmit={handleSubmit}>
@@ -32,12 +33,12 @@ export const StudentRegistration = () => {
                         <Input
                             id="First Name"
                             label="First Name"
-                            error={studentSignUpForm.formErrors.firstName}
+                            error={formErrors.firstname}
                             animation="animate__animated animate__fadeInLeft"
                             inputProps={{
                                 placeholder: "First Name",
-                                value: studentSignUpForm.form.firstName,
-                                onChange: (e) => formChange("firstName", e.target.value),
+                                value: form.firstname,
+                                onChange: (e) => formChange("firstname", e.target.value),
                                 required: true,
                             }}
                         />
@@ -47,12 +48,12 @@ export const StudentRegistration = () => {
                         <Input
                             id="Last Name"
                             label="Last Name"
-                            error={studentSignUpForm.formErrors.lastName}
+                            error={formErrors.lastname}
                             animation="animate__animated animate__fadeInLeft"
                             inputProps={{
                                 placeholder: "Last Name",
-                                value: studentSignUpForm.form.lastName,
-                                onChange: (e) => formChange("lastName", e.target.value),
+                                value: form.lastname,
+                                onChange: (e) => formChange("lastname", e.target.value),
                                 required: true,
                             }}
                         />
@@ -62,11 +63,11 @@ export const StudentRegistration = () => {
                         <Input
                             id="email"
                             label="Email"
-                            error={studentSignUpForm.formErrors.email}
+                            error={formErrors.email}
                             animation="animate__animated animate__fadeInLeft"
                             inputProps={{
                                 placeholder: "Email",
-                                value: studentSignUpForm.form.email,
+                                value: form.email,
                                 onChange: (e) => formChange("email", e.target.value),
                                 required: true,
                             }}
@@ -77,7 +78,7 @@ export const StudentRegistration = () => {
                         <Input
                             id="password"
                             label="Password"
-                            error={studentSignUpForm.formErrors.password}
+                            error={formErrors.password}
                             animation="animate__animated animate__fadeInRight"
                             rightIcon={
                                 <div
@@ -94,7 +95,7 @@ export const StudentRegistration = () => {
                             inputProps={{
                                 type: passwordType,
                                 placeholder: "Password",
-                                value: studentSignUpForm.form.password,
+                                value: form.password,
                                 onChange: (e) => formChange("password", e.target.value),
                                 required: true,
                             }}
@@ -111,7 +112,7 @@ export const StudentRegistration = () => {
                     <FormError error={error?.error} />
                 </form>
 
-                <div className="auth-or_container">
+                {/* <div className="auth-or_container">
                     <div className="auth-or_line"></div>
                     <span className="auth-or_text">OR</span>
                     <div className="auth-or_line" />
@@ -126,7 +127,7 @@ export const StudentRegistration = () => {
                     }
                     variant="outlined"
                     type="submit"
-                />
+                /> */}
 
                 <div className="auth-footer">
                     <div>

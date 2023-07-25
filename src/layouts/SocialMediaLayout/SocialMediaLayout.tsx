@@ -13,11 +13,13 @@ import { IGetPostResponse } from "../../interfaces/IPost";
 import PageLoader from "../../components/PageLoader/PageLoader";
 import SocialMediaLayoutRightSidebar from "./SocialMediaLayoutRightSidebar/SocialMediaLayoutRightSidebar";
 import SocialMediaLayoutLeftSidebar from "./SocialMediaLayoutLeftSidebar/SocialMediaLayoutLeftSidebar";
+import MessageBar from "../../features/Main/components/MessageBar/MessageBar";
 
 function SocialMediaLayout() {
     const [noPosts, setNoPosts] = useState(false);
 
     const { allPosts } = useAppSelector((state) => state.posts);
+    const { messageStatus } = useAppSelector(state => state.messages)
     const { initializePosts } = usePostActions();
 
     const getAllPostsService = () => postService.getAllPosts();
@@ -58,6 +60,7 @@ function SocialMediaLayout() {
                         </div>
                         <SocialMediaLayoutRightSidebar />
                     </div>
+                    <MessageBar  />
                 </div>
             )}
         </RequireAuth>

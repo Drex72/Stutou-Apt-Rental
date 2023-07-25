@@ -14,10 +14,7 @@ export const AllRouteConstants = {
   auth: {
     index: '/auth',
     login: '/auth/signin',
-    signup: {
-      student: '/auth/signup/student',
-      houseOwner: '/auth/signup/houseOwner'
-    },
+    signup: '/auth/signup',
     forgotPassword: '/auth/forgot-password',
     resetPassword: '/auth/reset-password'
   },
