@@ -13,11 +13,10 @@
     top: 0;
     background-color: themed("bg");
     color: themed("textColor");
-    z-index: 999;
+    z-index: 9;
 
 
-    .theme_toggler,
-    .notification_icon {
+    .navbar_icon {
       cursor: pointer;
     }
 

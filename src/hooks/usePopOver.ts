@@ -8,7 +8,7 @@ const usePopOver = (closePopOver?: () => any) => {
    * Sets the Anchor Element to the Selected Element
    * @param event Takes in the Event Object
    */
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget)
   }
 
@@ -23,13 +23,7 @@ const usePopOver = (closePopOver?: () => any) => {
   const open = Boolean(anchorEl)
   const id = open ? 'simple-popover' : undefined
 
-  return {
-    handleClick,
-    handleClose,
-    id,
-    anchorEl,
-    open
-  }
+  return { handleClick, handleClose, id, anchorEl, open }
 }
 
 export default usePopOver

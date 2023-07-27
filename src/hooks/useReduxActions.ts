@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux'
 import { ActionCreatorsMapObject, bindActionCreators } from 'redux'
 import { authenticationSlice } from '../redux/authenticationSlice'
 import { themeSlice } from '../redux/themeSlice'
-import { postsSlice } from '../redux/postsSlice'
+import { apartmentsSlice } from '../redux/aparmentsSlice'
 import { messageSlice } from '../redux/messageSlice'
 
 export const useReduxActions = (action: ActionCreatorsMapObject<any>) => {
@@ -26,10 +26,13 @@ export const useThemeActions = () => {
   return bindActionCreators(Object.assign({}, themeSlice.actions), dispatch)
 }
 
-export const usePostActions = () => {
+export const useApartmentActions = () => {
   const dispatch = useDispatch()
 
-  return bindActionCreators(Object.assign({}, postsSlice.actions), dispatch)
+  return bindActionCreators(
+    Object.assign({}, apartmentsSlice.actions),
+    dispatch
+  )
 }
 
 export const useMessageActions = () => {

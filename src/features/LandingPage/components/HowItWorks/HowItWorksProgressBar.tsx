@@ -35,8 +35,8 @@ const HowItWorksProgressBar = (props: IHowItWorksProgressProps) => {
                     const { content, icon, title ,delay} = item
                     return (
                         (
-                            <ScrollAnimation animateIn="fadeInUp" delay={delay} animateOnce={true}>
-                                <div className='card' key={index}>
+                            <ScrollAnimation animateIn="fadeInUp" delay={delay}  key={index} animateOnce={true}>
+                                <div className='card'>
                                     <div className="card_inner_container">
                                         <div className="how_it_works_progressCard-icon">
                                             {icon}

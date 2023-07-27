@@ -7,7 +7,7 @@ import CloseIcon from '../../../../assets/icons/close-icon.svg'
 import DefaultUser from '../../../../assets/icons/user.svg'
 import ShareImage from '../../../../assets/icons/share-image.svg'
 import ShareVideo from '../../../../assets/icons/share-video.svg'
-import ShareComment from '../../../../assets/icons/share-comment.svg'
+import DummyImage from '../../../../assets/images/dummyAvatar.png'
 
 
 
@@ -81,10 +81,14 @@ function PostalModal(props: PostalModalProps) {
 
     return (
         // <PopModal onClose={() => console.log('hey')} fullOverlay >
-        <div className="post_modal_container">
+        <div className="post_modal_container" >
             <div className="post_modal_content">
                 <div className="post_modal_header">
                     <h2>Create a post</h2>
+                    {/* <div>
+                        <img src={DummyImage} alt="" />
+
+                    </div> */}
                     <button onClick={(event) => reset(event)}>
                         <img src={CloseIcon} alt="" />
                     </button>

@@ -4,8 +4,8 @@ import storage from 'redux-persist/lib/storage'
 import { persistReducer, persistStore } from 'redux-persist'
 import authenticationSlice from './authenticationSlice'
 import themeSlice from './themeSlice'
-import postsSlice from './postsSlice'
 import messageSlice from './messageSlice'
+import apartmentsSlice from './aparmentsSlice'
 
 const persistConfig = {
   key: 'root',
@@ -17,7 +17,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   authentication: authenticationSlice,
   theme: themeSlice,
-  posts: postsSlice,
+  apartments: apartmentsSlice,
   messages: messageSlice
 })
 

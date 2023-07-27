@@ -8,7 +8,7 @@
         color: themed("textColor");
 
         &_container {
-            width: 80%;
+            width: 85%;
             margin: 0 auto;
             padding-block: 2em;
             display: flex;
@@ -20,6 +20,5 @@
 }
 
 .social_media_layout_outlet_container {
-    height: 100vh;
-    overflow-y: scroll;
+    width: 100%;
 }

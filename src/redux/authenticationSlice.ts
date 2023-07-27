@@ -1,6 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit'
 import { BasicUser } from '../interfaces/IAuthInterface'
+import accessToken from '../utils/accessToken/AccessToken'
 
 const initialStateValue: BasicUser = {
   id: '',
@@ -25,6 +26,7 @@ export const authenticationSlice = createSlice({
       }
     ) => {
       const { token, userId } = action.payload
+      localStorage.setItem('accessToken', token)
       state.userToken = token
       state.userInfo = { ...state.userInfo, id: userId }
     },
@@ -44,10 +46,16 @@ export const authenticationSlice = createSlice({
         lastname,
         status
       }
+    },
+
+    logout: (state) => {
+      localStorage.removeItem('accessToken')
+      state.userToken = ''
+      state.userInfo = initialStateValue
     }
   }
 })
 
-export const { login, getUserDetails } = authenticationSlice.actions
+export const { login, getUserDetails,logout } = authenticationSlice.actions
 
 export default authenticationSlice.reducer

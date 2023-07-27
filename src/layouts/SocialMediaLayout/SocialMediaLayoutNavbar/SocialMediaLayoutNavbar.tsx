@@ -1,9 +1,7 @@
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 import WbSunnyOutlinedIcon from "@mui/icons-material/WbSunnyOutlined";
-import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
 import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
-import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import { useAppSelector } from "../../../hooks/useAppSelector";
@@ -12,24 +10,20 @@ import "./SocialMediaLayoutNavbarStyles.scss";
 import { AllRouteConstants } from "../../../router/RouteConstants";
 import { Link } from "react-router-dom";
 import Popover from "@mui/material/Popover";
-import { useState } from "react";
 import Notifications from "../../../features/Main/components/Notifications/Notifications";
+import usePopOver from "../../../hooks/usePopOver";
+import Profile from "../../../features/Main/components/Profile/Profile";
 
 
 const SocialMediaLayoutNavbar = () => {
   const { theme } = useAppSelector(state => state.theme)
   const { toggleTheme } = useThemeActions()
 
-  const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
-  const handleShowNotification = (event: any) => {
-    setAnchorEl(event.currentTarget as any);
-  };
-  const handleCloseNotification = () => {
-    setAnchorEl(null);
-  };
 
-  const open = Boolean(anchorEl);
-  const id = open ? "simple-popover" : undefined;
+  const { handleClick: handleOpenProfile, handleClose: handleCloseProfile, id: profileId, anchorEl: profileAnchor, open: profileOpen } = usePopOver()
+  const { handleClick: handleShowNotification, handleClose: handleCloseNotification, id: notificationId, anchorEl: notificationAnchor, open: notificationOpen } = usePopOver()
+
+
 
   return (
     <div className="navbar">
@@ -39,7 +33,7 @@ const SocialMediaLayoutNavbar = () => {
           {/* <LogoComponent /> */}
         </Link>
         <HomeOutlinedIcon />
-        <div className="theme_toggler">
+        <div className="navbar_icon">
           {theme === 'dark' ? (
             <WbSunnyOutlinedIcon onClick={() => toggleTheme('light')} />
           ) : (
@@ -47,21 +41,41 @@ const SocialMediaLayoutNavbar = () => {
           )}
 
         </div>
-        <GridViewOutlinedIcon />
+        {/* <GridViewOutlinedIcon /> */}
         <div className="search">
           <SearchOutlinedIcon />
           <input type="text" placeholder="Search..." />
         </div>
       </div>
       <div className="right">
-        <PersonOutlinedIcon />
         <>
-          <NotificationsOutlinedIcon className="notification_icon" aria-describedby={id} onClick={handleShowNotification} />
+          <PersonOutlinedIcon className="navbar_icon" aria-describedby={profileId} onClick={handleOpenProfile} />
 
           <Popover
-            id={id}
-            open={open}
-            anchorEl={anchorEl}
+            id={profileId}
+            open={profileOpen}
+            anchorEl={profileAnchor}
+            onClose={handleCloseProfile}
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'center',
+            }}
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'center',
+            }}
+          >
+            <Profile />
+
+          </Popover>
+        </>
+        <>
+          <NotificationsOutlinedIcon className="navbar_icon" aria-describedby={notificationId} onClick={handleShowNotification} />
+
+          <Popover
+            id={notificationId}
+            open={notificationOpen}
+            anchorEl={notificationAnchor}
             onClose={handleCloseNotification}
             anchorOrigin={{
               vertical: 'bottom',
@@ -76,10 +90,7 @@ const SocialMediaLayoutNavbar = () => {
           </Popover>
         </>
         <div className="user">
-          {/* <img
-            src={"/upload/" + currentUser.profilePic}
-            alt=""
-          /> */}
+
           <span>Okunoye David</span>
         </div>
       </div>

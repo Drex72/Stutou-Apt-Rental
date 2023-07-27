@@ -14,7 +14,7 @@
 .social_media_layout_right_sidebar {
     @include themify($themes) {
         color: themed("textColor");
-        width: 300px;
+        width: 400px;
         height: 100vh;
         overflow-y: scroll;
 

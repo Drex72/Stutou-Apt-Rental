@@ -18,9 +18,7 @@ export const Home = () => {
     try {
       const val = await getAllImages('houses')
       setImages({ data: val.data!, loading: val.loading })
-      console.log(val.data)
     } catch (error) {
-
     }
   }
 

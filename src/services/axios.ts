@@ -1,6 +1,4 @@
 import axios from 'axios'
-import accessToken from '../utils/accessToken/AccessToken'
-import { AllRouteConstants } from '../router/RouteConstants'
 
 export const baseURL = 'https://apartment-app-im27.onrender.com'
 
@@ -10,34 +8,22 @@ const axiosInstance = axios.create({
 })
 
 // Add a request interceptor
-// axiosInstance.interceptors.request.use(
-//   (config) => {
-//     // Get the access token from local storage
-//     const currentAccessToken = accessToken.getAccessToken();
-//     if (currentAccessToken) {
-//       // Check if the access token has expired
-//       const { exp } = JSON.parse(atob(currentAccessToken.split(".")[1]));
-//       if (Date.now() >= exp * 1000) {
-//         // If the access token has expired, refresh it
-//         return refreshToken().then((newAccessToken) => {
-//           // Update the authorization header with the new token
-//           config.headers.Authorization = `Bearer ${newAccessToken}`;
-//           return config;
-//         });
-//       } else {
-//         // If the access token hasn't expired, add it to the authorization header
-//         config.headers.Authorization = `Bearer ${currentAccessToken}`;
-//         return config;
-//       }
-//     } else {
-//       // If there's no access token, just return the original config
-//       return config;
-//     }
-//   },
-//   (error) => {
-//     return Promise.reject(error);
-//   }
-// );
+axiosInstance.interceptors.request.use(
+  (config) => {
+    // Get the access token from local storage
+    const currentAccessToken = localStorage.getItem('accessToken')
+    if (currentAccessToken) {
+      config.headers.Authorization = `Bearer ${currentAccessToken}`
+      return config
+    } else {
+      // If there's no access token, just return the original config
+      return config
+    }
+  },
+  (error) => {
+    return Promise.reject(error)
+  }
+)
 
 // // Add a response interceptor
 // axiosInstance.interceptors.response.use(

@@ -7,6 +7,7 @@ import { useForm } from '../../../hooks/useForm';
 import authService from '../../../services/authenticationService';
 import useApi from '../../../hooks/useApi';
 import { AllRouteConstants } from '../../../router/RouteConstants';
+import  toast  from 'react-hot-toast';
 
 const useRegistration = () => {
     const navigate = useNavigate();
@@ -17,7 +18,7 @@ const useRegistration = () => {
     );
 
 
-    const signUp = (data: UserRegister) => authService.login(data);
+    const signUp = (data: UserRegister) => authService.studentSignUp(data);
 
     const signUpApiRequest = useApi<IRegisterAPIResponse, UserRegister>(signUp);
 
@@ -30,6 +31,7 @@ const useRegistration = () => {
             try {
                 const user = await signUpApiRequest.request(signUpForm.form);
                 if (user) {
+                    toast.success('Account Successfully Created')
                     navigate(AllRouteConstants.auth.login);
                 }
             } catch (error) { }

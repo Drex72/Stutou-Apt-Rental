@@ -20,7 +20,7 @@ export const TestimonialContainer = () => {
                         {testimonials.map((testimonial, index) => {
                             const { message, name, role } = testimonial
                             return (
-                                <ScrollAnimation animateIn="zoomIn" animateOnce={true} delay={index * 100}>
+                                <ScrollAnimation animateIn="zoomIn" animateOnce={true} key={index} delay={index * 100}>
                                     <TestimonialCard
                                         key={index}
                                         message={message}

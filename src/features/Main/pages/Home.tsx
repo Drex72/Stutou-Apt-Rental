@@ -1,13 +1,19 @@
-import { useEffect } from 'react'
-import PostContainer from '../components/Posts/PostContainer'
+import { useState } from 'react'
+import ApartmentContainer from '../components/Posts/ApartmentContainer'
 import PostalModal from '../components/PostModal/PostModal'
-import axios from 'axios'
 
 export const Home = () => {
+
+  const [createApartment, setCreateApartment] = useState(false)
+  const openCreateApartment = () => {
+    setCreateApartment(true)
+  }
+
   return (
     <div>
-      {/* <PostalModal /> */}
-      <PostContainer />
+      {createApartment && <PostalModal closeModal={() => setCreateApartment(false)} />}
+
+      <ApartmentContainer openCreateApartment={openCreateApartment} />
     </div>
   )
 }

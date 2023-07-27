@@ -9,8 +9,6 @@ import LandingPageNavbar from "../../../../layouts/LandingPageLayout/LandingPage
 
 export const Hero = ({ images }: { images: HeroImage[] }) => {
     const navigate = useNavigate()
-    console.log(images)
-
     const firstNameLetters = ["Discover", "Your", "Ideal", "Accommodation."];
 
     return (

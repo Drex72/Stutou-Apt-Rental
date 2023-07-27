@@ -102,6 +102,37 @@ export const Register = () => {
                         />
                     </div>
 
+
+                    <div className="auth-field">
+                        <p className="auth_user_type-label">I am a: </p>
+                        <div className="auth_login_checkboxes">
+                            <Input
+                                id="apartment Owner"
+                                label="Apartment Owner"
+                                error={formErrors.status}
+                                inputProps={{
+                                    onChange: () => formChange('status', 'owner'),
+                                    type: "radio",
+                                    name: "status",
+                                    required: true,
+                                }}
+                            />
+                            <Input
+                                id="student"
+                                label="Student"
+                                error={formErrors.status}
+                                inputProps={{
+                                    onChange: () => formChange('status', 'student'),
+                                    type: "radio",
+                                    name: "status",
+                                    required: true,
+                                }}
+                            />
+                        </div>
+                    </div>
+
+
+
                     <Button
                         animation="animate__animated animate__backInUp"
                         label="Sign Up"
@@ -143,9 +174,9 @@ export const Register = () => {
                     <Link className="auth-link" to={AllRouteConstants.auth.forgotPassword}>Forgot Password</Link>
 
                 </div>
-            </div>
+            </div >
 
-        </div>
+        </div >
     )
 }
 

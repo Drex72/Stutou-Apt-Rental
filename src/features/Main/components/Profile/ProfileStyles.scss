@@ -1,0 +1,37 @@
+@import "../../../../styles/color-palette";
+
+.social_media_profile {
+    background: transparent !important;
+
+    .social_media_profile_container {
+        background: #fcfcfc;
+        box-shadow: 16px 16px 40px rgba(0, 0, 0, 0.16);
+        border-radius: 8px;
+        width: 150px;
+        font-size: 15px;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid #cccccc;
+
+        button {
+            outline: none;
+            border: none;
+            background: transparent;
+            padding-block: 0.8rem;
+            cursor: pointer;
+            transition: all 150ms ease-in-out;
+
+            &:hover{
+                background: rgb(0,0,0,0.1);
+            }
+
+            &:first-child {
+                border-bottom: 1px solid #585858;
+            }
+        }
+    }
+
+}
+
+
+

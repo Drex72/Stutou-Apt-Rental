@@ -1,4 +1,6 @@
-interface IAPIResponse {}
+interface IAPIResponse {
+  message: string
+}
 
 interface ILoginAPIResponse {
   token: string
@@ -9,7 +11,20 @@ interface IRegisterAPIResponse {
   message: string
 }
 
-interface IApartment {}
+interface IApartment {
+  _id: string
+  image: string
+  name: string
+  description: string
+  location: string
+  rooms: number
+  categories: string | string[]
+  lowestPrice: number
+  highestPrice: number
+  owner: string
+  comments: string[]
+}
+
 interface IStudent {
   _id: string
   firstname: string
@@ -30,21 +45,21 @@ interface IOwner {
   address: string
   apartments: IApartment[]
 }
-interface IGetStudentsAPIResponse {
-  message: string
+interface IGetStudentsAPIResponse extends IAPIResponse {
   data: IStudent[]
 }
-interface IGetStudentAPIResponse {
-  message: string
+interface IGetStudentAPIResponse extends IAPIResponse {
   data: IStudent
 }
 
-interface IGetOwnersAPIResponse {
-  message: string
+interface IGetOwnersAPIResponse extends IAPIResponse {
   data: IOwner[]
 }
 
-interface IGetOwnerAPIResponse {
-  message: string
+interface IGetOwnerAPIResponse extends IAPIResponse {
   data: IOwner
+}
+
+interface IGetAllApartmentAPIResponse extends IAPIResponse {
+  data: IApartment[]
 }

@@ -110,7 +110,7 @@
 
           &:hover {
             // background: rgba(#000, 0.1);
-            background-color: rgba(map-get($color-palette-1, primary), 0.3) ;
+            background-color: rgba(map-get($color-palette-1, primary), 0.3);
 
           }
 
@@ -140,4 +140,44 @@
 
 .more_options {
   background: transparent !important;
+}
+
+.auth_user_type {
+  &-label {
+    font-size: 18px;
+    color: black;
+  }
+}
+
+.auth_login_checkboxes {
+  display: flex;
+  align-items: center;
+  gap: 1.5em;
+}
+
+.auth_login_checkboxes input {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 300 ease-in-out;
+}
+
+.auth_login_checkboxes .custom-input {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  flex-direction: row-reverse;
+
+  label {
+    margin: 0;
+  }
+
+  input {
+    margin: 0;
+  }
 }

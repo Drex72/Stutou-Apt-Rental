@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import authService from '../../../services/authenticationService';
 import { useAppSelector } from '../../../hooks/useAppSelector';
 import useApi from '../../../hooks/useApi';
@@ -7,17 +7,18 @@ import { useAuthActions } from '../../../hooks/useReduxActions';
 const useGetUserInfo = () => {
     const { userInfo } = useAppSelector(state => state.authentication)
     const { getUserDetails } = useAuthActions()
-    const getUserInfo = () => authService.getUserInfo(userInfo.id);
+    const getUserInfo = (userId: string) => authService.getUserInfo(userId);
 
-    const getUserInfoRequest = useApi<IGetStudentAPIResponse, null>(getUserInfo);
+    const getUserInfoRequest = useApi<IGetStudentAPIResponse, string>(getUserInfo);
 
-    const getUserInfoHandler = async () => {
+    const getUserInfoHandler = async (userId?: string) => {
         getUserInfoRequest.reset();
         try {
-            const user = await getUserInfoRequest.request();
-            if (user) {
+            const user = await getUserInfoRequest.request(userId ?? userInfo.id);
+            if (user && !userId) {
                 getUserDetails(user)
             }
+            return user
         } catch (error) { }
 
     };
@@ -31,7 +32,8 @@ const useGetUserInfo = () => {
     return {
         loading: getUserInfoRequest.loading,
         error: getUserInfoRequest.error,
-        data: getUserInfoRequest.data
+        data: getUserInfoRequest.data,
+        requestUserInfo: getUserInfoHandler
     }
 }
 

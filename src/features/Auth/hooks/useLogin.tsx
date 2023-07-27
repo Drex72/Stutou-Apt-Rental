@@ -30,11 +30,9 @@ const useLogin = () => {
         if (valid) {
             try {
                 const user = await loginApiRequest.request(loginForm.form);
-                console.log(user)
                 if (user) {
                     login(user);
                     navigate(AllRouteConstants.main.index);
-                    console.log('hey')
                 }
             } catch (error) { }
         }

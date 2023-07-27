@@ -5,14 +5,13 @@ import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { IPost } from "../../../../interfaces/IPost";
 
-interface IPostProps {
-    post: IPost
+interface IApartmentProps {
+    apartment: IApartment
 }
-const Post = ({ post }: IPostProps) => {
-    const { id, desc, img, userInfo, likes } = post
-    const { avatar, firstName, id: userId } = userInfo
+const Apartment = ({ apartment }: IApartmentProps) => {
+    const { _id,categories,description,highestPrice,image,location,lowestPrice,name,rooms } = apartment
+    // const { avatar, firstName, id: userId } = userInfo
     const [commentOpen, setCommentOpen] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
 
@@ -22,13 +21,17 @@ const Post = ({ post }: IPostProps) => {
             <div className="container">
                 <div className="user">
                     <div className="userInfo">
-                        <img src={avatar} alt="" />
+                        {/* <img src={avatar} alt="" /> */}
                         <div className="details">
                             <Link
-                                to={`/profile/${userId}`}
+                                to={`/profile/`}
                                 style={{ textDecoration: "none", color: "inherit" }}
                             >
-                                <span className="name">{firstName}</span>
+                                <span className="name">
+                                    {/* {firstName} */}
+                                    Okunoyr David
+
+                                </span>
                             </Link>
                             {/* <span className="date">{moment(post.createdAt).fromNow()}</span> */}
                         </div>
@@ -38,15 +41,16 @@ const Post = ({ post }: IPostProps) => {
 
                 </div>
                 <div className="content">
-                    <p>{desc}</p>
-                    <img src={img} alt="" />
+                    <p>{description}</p>
+                    {/* <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam, dolores. Iste reiciendis eum sed delectus velit! Ad, eum cumque dolore illum, ut numquam esse quo sed eos, quia eius provident!</p> */}
+                    <img src={image!} alt="" />
                 </div>
                 <div className="info">
                     <div className="item">
                         <FavoriteOutlinedIcon
                             style={{ color: "red" }}
                         />
-                        {likes} Likes
+                        11 Likes
                     </div>
                     <div className="item" onClick={() => setCommentOpen(!commentOpen)}>
                         <TextsmsOutlinedIcon />
@@ -63,4 +67,4 @@ const Post = ({ post }: IPostProps) => {
     );
 };
 
-export default Post;
+export default Apartment;
