@@ -1,4 +1,6 @@
 import axios from 'axios'
+import { isTokenExpired } from '../utils/validateJWT'
+import { AllRouteConstants } from '../router/RouteConstants'
 
 export const baseURL = 'https://apartment-app-im27.onrender.com'
 
@@ -12,13 +14,22 @@ axiosInstance.interceptors.request.use(
   (config) => {
     // Get the access token from local storage
     const currentAccessToken = localStorage.getItem('accessToken')
+    const tokenExpired = isTokenExpired(currentAccessToken!)
     if (currentAccessToken) {
       config.headers.Authorization = `Bearer ${currentAccessToken}`
       return config
+      // if (!tokenExpired) {
+      // } else {
+      //   // If there's no access token or it's expired, navigate to the login page
+      //   window.location.href = AllRouteConstants.auth.login
+      //   return config
+      // }
     } else {
       // If there's no access token, just return the original config
       return config
     }
+
+   
   },
   (error) => {
     return Promise.reject(error)

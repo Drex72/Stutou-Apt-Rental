@@ -2,7 +2,7 @@ import axios from 'axios'
 import axiosInstance, { baseURL } from './axios'
 
 class ApartmentService {
-  createApartment = async (data: IApartment) => {
+  createApartment = async (data: FormData) => {
     return await axiosInstance.post(`/owner/apartment`, data)
   }
   getAllApartments = async () => {

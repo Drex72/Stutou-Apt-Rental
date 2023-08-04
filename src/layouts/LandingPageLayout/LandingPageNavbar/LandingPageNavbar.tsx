@@ -24,8 +24,6 @@ const LandingPageNavbar = (props: ILandingPageNavbar) => {
   const currentPath = pathname.split("/")[1];
   const { stagger, fadeInUp, btnGroup } = new Animations();
 
-  const { handleClick, handleClose, id, anchorEl, open } = usePopOver()
-
   const [navbarScrolled, setNavbarScrolled] = useState(false)
 
   // Check if window is scrolled more than 500px, 
@@ -97,31 +95,12 @@ const LandingPageNavbar = (props: ILandingPageNavbar) => {
           >
             Log in
           </Link>
-          <>
-            <button
-              className="landing_page_navbar_right-signup_button button"
-              aria-describedby={id}
-              onClick={handleClick}
-            >
-              Sign Up
-            </button>
-
-            <SignUpOptionsPopver
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'center',
-              }}
-              anchorEl={anchorEl}
-              handleClose={handleClose}
-              id={id!}
-              open={open}
-            />
-
-          </>
+          <Link
+            to={AllRouteConstants.auth.signup}
+            className="landing_page_navbar_right-signup_button button"
+          >
+            Sign Up
+          </Link>
         </motion.span>
 
         <motion.span className="landing_page_navbar-hamburger">

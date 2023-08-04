@@ -30,6 +30,15 @@ export const authenticationSlice = createSlice({
       state.userToken = token
       state.userInfo = { ...state.userInfo, id: userId }
     },
+    setToken: (
+      state,
+      action: {
+        payload: string
+      }
+    ) => {
+      const { payload } = action
+      state.userToken = payload
+    },
 
     getUserDetails: (
       state,
@@ -56,6 +65,7 @@ export const authenticationSlice = createSlice({
   }
 })
 
-export const { login, getUserDetails,logout } = authenticationSlice.actions
+export const { login, getUserDetails, logout, setToken } =
+  authenticationSlice.actions
 
 export default authenticationSlice.reducer

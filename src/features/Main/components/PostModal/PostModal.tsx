@@ -8,41 +8,31 @@ import DefaultUser from '../../../../assets/icons/user.svg'
 import ShareImage from '../../../../assets/icons/share-image.svg'
 import ShareVideo from '../../../../assets/icons/share-video.svg'
 import DummyImage from '../../../../assets/images/dummyAvatar.png'
+import Input, { TextArea } from "../../../../components/form/Input/Input";
+import useCreateApartment from "../../hooks/useCreateApartment";
+import { IApartment } from "../../../../interfaces/IApartment";
+import FormSelect from "../../../../components/form/formSelect/FormSelect";
 
-
-
-interface User {
-    photoURL?: string;
-    displayName?: string;
-}
+import { MdFastfood, MdCloudUpload, MdDelete, MdFoodBank, MdAttachMoney } from 'react-icons/md'
+import Button from "../../../../components/Button/Button";
 
 interface PostalModalProps {
-    showModal: string;
-    user: User;
-    clickHandler: (event: React.MouseEvent<HTMLButtonElement>) => void;
-    postArticle: (payload: PostPayload) => void;
-}
-
-interface PostPayload {
-    image: File | null;
-    video: string;
-    description: string;
-    user: User;
-    // timestamp: Firebase.firestore.Timestamp;
+    closeModal: () => void
 }
 
 function PostalModal(props: PostalModalProps) {
-    const [editorText, setEditorText] = useState("");
-    const [imageFile, setImageFile] = useState<File | null>(null);
-    const [videoFile, setVideoFile] = useState("");
-    const [assetArea, setAssetArea] = useState("");
+    const { apartmentForm, handleSubmit } = useCreateApartment()
+    const { form, formErrors, onChange, reset: resetForm } = apartmentForm
 
-    const reset = (event: React.MouseEvent<HTMLButtonElement>) => {
-        setEditorText("");
-        setImageFile(null);
-        setVideoFile("");
-        setAssetArea("");
-        props.clickHandler(event);
+
+    const formChange = (key: keyof IApartment, value: any) => {
+        onChange(key, value);
+        return;
+    };
+
+    const reset = () => {
+        resetForm()
+        props.closeModal();
     };
 
     function handleImage(event: React.ChangeEvent<HTMLInputElement>) {
@@ -52,121 +42,155 @@ function PostalModal(props: PostalModalProps) {
             alert("Not an image. This file is not supported.");
             return;
         }
-        setImageFile(image);
+        formChange('image', image)
     }
 
-    function switchAssetArea(area: string) {
-        setImageFile(null);
-        setVideoFile("");
-        setAssetArea(area);
+    const handleDeleteImage = () => {
+        formChange('image', null)
     }
 
-    // function postArticle(event: React.MouseEvent<HTMLButtonElement>) {
-    //     event.preventDefault();
-    //     if (event.target !== event.currentTarget) {
-    //         return;
-    //     }
-
-    //     const payload: PostPayload = {
-    //         image: imageFile,
-    //         video: videoFile,
-    //         description: editorText,
-    //         user: props.user,
-    //         timestamp: Firebase.firestore.Timestamp.now(),
-    //     };
-
-    //     props.postArticle(payload);
-    //     reset(event);
-    // }
 
     return (
         // <PopModal onClose={() => console.log('hey')} fullOverlay >
         <div className="post_modal_container" >
             <div className="post_modal_content">
-                <div className="post_modal_header">
-                    <h2>Create a post</h2>
-                    {/* <div>
-                        <img src={DummyImage} alt="" />
 
-                    </div> */}
-                    <button onClick={(event) => reset(event)}>
+                <div className="post_modal_header">
+                    <h2>Create an Apartment</h2>
+
+                    <button onClick={reset}>
                         <img src={CloseIcon} alt="" />
                     </button>
                 </div>
+
                 <div className="post_modal_shared-content">
-                    <div className="post_modal_user-info">
+                    <form onSubmit={handleSubmit}>
+                        <div className="post_modal_form_inputs">
+                            <div className="input-field">
+                                <Input id="name"
+                                    label="Apartment Name"
+                                    error={formErrors.name}
+                                    animation="animate__animated animate__fadeInLeft"
+                                    inputProps={{
+                                        placeholder: "Give any Catchy Name to the Apartment",
+                                        value: form.name,
+                                        onChange: (e) => formChange("name", e.target.value),
+                                        required: true,
+                                    }}
+                                />
+                            </div>
+                            <div className="input-field">
+                                <FormSelect
+                                    id="location"
+                                    name="apartment location"
+                                    options={[]}
+                                    label="Apartment Location"
+                                    error={formErrors.name}
+                                    dropdownProps={{
+                                        placeholder: "Give any Catchy Name to the Apartment",
+                                        // value: form.name,
+                                        // onChange: (e) => formChange("name", e.target.value),
+                                        required: true,
+                                    }}
+                                />
+                            </div>
 
-                        <img src={DefaultUser} alt="" />
-
-                        <span>
-                            Okunoye David
-                        </span>
-                    </div>
-                    <div className="post_modal_editor">
-                        <textarea
-                            value={editorText}
-                            onChange={(event) => setEditorText(event.target.value)}
-                            placeholder="What do you want to talk about?"
-                            autoFocus={true}
+                            <div className="price_ranges">
+                                <div className="input-field">
+                                    <Input
+                                        id="lowest Rent"
+                                        label="Lowest Rent"
+                                        error={formErrors.lowestPrice}
+                                        animation="animate__animated animate__fadeInLeft"
+                                        inputProps={{
+                                            placeholder: "30",
+                                            value: form.lowestPrice,
+                                            onChange: (e) => formChange("lowestPrice", e.target.value),
+                                            required: true,
+                                            type: 'number'
+                                        }}
+                                    />
+                                </div>
+                                <div className="input-field">
+                                    <Input
+                                        id="Highest Rent"
+                                        label="Highest Rent"
+                                        error={formErrors.highestPrice}
+                                        animation="animate__animated animate__fadeInLeft"
+                                        inputProps={{
+                                            placeholder: "30",
+                                            value: form.highestPrice,
+                                            onChange: (e) => formChange("highestPrice", e.target.value),
+                                            required: true,
+                                            type: 'number'
+                                        }}
+                                    />
+                                </div>
+                            </div>
+                            <div className="input-field">
+                                <Input
+                                    id="amount of rooms"
+                                    label="Amount of Rooms"
+                                    error={formErrors.rooms}
+                                    animation="animate__animated animate__fadeInLeft"
+                                    inputProps={{
+                                        placeholder: "3",
+                                        value: form.rooms,
+                                        onChange: (e) => formChange("rooms", e.target.value),
+                                        required: true,
+                                        type: 'number'
+                                    }}
+                                />
+                            </div>
+                        </div>
+                        <TextArea
+                            id='description'
+                            label="Apartment Description"
+                            error={formErrors.description}
+                            rows={5}
+                            animation="animate__animated animate__fadeInLeft"
+                            textareaProps={{
+                                placeholder: "Description of the Apartment",
+                                value: form.description,
+                                onChange: (e) => formChange("description", e.target.value),
+                                required: true,
+                            }}
                         />
 
-                        {assetArea === "image" && (
-                            <div className="post_modal_upload-image">
-                                <input
-                                    type="file"
-                                    accept="image/gif, image/jpeg, image/png"
-                                    name="image"
-                                    id="imageFile"
-                                    onChange={handleImage}
-                                    style={{ display: "none" }}
-                                />
-                                <p>
-                                    <label htmlFor="imageFile">Select an image to share</label>
-                                </p>
-                                {imageFile && <img src={URL.createObjectURL(imageFile)} alt="" />}
-                            </div>
-                        )}
+                        <div className="post_modal_upload-image">
+                            {form.image ?
+                                <div className="uploaded_image_container">
+                                    <button
+                                        className="delete_icon "
+                                        onClick={handleDeleteImage}
+                                    >
+                                        <MdDelete className="text-white" />
+                                    </button>
+                                    <img src={URL.createObjectURL(form.image)} alt="" />
+                                </div>
+                                : (
+                                    <label>
+                                        <div className="upload_icon_container">
+                                            <MdCloudUpload className="upload_icon" />
+                                            <p className="upload_text">Click here to upload</p>
+                                        </div>
+                                        <input
+                                            type="file"
+                                            name="uploadimage"
+                                            accept="image/gif, image/jpeg, image/png"
+                                            onChange={handleImage}
+                                            className="upload_input"
+                                        />
+                                    </label>
+                                )}
+                        </div>
 
-                        {assetArea === "video" && (
-                            <>
-                                <input
-                                    type="text"
-                                    name="video"
-                                    id="videoFile"
-                                    value={videoFile}
-                                    placeholder="Enter the video link"
-                                    onChange={(event) => setVideoFile(event.target.value)}
-                                />
-                                {videoFile && <ReactPlayer width={"100%"} url={videoFile} />}
-                            </>
-                        )}
-                    </div>
+                        <Button variant="contained" label='Create Apartment' width="50%" />
+
+                    </form>
+
                 </div>
-                <div className="post_modal_share-creation">
-                    <div className="post_modal_attach-asset">
-                        <button
-                            className="post_modal_asset-button"
-                            onClick={() => switchAssetArea("image")}
-                        >
-                            <img src={ShareImage} alt="" />
-                        </button>
-                        <button
-                            className="post_modal_asset-button"
-                            onClick={() => switchAssetArea("video")}
-                        >
-                            <img src={ShareVideo} alt="" />
 
-                        </button>
-                    </div>
-
-                    <button
-                        className={`post_modal_post-button ${!editorText ? "post_modal_post-button-disabled" : ""}`}
-                        // onClick={(event) => postArticle(event)}
-                        disabled={!editorText}
-                    >
-                        Post
-                    </button>
-                </div>
             </div>
         </div>
         // </PopModal>

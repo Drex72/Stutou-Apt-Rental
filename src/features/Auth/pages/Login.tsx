@@ -22,13 +22,17 @@ export const Login = () => {
   return (
     <div className="animate__animated animate__fadeIn">
       <div className="auth-box">
+
         <h1 className="auth-title">
           Welcome back
         </h1>
+
         <p className="auth-top_text">
           We encourage passwordless login being more secure and safe
         </p>
+
         <form className="auth-form" onSubmit={handleSubmit}>
+          
           <div className="auth-field">
             <Input
               id="email"

@@ -60,3 +60,69 @@ body {
   scrollbar-width: none;
   /* Firefox */
 }
+
+.css-13cymwt-control,
+.css-t3ipsp-control {
+  position: relative;
+  // height: 60px !important;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: var(--white);
+  border: none;
+  border-radius: 0px;
+  box-shadow: none;
+  outline: none;
+  margin-top: 8px;
+  font-size: var(--small-paragraph);
+  letter-spacing: 0.04em;
+  // border: 1px solid var(--modal-background);
+  border: 1px solid #9ca3af !important; 
+
+
+  height: 50px !important;
+}
+
+.css-13cymwt-control:hover,
+.css-t3ipsp-control:hover {
+  background-color: var(--white);
+  border: 1px solid var(--modal-background);
+  box-shadow: none;
+}
+
+.css-13cymwt-control::after,
+.css-t3ipsp-control::after {
+  content: "S";
+  position: absolute;
+  color: transparent;
+  right: 10px;
+  height: 8px;
+  width: 12px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
+}
+
+.css-1jqq78o-placeholder {
+  font-size: var(--normal-paragraph);
+  font-weight: 400;
+  font-family: "DM Sans", sans-serif;
+  letter-spacing: 0.001em;
+}
+
+.css-1fdsijx-ValueContainer,
+.css-g1d714-ValueContainer {
+  padding: 0;
+}
+
+.css-1hb7zxy-IndicatorsContainer,
+.css-1wy0on6 {
+  display: none;
+}
+
+.css-1jqq78o-placeholder {
+  font-size: var(--small-paragraph);
+}
+
+.css-1nmdiq5-menu {
+  font-size: var(--small-paragraph);
+}

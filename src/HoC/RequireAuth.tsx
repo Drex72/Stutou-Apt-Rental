@@ -7,28 +7,19 @@ import PageLoader from "../components/PageLoader/PageLoader";
 
 export interface RequireAuthProps {
   children: ReactElement;
-  reverse?: boolean
 }
 
-export const RequireAuth: React.FC<RequireAuthProps> = ({ children, reverse }) => {
+export const RequireAuth: React.FC<RequireAuthProps> = ({ children }) => {
   const { userToken } = useAppSelector((state) => state.authentication);
   const { loading } = useGetUserInfo()
   const navigate = useNavigate();
   const [pageLoading, setPageLoading] = useState(true)
 
   const handlePage = () => {
-    switch (reverse) {
-      case true:
-        if (userToken) {
-          navigate(AllRouteConstants.main.index);
-        }
-        setPageLoading(loading)
-
-      case false:
-        if (!userToken) {
-          navigate(AllRouteConstants.auth.login);
-        }
+    if (userToken) {
+      navigate(AllRouteConstants.main.index);
     }
+    setPageLoading(loading)
   }
 
   useEffect(() => {
