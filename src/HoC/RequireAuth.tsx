@@ -4,6 +4,7 @@ import { useAppSelector } from "../hooks/useAppSelector";
 import { AllRouteConstants } from "../router/RouteConstants";
 import useGetUserInfo from "../features/Main/hooks/useGetUserInfo";
 import PageLoader from "../components/PageLoader/PageLoader";
+import { isTokenExpired } from "../utils/validateJWT";
 
 export interface RequireAuthProps {
   children: ReactElement;
@@ -16,8 +17,10 @@ export const RequireAuth: React.FC<RequireAuthProps> = ({ children }) => {
   const [pageLoading, setPageLoading] = useState(true)
 
   const handlePage = () => {
-    if (userToken) {
+    if (userToken && !isTokenExpired(userToken)) {
       navigate(AllRouteConstants.main.index);
+    }else{
+      navigate(AllRouteConstants.auth.index)
     }
     setPageLoading(loading)
   }

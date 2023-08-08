@@ -17,6 +17,7 @@ import Profile from "../../../features/Main/components/Profile/Profile";
 
 const SocialMediaLayoutNavbar = () => {
   const { theme } = useAppSelector(state => state.theme)
+  const { userInfo } = useAppSelector(state => state.authentication)
   const { toggleTheme } = useThemeActions()
 
 
@@ -28,9 +29,8 @@ const SocialMediaLayoutNavbar = () => {
   return (
     <div className="navbar">
       <div className="left">
-        <Link to={AllRouteConstants.main.index} style={{ textDecoration: "none" }}>
+        <Link to={AllRouteConstants.landingPage.index} style={{ textDecoration: "none" }}>
           <span>StuApt</span>
-          {/* <LogoComponent /> */}
         </Link>
         <HomeOutlinedIcon />
         <div className="navbar_icon">
@@ -42,10 +42,10 @@ const SocialMediaLayoutNavbar = () => {
 
         </div>
         {/* <GridViewOutlinedIcon /> */}
-        <div className="search">
+        {/* <div className="search">
           <SearchOutlinedIcon />
           <input type="text" placeholder="Search..." />
-        </div>
+        </div> */}
       </div>
       <div className="right">
         <>
@@ -91,7 +91,7 @@ const SocialMediaLayoutNavbar = () => {
         </>
         <div className="user">
 
-          <span>Okunoye David</span>
+          <span>{userInfo.firstname ?? 'Okunoye'} {userInfo.lastname ?? 'David'}</span>
         </div>
       </div>
     </div>

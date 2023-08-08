@@ -1,6 +1,6 @@
 import { Route } from "react-router-dom";
 import { AllRouteConstants } from "../../../router/RouteConstants";
-import { ContactUs, Home } from "../pages";
+import { AboutUs, ContactUs, Home } from "../pages";
 
 const LandingPageRoutes = () => {
 
@@ -20,6 +20,10 @@ const LandingPageRoutes = () => {
       <Route
         path={AllRouteConstants.landingPage.contactUs}
         element={<ContactUs />}
+      />
+      <Route
+        path={AllRouteConstants.landingPage.aboutUs}
+        element={<AboutUs />}
       />
     </>
   );

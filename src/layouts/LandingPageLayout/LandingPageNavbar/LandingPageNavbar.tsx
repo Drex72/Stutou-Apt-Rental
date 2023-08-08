@@ -4,9 +4,6 @@ import Animations from "../../../utils/Animations";
 import { Link, useLocation } from "react-router-dom";
 import Hamburger from "hamburger-react";
 import { AllRouteConstants } from "../../../router/RouteConstants";
-import SignUpOptionsPopver from "../../../features/Auth/components/SignUpOptionsPopver";
-import usePopOver from "../../../hooks/usePopOver";
-import { Link as ScrollLink } from 'react-scroll';
 import { useEffect, useState } from "react";
 import LogoComponent from "../../../components/Logo/Logo";
 
@@ -67,15 +64,10 @@ const LandingPageNavbar = (props: ILandingPageNavbar) => {
             variants={stagger()}
           >
             <li className={currentPath === "" ? "active" : ""}>
-              <ScrollLink to="home" smooth={true} duration={500}>
-                <Link to="/">Home</Link>
-              </ScrollLink>
-
+              <Link to={AllRouteConstants.landingPage.home}>Home</Link>
             </li>
             <li className={currentPath === "about-us" ? "active" : ""}>
-              <ScrollLink to="about-us" smooth={true} duration={500}>
-                <Link to="/">About</Link>
-              </ScrollLink>
+              <Link to={AllRouteConstants.landingPage.aboutUs}>About</Link>
             </li>
             <li className={currentPath === "contact-us" ? "active" : ""}>
               <Link to={AllRouteConstants.landingPage.contactUs}>Contact Us</Link>

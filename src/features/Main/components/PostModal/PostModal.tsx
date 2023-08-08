@@ -1,32 +1,24 @@
-import { useState } from "react";
-import ReactPlayer from "react-player";
 // import Firebase from "firebase";
 import "./PostModalStyles.scss"; // Replace this with your CSS file
-import PopModal from "../../../../layouts/ModalLayout/ModalLayout";
 import CloseIcon from '../../../../assets/icons/close-icon.svg'
-import DefaultUser from '../../../../assets/icons/user.svg'
-import ShareImage from '../../../../assets/icons/share-image.svg'
-import ShareVideo from '../../../../assets/icons/share-video.svg'
-import DummyImage from '../../../../assets/images/dummyAvatar.png'
 import Input, { TextArea } from "../../../../components/form/Input/Input";
 import useCreateApartment from "../../hooks/useCreateApartment";
 import { IApartment } from "../../../../interfaces/IApartment";
-import FormSelect from "../../../../components/form/formSelect/FormSelect";
-
-import { MdFastfood, MdCloudUpload, MdDelete, MdFoodBank, MdAttachMoney } from 'react-icons/md'
+import { MdCloudUpload, MdDelete, } from 'react-icons/md'
 import Button from "../../../../components/Button/Button";
+import Checkbox from "../../../../components/form/Checkbox/Checkbox";
+import FormError from "../../../../components/form/formError/FormError";
 
 interface PostalModalProps {
     closeModal: () => void
 }
 
 function PostalModal(props: PostalModalProps) {
-    const { apartmentForm, handleSubmit } = useCreateApartment()
-    const { form, formErrors, onChange, reset: resetForm } = apartmentForm
-
+    const { apartmentForm, handleSubmit, handleChangeApartmentCategories, error, loading } = useCreateApartment(props.closeModal)
+    const { form, formErrors, onChange: formOnChange, reset: resetForm } = apartmentForm
 
     const formChange = (key: keyof IApartment, value: any) => {
-        onChange(key, value);
+        formOnChange(key, value);
         return;
     };
 
@@ -51,7 +43,6 @@ function PostalModal(props: PostalModalProps) {
 
 
     return (
-        // <PopModal onClose={() => console.log('hey')} fullOverlay >
         <div className="post_modal_container" >
             <div className="post_modal_content">
 
@@ -80,7 +71,19 @@ function PostalModal(props: PostalModalProps) {
                                 />
                             </div>
                             <div className="input-field">
-                                <FormSelect
+                                <Input
+                                    id="location"
+                                    label="Apartment Location"
+                                    error={formErrors.location}
+                                    animation="animate__animated animate__fadeInLeft"
+                                    inputProps={{
+                                        placeholder: "Location of the Apartment",
+                                        value: form.location,
+                                        onChange: (e) => formChange("location", e.target.value),
+                                        required: true,
+                                    }}
+                                />
+                                {/* <FormSelect
                                     id="location"
                                     name="apartment location"
                                     options={[]}
@@ -90,9 +93,9 @@ function PostalModal(props: PostalModalProps) {
                                         placeholder: "Give any Catchy Name to the Apartment",
                                         // value: form.name,
                                         // onChange: (e) => formChange("name", e.target.value),
-                                        required: true,
+                                        // required: true,
                                     }}
-                                />
+                                /> */}
                             </div>
 
                             <div className="price_ranges">
@@ -107,7 +110,8 @@ function PostalModal(props: PostalModalProps) {
                                             value: form.lowestPrice,
                                             onChange: (e) => formChange("lowestPrice", e.target.value),
                                             required: true,
-                                            type: 'number'
+                                            type: 'number',
+                                            max: form.highestPrice
                                         }}
                                     />
                                 </div>
@@ -122,7 +126,8 @@ function PostalModal(props: PostalModalProps) {
                                             value: form.highestPrice,
                                             onChange: (e) => formChange("highestPrice", e.target.value),
                                             required: true,
-                                            type: 'number'
+                                            type: 'number',
+                                            min: form.lowestPrice
                                         }}
                                     />
                                 </div>
@@ -138,7 +143,8 @@ function PostalModal(props: PostalModalProps) {
                                         value: form.rooms,
                                         onChange: (e) => formChange("rooms", e.target.value),
                                         required: true,
-                                        type: 'number'
+                                        type: 'number',
+                                        min: 1
                                     }}
                                 />
                             </div>
@@ -158,6 +164,9 @@ function PostalModal(props: PostalModalProps) {
                         />
 
                         <div className="post_modal_upload-image">
+                            <label className={`custom-input__label img_label`}>
+                                Apartment Image
+                            </label>
                             {form.image ?
                                 <div className="uploaded_image_container">
                                     <button
@@ -180,12 +189,41 @@ function PostalModal(props: PostalModalProps) {
                                             accept="image/gif, image/jpeg, image/png"
                                             onChange={handleImage}
                                             className="upload_input"
+                                            required
                                         />
                                     </label>
                                 )}
                         </div>
+                        <div>
+                            <label className={`custom-input__label `}>
+                                Apartment Type
+                            </label>
 
-                        <Button variant="contained" label='Create Apartment' width="50%" />
+                            <div className="post_modal_apartment_type">
+                                <Checkbox
+                                    label="Ensuite"
+                                    checkboxProps={{
+                                        name: 'checkbox',
+                                        required: true,
+                                        checked: form.categories.includes('ensuite'),
+                                        onChange: () => handleChangeApartmentCategories('ensuite')
+                                    }}
+                                />
+                                <Checkbox
+                                    label="Apartment"
+                                    checkboxProps={{
+                                        name: 'checkbox',
+                                        required: true,
+                                        checked: form.categories.includes('apartment'),
+                                        onChange: () => handleChangeApartmentCategories('apartment')
+                                    }}
+                                />
+
+                            </div>
+                        </div>
+                        <FormError error={error?.message} />
+
+                        <Button variant="contained" label='Create Apartment' width="50%" loading={loading} />
 
                     </form>
 
@@ -193,7 +231,6 @@ function PostalModal(props: PostalModalProps) {
 
             </div>
         </div>
-        // </PopModal>
     );
 }
 

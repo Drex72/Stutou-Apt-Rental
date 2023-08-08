@@ -1,6 +1,5 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit'
-import { IPost } from '../interfaces/IPost'
 
 interface IInitialState {
   allApartments: IApartment[]
@@ -23,10 +22,10 @@ export const apartmentsSlice = createSlice({
       state.allApartments = action.payload
     },
 
-    createApartment: (
+    addApartment: (
       state,
       action: {
-        payload: IPost
+        payload: IApartment
       }
     ) => {
       const newPost = action.payload
@@ -42,7 +41,7 @@ export const apartmentsSlice = createSlice({
       const { apartmentid } = action.payload
       
       const selectedApartment = state.allApartments.find(
-        (apartment) => apartment.id === apartmentid
+        (apartment) => apartment._id === apartmentid
       )
       if (selectedApartment) {
         state.selectedApartment = selectedApartment
@@ -51,7 +50,7 @@ export const apartmentsSlice = createSlice({
   }
 })
 
-export const { createApartment, initializeApartments, selectApartment } =
+export const { addApartment, initializeApartments, selectApartment } =
   apartmentsSlice.actions
 
 export default apartmentsSlice.reducer

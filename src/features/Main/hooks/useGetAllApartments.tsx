@@ -3,12 +3,10 @@ import { useAppSelector } from '../../../hooks/useAppSelector';
 import useApi from '../../../hooks/useApi';
 import { useApartmentActions } from '../../../hooks/useReduxActions';
 import apartmentService from '../../../services/apartmentService';
-import useGetUserInfo from './useGetUserInfo';
 
 const useGetAllApartments = () => {
     const { allApartments } = useAppSelector(state => state.apartments)
     const { initializeApartments } = useApartmentActions()
-    const { requestUserInfo } = useGetUserInfo()
 
     const getAllApartments = () => apartmentService.getAllApartments();
 

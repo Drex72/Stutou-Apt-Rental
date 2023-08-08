@@ -1,6 +1,5 @@
 import axios from 'axios'
 import { isTokenExpired } from '../utils/validateJWT'
-import { AllRouteConstants } from '../router/RouteConstants'
 
 export const baseURL = 'https://apartment-app-im27.onrender.com'
 

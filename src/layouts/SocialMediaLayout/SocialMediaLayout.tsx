@@ -1,16 +1,15 @@
 
 import { Outlet } from "react-router-dom";
 import "./SocialMediaLayoutStyles.scss";
-import { useAppSelector } from "../../hooks/useAppSelector";
 import SocialMediaLayoutNavbar from "./SocialMediaLayoutNavbar/SocialMediaLayoutNavbar";
 import { RequireAuth } from "../../HoC/RequireAuth";
 import SocialMediaLayoutRightSidebar from "./SocialMediaLayoutRightSidebar/SocialMediaLayoutRightSidebar";
 import SocialMediaLayoutLeftSidebar from "./SocialMediaLayoutLeftSidebar/SocialMediaLayoutLeftSidebar";
 import MessageBar from "../../features/Main/components/MessageBar/MessageBar";
+import useGetUserInfo from "../../features/Main/hooks/useGetUserInfo";
 
 function SocialMediaLayout() {
-    const { messageStatus } = useAppSelector(state => state.messages)
-
+    const { } = useGetUserInfo()
 
     return (
         <RequireAuth>
@@ -23,7 +22,7 @@ function SocialMediaLayout() {
                     </div>
                     <SocialMediaLayoutRightSidebar />
                 </div>
-                <MessageBar />
+                {/* <MessageBar /> */}
             </div>
         </RequireAuth>
     );

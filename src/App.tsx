@@ -1,6 +1,5 @@
-import { useEffect } from 'react';
 import { useAppSelector } from './hooks/useAppSelector';
-import Router from './router/Router'
+import Router from './router/Router';
 import './styles/_color-palette.scss';
 import { Toaster } from 'react-hot-toast';
 

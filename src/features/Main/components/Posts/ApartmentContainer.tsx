@@ -1,9 +1,8 @@
 import ApartmentSkeletonLoader from "../../../../components/SkeletonLoaders/ApartmentSkeletonLoader";
 import { useAppSelector } from "../../../../hooks/useAppSelector";
-import useGetAllApartments from "../../hooks/useGetAllApartments";
+import { apartmentPosts } from "../../data/posts";
 import CreateApartment from "../CreateApartment/CreateApartment";
-import Apartment from "./Apartment";
-// import "./posts.scss";
+import ApartmentMini from "./ApartmentMini";
 
 interface IApartmentsContainer {
     openCreateApartment: () => void
@@ -11,9 +10,9 @@ interface IApartmentsContainer {
 
 const ApartmentContainer = (props: IApartmentsContainer) => {
     const { openCreateApartment } = props
-    const { allApartments } = useAppSelector((state) => state.apartments);
     const { userInfo } = useAppSelector(state => state.authentication)
-    const { data, error, loading } = useGetAllApartments()
+    // const { data, error, loading } = useGetAllApartments()
+    const loading  = false
 
     return (
         <div className="posts" style={{ display: 'flex', flexDirection: 'column', gap: '50px' }}>
@@ -31,11 +30,11 @@ const ApartmentContainer = (props: IApartmentsContainer) => {
                     {userInfo.status === 'owner' && (
                         <CreateApartment createApartmentHandler={openCreateApartment} />
                     )}
-                    {allApartments.length === 0 && (
+                    {apartmentPosts.length === 0 && (
                         <>No Apartments</>
                     )}
-                    {allApartments && allApartments.map((apartment, index) => (
-                        <Apartment apartment={apartment} key={index} />
+                    {apartmentPosts.map((apartment, index) => (
+                        <ApartmentMini apartment={apartment} key={index} />
                     ))}
                 </>
 

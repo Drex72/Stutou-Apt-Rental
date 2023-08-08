@@ -1,6 +1,9 @@
+import { useAppSelector } from '../../../hooks/useAppSelector'
 import './SocialMediaLayoutRightSidebarStyles.scss'
 
 const SocialMediaLayoutRightSidebar = () => {
+    const { userInfo } = useAppSelector(state => state.authentication)
+
     return (
         <div className='social_media_layout_right_sidebar'>
             <div className="social_media_layout_right_sidebar_container">
@@ -19,11 +22,11 @@ const SocialMediaLayoutRightSidebar = () => {
                     </div>
 
                     <div className="social_media_layout_right_sidebar_container_top_headline">
-                        <h2>Okunoye David</h2>
+                        <h2>{userInfo.firstname ?? 'Okunoye'} {userInfo.lastname ?? 'David'}</h2>
                         <p> A welcoming, friendly, and all-encompassing approach to enterprise software design!</p>
                     </div>
 
-                <div className="social_media_layout_right_sidebar_container_discover">Discover more</div>
+                    <div className="social_media_layout_right_sidebar_container_discover">Discover more</div>
                 </div>
 
             </div>

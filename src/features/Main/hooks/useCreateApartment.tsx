@@ -3,8 +3,10 @@ import apartmentService from '../../../services/apartmentService';
 import { useForm } from '../../../hooks/useForm';
 import { IApartment } from '../../../interfaces/IApartment';
 import { emptyValidator } from '../../../utils/validators/emptyValidator';
+import { useApartmentActions } from '../../../hooks/useReduxActions';
 
-const useCreateApartment = () => {
+const useCreateApartment = (handleClose:any) => {
+    const { addApartment } = useApartmentActions()
     const apartmentForm = useForm<IApartment>(
         {
             categories: [],
@@ -14,7 +16,6 @@ const useCreateApartment = () => {
             location: '',
             lowestPrice: '',
             name: '',
-            owner: '',
             rooms: ''
         },
         {
@@ -25,14 +26,24 @@ const useCreateApartment = () => {
             location: emptyValidator,
             lowestPrice: emptyValidator,
             name: emptyValidator,
-            owner: emptyValidator,
         }
     );
 
 
+    const handleChangeApartmentCategories = (apartmentType: string) => {
+        if (apartmentForm.form.categories.includes(apartmentType)) {
+            const filteredCategories = apartmentForm.form.categories.filter((item) => item !== apartmentType)
+            apartmentForm.onChange('categories', filteredCategories)
+        } else {
+            apartmentForm.onChange('categories', [...apartmentForm.form.categories, apartmentType])
+        }
+    }
+
+
+
     const createApartment = (data: FormData) => apartmentService.createApartment(data);
 
-    const createApartmentRequest = useApi<IGetAllApartmentAPIResponse, FormData>(createApartment);
+    const createApartmentRequest = useApi<IGetApartmentAPIResponse, FormData>(createApartment);
 
     const createApartmentHandler: React.FormEventHandler<HTMLFormElement> = async (e) => {
         e.preventDefault();
@@ -42,11 +53,17 @@ const useCreateApartment = () => {
         const valid = apartmentForm.validate();
 
         if (valid) {
+            const apartmentFormData = new FormData()
+            for (let key in apartmentForm.form) {
+                apartmentFormData.append(key, apartmentForm.form[key])
+            }
+
             try {
-                const apartment = await createApartmentRequest.request();
+                const apartment = await createApartmentRequest.request(apartmentFormData);
+                console.log(apartment)
                 if (apartment) {
-                    console.log(apartment)
-                    // requestUserInfo(apartments.data)
+                    addApartment(apartment.data)
+                    handleClose()
                 }
             } catch (error) { }
         }
@@ -58,7 +75,7 @@ const useCreateApartment = () => {
         loading: createApartmentRequest.loading,
         error: createApartmentRequest.error,
         handleSubmit: createApartmentHandler,
-        apartmentForm
+        apartmentForm, handleChangeApartmentCategories
     }
 }
 

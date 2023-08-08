@@ -18,11 +18,12 @@ interface IApartment {
   description: string
   location: string
   rooms: number
-  categories: string | string[]
+  categories: string[]
   lowestPrice: number
   highestPrice: number
   owner: string
   comments: string[]
+  isVerified?: boolean
 }
 
 interface IStudent {
@@ -62,4 +63,7 @@ interface IGetOwnerAPIResponse extends IAPIResponse {
 
 interface IGetAllApartmentAPIResponse extends IAPIResponse {
   data: IApartment[]
+}
+interface IGetApartmentAPIResponse extends IAPIResponse {
+  data: IApartment
 }

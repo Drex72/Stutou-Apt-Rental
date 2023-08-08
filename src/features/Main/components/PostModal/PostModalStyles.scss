@@ -101,8 +101,10 @@
 
 
     &_upload-image {
-        text-align: center;
 
+        .img_label{
+            align-items: start;
+        }
         .uploaded_image_container {
             height: 100%;
             position: relative;
@@ -174,6 +176,12 @@
         img {
             width: 100%;
         }
+    }
+
+    &_apartment_type {
+        display: flex;
+        align-items: center;
+        gap: 1em;
     }
 
 }

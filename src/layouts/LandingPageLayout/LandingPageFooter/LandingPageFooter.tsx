@@ -1,4 +1,3 @@
-import React from "react";
 import "./LandingPageFooterStyles.scss";
 import { Link } from "react-router-dom";
 import Logo from "../../../components/Logo/Logo";
@@ -18,29 +17,29 @@ const Footer = () => {
           <div className="footer_inner_container_column">
             <h5>Account</h5>
             <li className="list_item">
-              <a href={AllRouteConstants.auth.signup.student}>Create an Account</a>
+              <Link to={AllRouteConstants.auth.signup}>Create an Account</Link>
             </li>
 
             <li className="list_item">
-              <a href={AllRouteConstants.auth.login}>Login</a>
+              <Link to={AllRouteConstants.auth.login}>Login</Link>
             </li>
 
             <li className="list_item">
-              <a href="/#">Customer Care</a>
+              <Link to="/#">Customer Care</Link>
             </li>
           </div>
           <div className="footer_inner_container_column">
             <h5>Services</h5>
             <li className="list_item">
-              <a href="/signup">Find an Apartment</a>
+              <Link to={AllRouteConstants.auth.signup}>Find an Apartment</Link>
             </li>
 
             <li className="list_item">
-              <a href="/login">Lease an Apartment</a>
+              <Link to={AllRouteConstants.auth.login}>Lease an Apartment</Link>
             </li>
 
             <li className="list_item">
-              <a href="/#">Customer Care</a>
+              <Link to='#'>Customer Care</Link>
             </li>
           </div>
 
@@ -48,12 +47,12 @@ const Footer = () => {
             <h5>Company</h5>
             <li className="list_item">
               <ScrollLink to="about-us" smooth={true} duration={500}>
-                <Link to="/">About Us</Link>
+                <Link to={AllRouteConstants.landingPage.aboutUs}>About Us</Link>
               </ScrollLink>
             </li>
             <li className="list_item">
               <ScrollLink to="contact-us" smooth={true} duration={500}>
-                <Link to="/">Contact Us</Link>
+                <Link to={AllRouteConstants.landingPage.contactUs}>Contact Us</Link>
               </ScrollLink>
             </li>
           </div>
