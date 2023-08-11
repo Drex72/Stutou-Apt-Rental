@@ -1,3 +1,5 @@
+import { IApartment } from "../interfaces/IAPIResponse"
+
 export function findMinMaxApartmentPrices(apartments: IApartment[]): {
   lowestPrice: number
   highestPrice: number

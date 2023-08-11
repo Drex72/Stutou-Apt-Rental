@@ -8,6 +8,7 @@ import authService from '../../../services/authenticationService';
 import useApi from '../../../hooks/useApi';
 import { AllRouteConstants } from '../../../router/RouteConstants';
 import  toast  from 'react-hot-toast';
+import { IRegisterAPIResponse } from '../../../interfaces/IAPIResponse';
 
 const useRegistration = () => {
     const navigate = useNavigate();

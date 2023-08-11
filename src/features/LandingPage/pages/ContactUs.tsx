@@ -9,7 +9,6 @@ import { emptyValidator } from "../../../utils/validators/emptyValidator";
 import { nameValidator } from "../../../utils/validators/nameVaildator";
 import Input, { TextArea } from "../../../components/form/Input/Input";
 import LandingPageNavbar from "../../../layouts/LandingPageLayout/LandingPageNavbar/LandingPageNavbar";
-import SocialMediaLayoutNavbar from "../../../layouts/SocialMediaLayout/SocialMediaLayoutNavbar/SocialMediaLayoutNavbar";
 interface ContactUsInput {
   email: string;
   name: string;

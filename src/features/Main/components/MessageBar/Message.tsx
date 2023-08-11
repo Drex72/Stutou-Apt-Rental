@@ -1,4 +1,3 @@
-import React from 'react'
 import './MessageBarStyles.scss'
 interface IMessage {
     text: string

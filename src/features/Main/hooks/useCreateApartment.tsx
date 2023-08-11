@@ -59,7 +59,8 @@ const useCreateApartment = (handleClose: any) => {
         if (valid) {
             const apartmentFormData = new FormData()
             for (let key in apartmentForm.form) {
-                apartmentFormData.append(key, apartmentForm.form[key])
+                const tempKey: keyof IApartment = key as any
+                apartmentFormData.append(key, apartmentForm.form[tempKey] as string | Blob)
             }
 
             try {

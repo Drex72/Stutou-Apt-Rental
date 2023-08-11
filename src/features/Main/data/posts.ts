@@ -1,3 +1,5 @@
+import { IApartment } from "../../../interfaces/IAPIResponse";
+
 export const apartmentPosts: IApartment[] = [
   {
     _id: '1',

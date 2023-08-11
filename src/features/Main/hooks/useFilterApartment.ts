@@ -10,7 +10,7 @@ import { useAppSelector } from '../../../hooks/useAppSelector' // Custom hook fo
 // Defining a custom hook named 'useFilterApartment'.
 const useFilterApartment = (func?: any) => {
   const { updateFilteredApartments } = useApartmentActions() // Using custom Redux action hook.
-  const { filteredApartments, allApartments } = useAppSelector(
+  const {  allApartments } = useAppSelector(
     (state) => state.apartments
   ) // Accessing filtered apartments from the Redux store.
 

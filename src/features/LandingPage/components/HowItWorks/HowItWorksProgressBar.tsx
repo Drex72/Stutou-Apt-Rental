@@ -19,23 +19,26 @@ const HowItWorksProgressBar = (props: IHowItWorksProgressProps) => {
 
             <ScrollAnimation animateIn="fadeInLeft" animateOnce={true}>
                 <ol className="how_it_works_progressBar">
-                    {content.map((item, index) => (
-                        <li key={index} className="how_it_works_progressBar-step is-complete">
-                            <svg className="how_it_works_progressBar-icon">
-                                <use xlinkHref="#checkmark-bold" />
-                            </svg>
-                        </li>
-                    ))}
+                    {content.map((item, index) => {
+                        console.log(item)
+                        return (
+                            <li key={index} className="how_it_works_progressBar-step is-complete">
+                                <svg className="how_it_works_progressBar-icon">
+                                    <use xlinkHref="#checkmark-bold" />
+                                </svg>
+                            </li>
+                        )
+                    })}
                 </ol>
             </ScrollAnimation>
 
 
             <div className="how_it_works_progressCard">
                 {content.map((item, index) => {
-                    const { content, icon, title ,delay} = item
+                    const { content, icon, title, delay } = item
                     return (
                         (
-                            <ScrollAnimation animateIn="fadeInUp" delay={delay}  key={index} animateOnce={true}>
+                            <ScrollAnimation animateIn="fadeInUp" delay={delay} key={index} animateOnce={true}>
                                 <div className='card'>
                                     <div className="card_inner_container">
                                         <div className="how_it_works_progressCard-icon">

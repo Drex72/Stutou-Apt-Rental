@@ -1,4 +1,3 @@
-import React from 'react'
 import LandingPageNavbar from '../../../layouts/LandingPageLayout/LandingPageNavbar/LandingPageNavbar'
 
 export const AboutUs = () => {

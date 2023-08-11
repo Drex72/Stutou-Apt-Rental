@@ -3,22 +3,16 @@ import { AuthFormInput } from '../components/authFormInput/AuthFormInput'
 import FormError from '../../../components/form/formError/FormError'
 import useForgotPassword from '../hooks/useForgotPassword'
 import { IForgotPassword } from '../../../interfaces/IAuthInterface'
-import { useNavigate } from 'react-router-dom'
-import { AllRouteConstants } from '../../../router/RouteConstants'
 import Button from '../../../components/Button/Button'
 
 export const ForgotPassword = () => {
-    const navigate = useNavigate()
-    const { handleSubmit, error, loading, forgotPasswordForm, linkSent, setLinkSent } = useForgotPassword()
+    const { handleSubmit, error, loading, forgotPasswordForm, } = useForgotPassword()
     const formChange = (key: keyof IForgotPassword, value: any) => {
         forgotPasswordForm.onChange(key, value);
         return;
     };
 
-    const handleCloseModal = () => {
-        setLinkSent(false)
-        navigate(AllRouteConstants.auth.login)
-    }
+  
 
     return (
         <div className="animate__animated animate__fadeIn">

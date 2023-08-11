@@ -8,7 +8,7 @@ export interface ILoginAPIResponse {
   userId: string
 }
 
-interface IRegisterAPIResponse {
+export interface IRegisterAPIResponse {
   message: string
 }
 

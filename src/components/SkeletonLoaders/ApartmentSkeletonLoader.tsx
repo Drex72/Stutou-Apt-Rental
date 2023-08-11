@@ -1,4 +1,3 @@
-import React from 'react'
 import './ApartmentSkeletonLoaderStyles.scss'
 
 const ApartmentSkeletonLoader = () => {

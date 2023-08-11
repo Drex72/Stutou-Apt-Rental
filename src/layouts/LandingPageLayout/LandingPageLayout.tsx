@@ -1,7 +1,6 @@
-import React, { useRef, useState } from "react";
+import  { useRef, useState } from "react";
 import "./LandingPageStyles.scss";
 import { CSSTransition } from "react-transition-group";
-import LandingPageNavbar from "./LandingPageNavbar/LandingPageNavbar";
 import { Outlet } from "react-router-dom";
 import LandingPageFooter from "./LandingPageFooter/LandingPageFooter";
 import LandingPageNavigationSidebar from "./LandingPageNavigationSidebar/LandingPageNavigationSidebar";

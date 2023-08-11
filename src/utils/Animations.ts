@@ -1,4 +1,4 @@
-import { Variants, animate } from "framer-motion";
+import { Variants } from "framer-motion";
 
 type ITransition = {
   duration: number;

@@ -1,7 +1,6 @@
 import { expect, it } from 'vitest'
 import { Login } from '../pages'
-import { fireEvent, render, screen, waitFor, } from '@testing-library/react'
-import { MemoryRouter } from 'react-router-dom';
+import { fireEvent, render, screen, } from '@testing-library/react'
 
 describe('Login Tests', () => {
   // Tests that the login form can be submitted with valid email and password
@@ -23,7 +22,6 @@ describe('Login Tests', () => {
     const emailInput = getByLabelText('Email');
     const passwordInput = getByLabelText('Password');
     const loginButton = getByText('Login');
-    const loginHeader = screen.getByText(/Invalid Details/i);
 
     fireEvent.change(emailInput, { target: { value: 'invalid_email' } });
     fireEvent.change(passwordInput, { target: { value: 'password' } });

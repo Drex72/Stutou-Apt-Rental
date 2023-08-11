@@ -6,6 +6,7 @@ import useApi from '../../../hooks/useApi'; // Custom hook for handling API requ
 import { useApartmentActions } from '../../../hooks/useReduxActions'; // Custom hook for using Redux actions related to apartments.
 import apartmentService from '../../../services/apartmentService'; // Service module for interacting with apartment-related APIs.
 import { apartmentPosts } from '../data/posts'; // An array containing dummy apartment data.
+import { IAPIResponse, IApartment } from '../../../interfaces/IAPIResponse';
 
 // Defining a custom hook named 'useGetAllApartments' which takes a 'dummy' boolean parameter.
 const useGetAllApartments = (dummy: boolean) => {
@@ -20,7 +21,7 @@ const useGetAllApartments = (dummy: boolean) => {
 
     // Using the custom 'useApi' hook to handle an API request for getting all apartments.
     // The response data type is 'IGetAllApartmentAPIResponse' and the request payload is 'null'.
-    const getAllApartmentsRequest = useApi<IGetAllApartmentAPIResponse, null>(getAllApartments);
+    const getAllApartmentsRequest = useApi<IAPIResponse<IApartment[]>, null>(getAllApartments);
 
     // Defining a function to handle getting all apartments from the API.
     const getAllApartmentsHandler = async () => {

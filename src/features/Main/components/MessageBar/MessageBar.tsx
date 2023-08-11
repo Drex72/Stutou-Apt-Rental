@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import './MessageBarStyles.scss'
 import { useAppSelector } from '../../../../hooks/useAppSelector'
-import { IUser } from '../../../../interfaces/IAPIResponse'
 import MessageList from './MessageList'
 import { GroupedUserChat, groupChatsBySenderReceiver } from '../../../../utils/groupChatsByReceiver'
 import UserMessage from './UserMessage'

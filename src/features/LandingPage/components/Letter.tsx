@@ -12,7 +12,7 @@ type TextSequenceProps = {
   className?: string;
 };
 
-const { letter, firstName, lastName, fadeInUp } = new Animations();
+const { letter, firstName, lastName } = new Animations();
 
 const Letter = ({ children, isSecond }: LetterProps) => (
   <motion.span variants={letter()} className={isSecond ? "second" : ""}>
