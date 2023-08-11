@@ -17,7 +17,7 @@ export default defineConfig({
     }
   },
   optimizeDeps: {
-    disabled: false
+    disabled: true
   },
   test: {
     globals: true,
