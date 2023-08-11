@@ -1,3 +1,4 @@
+import { IApartment } from '../interfaces/IAPIResponse'
 import { IApartmentFilter } from '../interfaces/IApartment'
 
 export function filterApartments(

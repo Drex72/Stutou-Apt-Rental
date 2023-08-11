@@ -5,6 +5,7 @@ import { IApartment } from '../../../interfaces/IApartment';
 import { emptyValidator } from '../../../utils/validators/emptyValidator';
 import { useApartmentActions } from '../../../hooks/useReduxActions';
 import { IAPIResponse, IApartment as ApiResponseApartment } from '../../../interfaces/IAPIResponse';
+import { toast } from 'react-hot-toast';
 
 const useCreateApartment = (handleClose: any) => {
     const { addApartment } = useApartmentActions()
@@ -17,7 +18,8 @@ const useCreateApartment = (handleClose: any) => {
             location: '',
             lowestPrice: '',
             name: '',
-            rooms: ''
+            rooms: '',
+            postCode: ''
         },
         {
             categories: emptyValidator,
@@ -27,6 +29,7 @@ const useCreateApartment = (handleClose: any) => {
             location: emptyValidator,
             lowestPrice: emptyValidator,
             name: emptyValidator,
+            postCode: emptyValidator
         }
     );
 
@@ -61,8 +64,8 @@ const useCreateApartment = (handleClose: any) => {
 
             try {
                 const apartment = await createApartmentRequest.request(apartmentFormData);
-                console.log(apartment)
                 if (apartment) {
+                    toast.success('Apartment Created Successfully')
                     addApartment(apartment.data)
                     handleClose()
                 }

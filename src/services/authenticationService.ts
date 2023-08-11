@@ -13,7 +13,7 @@ class AuthenticationService {
     return await axiosInstance.get(`/users`)
   }
   studentSignUp = async (data: UserRegister) => {
-    return await axios.put(`${baseURL}/user/signup`, data)
+    return await axios.post(`${baseURL}/user/signup`, data)
   }
   forgotPassword = async (data: IForgotPassword) => {
     return await axios.post(`${baseURL}/student/resetpassword`, data);

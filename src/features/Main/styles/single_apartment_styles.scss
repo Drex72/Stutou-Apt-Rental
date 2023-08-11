@@ -41,5 +41,51 @@
             }
         }
 
+        &_mid {
+            color: #322744;
+
+            .price_range {
+                font-size: 22px;
+                font-weight: 600;
+                margin: .5em 0 0;
+            }
+
+            .amount {
+                font-weight: 700;
+                font-size: 30px;
+                margin: .2em 0 .3em;
+            }
+
+            .apartment_name {
+                font-size: 18px;
+                text-transform: capitalize;
+                margin: 0;
+            }
+
+            .apartment_location {
+                margin: 5px 0 10px;
+                font-weight: 300;
+
+            }
+        }
+
+        &_description {
+            color: #322744;
+            margin-top: 1em;
+
+
+            &_heading {
+                font-size: 22px;
+                font-weight: 700;
+                margin: 0;
+            }
+
+            &_text {
+                margin: .5em 0;
+                font-weight: 300;
+                width: 60%;
+            }
+        }
+
     }
 }

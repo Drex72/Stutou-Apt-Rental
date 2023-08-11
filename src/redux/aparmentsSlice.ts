@@ -61,6 +61,7 @@ export const apartmentsSlice = createSlice({
     ) => {
       const newApartment = action.payload // Extracting the payload.
       state.allApartments = [...state.allApartments, newApartment] // Adding the new apartment to 'allApartments'.
+      state.filteredApartments = [...state.filteredApartments, newApartment]
     },
 
     // Reducer function to select an apartment.

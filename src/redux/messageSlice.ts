@@ -31,6 +31,7 @@ export const messageSlice = createSlice({
       }
     ) => {
       const { chats, userId } = action.payload
+      console.log(userId, chats)
       const userChats: IChat[] = []
       chats.map((chat) => {
         if (chat.receiverId === userId || chat.senderId === userId) {

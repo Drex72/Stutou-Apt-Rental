@@ -17,6 +17,7 @@ const SingleApartmentLeftSidebar = () => {
 
     useEffect(() => {
         const currentUser = getUserInformation(allUsers, selectedApartment?.owner!)
+        console.log(selectedApartment?.owner, allUsers)
         if (currentUser) {
             setUserInfo(currentUser)
         }

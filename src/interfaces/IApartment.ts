@@ -7,6 +7,7 @@ export interface IApartment {
   categories: string[]
   lowestPrice: string
   highestPrice: string
+  postCode:string
 }
 
 export interface IApartmentFilter {
@@ -17,3 +18,5 @@ export interface IApartmentFilter {
   postCode?: string[]
   isVerified?: boolean
 }
+
+

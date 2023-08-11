@@ -22,12 +22,12 @@ const useGetMessages = (data: IMessageService) => {
         getAllMessagesRequest.reset()
         try {
             const messages = await getAllMessagesRequest.request()
+            console.log(messages, 'message')
             if (messages) {
                 getSingleUserChat({ chats: messages.data, userId: userInfo.id })
             }
 
         } catch (error) { }
-
     };
 
     const sendMessageHandler = async () => {

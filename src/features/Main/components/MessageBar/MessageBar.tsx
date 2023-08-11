@@ -17,6 +17,7 @@ const MessageBar = () => {
 
     useEffect(() => {
         const chats = groupChatsBySenderReceiver(userMessages, users.users, authentication.userInfo.id)
+        console.log(chats,userMessages)
         setAllUserMessages(chats)
 
         if (singleUserMessage) {

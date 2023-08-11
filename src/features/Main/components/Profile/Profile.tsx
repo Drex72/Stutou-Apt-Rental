@@ -1,14 +1,17 @@
 import { useNavigate } from 'react-router-dom'
-import { useAuthActions } from '../../../../hooks/useReduxActions'
+import { useAuthActions, useMessageActions } from '../../../../hooks/useReduxActions'
 import { AllRouteConstants } from '../../../../router/RouteConstants'
 import './ProfileStyles.scss'
 
 const Profile = () => {
     const { logout } = useAuthActions()
+    const { clearMessageSingleUser } = useMessageActions()
     const navigate = useNavigate()
+
     const handleLogout = () => {
         logout()
         navigate(AllRouteConstants.auth.login)
+        clearMessageSingleUser()
     }
 
     return (

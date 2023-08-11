@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import './ApartmentTwoStyles.scss'
 import { useApartmentActions } from '../../../../hooks/useReduxActions'
 import ApartmentTag from '../ApartmentTag/ApartmentTag'
+import { IApartment } from '../../../../interfaces/IAPIResponse'
 
 interface IApartmentMini {
   apartment: IApartment

@@ -12,15 +12,11 @@ import { getUserInformation } from '../../../utils/groupChatsByReceiver'
 
 // Defining the SingleApartment component
 export const SingleApartment = () => {
-    // Using a custom Redux selector to access the selectedApartment from the state
     const { selectedApartment } = useAppSelector(state => state.apartments)
     const { users } = useAppSelector((state) => state.users)
     const navigate = useNavigate()
-    // const { image, isVerified, categories, lowestPrice, highestPrice } = selectedApartment!
-    // Using custom Redux actions
     const { setLeftComponent } = useLayoutActions()
 
-    // Setting the left sidebar component when the component mounts
     useEffect(() => {
         setLeftComponent(<SingleApartmentLeftSidebar />)
         const currentUser = getUserInformation(users, selectedApartment?.owner!)
@@ -41,11 +37,24 @@ export const SingleApartment = () => {
                 <ApartmentTag variant='outlined_disabled' text={selectedApartment?.categories!} />
             </div>
 
-            <div className="mid_heading">
-                <p>Offers Over</p>
+            <div className="single_apartment_mid">
+                <p className='price_range'>Price Range</p>
                 <h2 className="amount">
                     £{selectedApartment?.lowestPrice} - £{selectedApartment?.highestPrice}
                 </h2>
+
+                <h3 className="apartment_name">{selectedApartment?.name}</h3>
+                <p className="apartment_location">{selectedApartment?.location}, {selectedApartment?.postCode}</p>
+
+            </div>
+            <div className="single_apartment_description">
+
+                <h2 className="single_apartment_description_heading">
+                    Description
+                </h2>
+                <p className='single_apartment_description_text' >
+                    {selectedApartment?.description}
+                </p>
             </div>
 
         </div>

@@ -16,14 +16,15 @@ export const RequireAuth: React.FC<RequireAuthProps> = ({ children }) => {
   useEffect(() => {
     setPageLoading(true)
     if (!userToken || isTokenExpired(userToken)) {
+      localStorage.removeItem('accessToken')
       navigate(AllRouteConstants.auth.index);
-    } 
+    }
     setPageLoading(false)
   }, []);
 
-  // if (pageLoading) {
-  //   return <PageLoader />
-  // }
+  if (pageLoading) {
+    return <PageLoader />
+  }
 
   return children
 }

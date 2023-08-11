@@ -8,6 +8,11 @@ import { MdCloudUpload, MdDelete, } from 'react-icons/md'
 import Button from "../../../../components/Button/Button";
 import Checkbox from "../../../../components/form/Checkbox/Checkbox";
 import FormError from "../../../../components/form/formError/FormError";
+import FormSelect from "../../../../components/form/formSelect/FormSelect";
+import { useState, useEffect } from "react";
+import { IDropdownData } from "../../../../interfaces/IDropdownData";
+import apartmentService from "../../../../services/apartmentService";
+import { convertDataToDropdownData } from "../../../../utils/convertDataToDropdownData";
 
 interface PostalModalProps {
     closeModal: () => void
@@ -16,6 +21,11 @@ interface PostalModalProps {
 function PostalModal(props: PostalModalProps) {
     const { apartmentForm, handleSubmit, handleChangeApartmentCategories, error, loading } = useCreateApartment(props.closeModal)
     const { form, formErrors, onChange: formOnChange, reset: resetForm } = apartmentForm
+    // Managing post codes and their loading state
+    const [postCodes, setPostCodes] = useState<{ data: IDropdownData[], loading: boolean }>({
+        data: [],
+        loading: false
+    })
 
     const formChange = (key: keyof IApartment, value: any) => {
         formOnChange(key, value);
@@ -40,6 +50,24 @@ function PostalModal(props: PostalModalProps) {
     const handleDeleteImage = () => {
         formChange('image', null)
     }
+
+    // Fetching post codes on component mount
+    const getPostCodes = async () => {
+        setPostCodes({ ...postCodes, loading: true })
+        try {
+            const response = await apartmentService.getPostCodes()
+            const postCodeDropdown = convertDataToDropdownData('postcode', '_id', response.data?.data,)
+            setPostCodes({ ...postCodes, data: postCodeDropdown, loading: false })
+        } catch (error) {
+            console.log(error)
+            setPostCodes({ ...postCodes, loading: false })
+        }
+    }
+
+    useEffect(() => {
+        getPostCodes()
+    }, [])
+
 
 
     return (
@@ -70,33 +98,42 @@ function PostalModal(props: PostalModalProps) {
                                     }}
                                 />
                             </div>
-                            <div className="input-field">
-                                <Input
-                                    id="location"
-                                    label="Apartment Location"
-                                    error={formErrors.location}
-                                    animation="animate__animated animate__fadeInLeft"
-                                    inputProps={{
-                                        placeholder: "Location of the Apartment",
-                                        value: form.location,
-                                        onChange: (e) => formChange("location", e.target.value),
-                                        required: true,
-                                    }}
-                                />
-                                {/* <FormSelect
-                                    id="location"
-                                    name="apartment location"
-                                    options={[]}
-                                    label="Apartment Location"
-                                    error={formErrors.name}
-                                    dropdownProps={{
-                                        placeholder: "Give any Catchy Name to the Apartment",
-                                        // value: form.name,
-                                        // onChange: (e) => formChange("name", e.target.value),
-                                        // required: true,
-                                    }}
-                                /> */}
+                            <div className="price_ranges">
+                                <div className="input-field">
+                                    <Input
+                                        id="location"
+                                        label="Apartment Location"
+                                        error={formErrors.location}
+                                        animation="animate__animated animate__fadeInLeft"
+                                        inputProps={{
+                                            placeholder: "Location of the Apartment",
+                                            value: form.location,
+                                            onChange: (e) => formChange("location", e.target.value),
+                                            required: true,
+                                        }}
+                                    />
+
+                                </div>
+                                <div className="input-field">
+
+                                    <FormSelect
+                                        id="postCode"
+                                        name="apartment postcode"
+                                        label="Post Code"
+                                        error={formErrors.postCode}
+                                        loading={postCodes.loading}
+                                        options={postCodes.data}
+                                        dropdownProps={{
+                                            placeholder: "Select...",
+                                            onChange: (item: IDropdownData) => {
+                                                formOnChange('postCode', item.label)
+                                            },
+                                            required: true,
+                                        }}
+                                    />
+                                </div>
                             </div>
+
 
                             <div className="price_ranges">
                                 <div className="input-field">
