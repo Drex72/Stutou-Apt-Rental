@@ -1,8 +1,9 @@
-interface IAPIResponse {
+export interface IAPIResponse<T> {
   message: string
+  data: T
 }
 
-interface ILoginAPIResponse {
+export interface ILoginAPIResponse {
   token: string
   userId: string
 }
@@ -11,12 +12,13 @@ interface IRegisterAPIResponse {
   message: string
 }
 
-interface IApartment {
+export interface IApartment {
   _id: string
   image: string
   name: string
   description: string
   location: string
+  postCode: string
   rooms: number
   categories: string[]
   lowestPrice: number
@@ -26,44 +28,40 @@ interface IApartment {
   isVerified?: boolean
 }
 
-interface IStudent {
+
+type Status = 'owner' | 'student'
+
+export interface IUser {
   _id: string
   firstname: string
   lastname: string
   email: string
-  status: 'student'
-  token?: string
+  status: Status
+  reported: number
+  activated: boolean
+  apartments: string[]
 }
+// export interface IGetStudentsAPIResponse extends IAPIResponse {
+//   data: IStudent[]
+// }
+// export interface IGetStudentAPIResponse extends IAPIResponse {
+//   data: IStudent
+// }
+// export interface IGetMessagesAIResponse<T> extends IAPIResponse {
+//   data: T
+// }
 
-interface IOwner {
-  _id: string
-  firstname: string
-  lastname: string
-  email: string
-  password: string
-  status: 'owner'
-  token: string
-  address: string
-  apartments: IApartment[]
-}
-interface IGetStudentsAPIResponse extends IAPIResponse {
-  data: IStudent[]
-}
-interface IGetStudentAPIResponse extends IAPIResponse {
-  data: IStudent
-}
+// export interface IGetOwnersAPIResponse extends IAPIResponse {
+//   data: IOwner[]
+// }
 
-interface IGetOwnersAPIResponse extends IAPIResponse {
-  data: IOwner[]
-}
+// export interface IGetOwnerAPIResponse extends IAPIResponse {
+//   data: IOwner
+// }
 
-interface IGetOwnerAPIResponse extends IAPIResponse {
-  data: IOwner
-}
-
-interface IGetAllApartmentAPIResponse extends IAPIResponse {
-  data: IApartment[]
-}
-interface IGetApartmentAPIResponse extends IAPIResponse {
-  data: IApartment
-}
+// export interface IGetAllApartmentAPIResponse extends IAPIResponse {
+//   data: IApartment[]
+// }
+// export interface IGetApartmentAPIResponse extends IAPIResponse {
+//   data: IApartment
+// }

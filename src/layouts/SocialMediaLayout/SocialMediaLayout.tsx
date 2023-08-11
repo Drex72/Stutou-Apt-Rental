@@ -4,26 +4,36 @@ import "./SocialMediaLayoutStyles.scss";
 import SocialMediaLayoutNavbar from "./SocialMediaLayoutNavbar/SocialMediaLayoutNavbar";
 import { RequireAuth } from "../../HoC/RequireAuth";
 import SocialMediaLayoutRightSidebar from "./SocialMediaLayoutRightSidebar/SocialMediaLayoutRightSidebar";
-import SocialMediaLayoutLeftSidebar from "./SocialMediaLayoutLeftSidebar/SocialMediaLayoutLeftSidebar";
-import MessageBar from "../../features/Main/components/MessageBar/MessageBar";
 import useGetUserInfo from "../../features/Main/hooks/useGetUserInfo";
+import { useAppSelector } from "../../hooks/useAppSelector";
+import PageLoader from "../../components/PageLoader/PageLoader";
+import MessageBar from "../../features/Main/components/MessageBar/MessageBar";
 
 function SocialMediaLayout() {
-    const { } = useGetUserInfo()
+    const { loading } = useGetUserInfo()
+    const { leftComponent } = useAppSelector(state => state.layout)
 
     return (
         <RequireAuth>
-            <div className="social_media_layout_body">
-                <SocialMediaLayoutNavbar />
-                <div className="social_media_layout_body_container">
-                    <SocialMediaLayoutLeftSidebar />
-                    <div className="social_media_layout_outlet_container">
-                        <Outlet />
+            {loading ? (
+                <PageLoader />
+            ) : (
+                <div className="social_media_layout_body">
+                    <SocialMediaLayoutNavbar />
+                    <div className="social_media_layout_body_container">
+                        <div className="social_media_layout_body_left_container">
+                            <div className="inner_container">
+                                {leftComponent}
+                            </div>
+                        </div>
+                        <div className="social_media_layout_outlet_container">
+                            <Outlet />
+                        </div>
+                        <SocialMediaLayoutRightSidebar />
                     </div>
-                    <SocialMediaLayoutRightSidebar />
+                    <MessageBar />
                 </div>
-                {/* <MessageBar /> */}
-            </div>
+            )}
         </RequireAuth>
     );
 }

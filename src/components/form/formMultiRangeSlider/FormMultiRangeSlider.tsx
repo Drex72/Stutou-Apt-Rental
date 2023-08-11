@@ -47,7 +47,7 @@ const FormMultiRangeSlider = ({ min, max, onChange }: IMultiRangeSliderProps) =>
     // Get min and max values when their state changes
     useEffect(() => {
         onChange({ min: minVal, max: maxVal });
-    }, [minVal, maxVal, onChange]);
+    }, [minVal, maxVal]);
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>, isMin: boolean) => {
         const value = parseInt(event.target.value);

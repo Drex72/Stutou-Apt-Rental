@@ -4,6 +4,8 @@ import { authenticationSlice } from '../redux/authenticationSlice'
 import { themeSlice } from '../redux/themeSlice'
 import { apartmentsSlice } from '../redux/aparmentsSlice'
 import { messageSlice } from '../redux/messageSlice'
+import { layoutSlice } from '../redux/layoutSlice'
+import { usersSlice } from '../redux/usersSlice'
 
 export const useReduxActions = (action: ActionCreatorsMapObject<any>) => {
   const dispatch = useDispatch()
@@ -39,4 +41,16 @@ export const useMessageActions = () => {
   const dispatch = useDispatch()
 
   return bindActionCreators(Object.assign({}, messageSlice.actions), dispatch)
+}
+
+export const useLayoutActions = () => {
+  const dispatch = useDispatch()
+
+  return bindActionCreators(Object.assign({}, layoutSlice.actions), dispatch)
+}
+
+export const useUserActions = () => {
+  const dispatch = useDispatch()
+
+  return bindActionCreators(Object.assign({}, usersSlice.actions), dispatch)
 }

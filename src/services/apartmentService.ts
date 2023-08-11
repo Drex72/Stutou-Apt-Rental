@@ -11,6 +11,9 @@ class ApartmentService {
   getAnApartment = async (apartmentId: string) => {
     return await axios.post(`${baseURL}/owner/apartment/${apartmentId}`)
   }
+  getPostCodes = async () => {
+    return await axios.get(`${baseURL}/admin/postcodes`)
+  }
   //   updateAnApartment = async (data: IForgotPassword) => {
   //     return await axios.post(`${baseURL}/student/resetpassword`, data)
   //   }

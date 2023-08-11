@@ -1,6 +1,6 @@
 import ApartmentSkeletonLoader from "../../../../components/SkeletonLoaders/ApartmentSkeletonLoader";
 import { useAppSelector } from "../../../../hooks/useAppSelector";
-import { apartmentPosts } from "../../data/posts";
+import useGetAllApartments from "../../hooks/useGetAllApartments";
 import CreateApartment from "../CreateApartment/CreateApartment";
 import ApartmentMini from "./ApartmentMini";
 
@@ -10,12 +10,12 @@ interface IApartmentsContainer {
 
 const ApartmentContainer = (props: IApartmentsContainer) => {
     const { openCreateApartment } = props
+    const { filteredApartments } = useAppSelector((state) => state.apartments);
     const { userInfo } = useAppSelector(state => state.authentication)
-    // const { data, error, loading } = useGetAllApartments()
-    const loading  = false
+    const { loading } = useGetAllApartments(false)
 
     return (
-        <div className="posts" style={{ display: 'flex', flexDirection: 'column', gap: '50px' }}>
+        <div className="posts" style={{ display: 'flex', flexDirection: 'column', gap: '50px', width:'100%' }}>
             {loading ? (
                 <>
                     <ApartmentSkeletonLoader />
@@ -30,10 +30,10 @@ const ApartmentContainer = (props: IApartmentsContainer) => {
                     {userInfo.status === 'owner' && (
                         <CreateApartment createApartmentHandler={openCreateApartment} />
                     )}
-                    {apartmentPosts.length === 0 && (
+                    {filteredApartments.length === 0 && (
                         <>No Apartments</>
                     )}
-                    {apartmentPosts.map((apartment, index) => (
+                    {filteredApartments && filteredApartments.map((apartment, index) => (
                         <ApartmentMini apartment={apartment} key={index} />
                     ))}
                 </>

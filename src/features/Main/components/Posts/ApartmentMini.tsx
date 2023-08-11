@@ -1,19 +1,28 @@
+import { useNavigate } from 'react-router-dom'
 import './ApartmentTwoStyles.scss'
+import { useApartmentActions } from '../../../../hooks/useReduxActions'
+import ApartmentTag from '../ApartmentTag/ApartmentTag'
 
 interface IApartmentMini {
   apartment: IApartment
 }
 const ApartmentMini = ({ apartment }: IApartmentMini) => {
-  const { categories, description, highestPrice, image, location, lowestPrice, name, isVerified } = apartment
+  const { categories, description, highestPrice, image, location, lowestPrice, name, isVerified, _id, postCode } = apartment
+  const navigate = useNavigate()
+  const { selectApartment } = useApartmentActions()
+  const handleApartmentClick = () => {
+    navigate(`/main/apartments/${_id}`)
+    selectApartment({ apartmentid: _id })
+  }
   return (
-    <div className='apartment_mini'>
+    <div className='apartment_mini  animate__animated animate__fadeIn' onClick={handleApartmentClick}>
       <div className="apartment_mini_image_container">
         <img src={image} />
       </div>
       <div className="apartment_mini_text_container">
         <div className="inner_container">
           <div className="inner_container_top">
-            <span className={isVerified ? 'verified' : 'unVerified'}>{isVerified ? 'Verified' : 'UnVerified'}</span>
+            <ApartmentTag variant={isVerified ? 'contained' : 'contained_disabled'} text={isVerified ? 'Verified' : 'UnVerified'} />
             <div className="save">save</div>
           </div>
           <div className="mid">
@@ -27,11 +36,14 @@ const ApartmentMini = ({ apartment }: IApartmentMini) => {
             <div className="info">
               <h4 className='name'>{name}</h4>
               <p className="location">{location}</p>
+              <p className="postCode">
+                <span>Post Code</span>: {postCode}
+              </p>
               <p className="description">{description}</p>
             </div>
           </div>
           <div className="bottom">
-            <span>{categories}</span>
+            <ApartmentTag variant='outlined_disabled' text={categories} />
             <p className="date">Listed on 5th Aug 2023</p>
           </div>
         </div>

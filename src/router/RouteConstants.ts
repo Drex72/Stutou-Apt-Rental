@@ -19,6 +19,13 @@ export const AllRouteConstants = {
     resetPassword: '/auth/reset-password'
   },
   main: {
-    index: '/main'
+    index: '/main',
+    apartment: {
+      singleApartment: '/main/apartments/:id'
+    },
+    owner: {
+      singleOwner:'/main/owner/:id',
+      singleOwnerProperties:''
+    }
   }
 }

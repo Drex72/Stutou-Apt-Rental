@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { useAppSelector } from "../../hooks/useAppSelector";
 import PopModal from "../ModalLayout/ModalLayout";
 import "./AuthWrapperStyle.scss";
 import { Outlet } from "react-router";
@@ -7,7 +6,7 @@ import { AllRouteConstants } from "../../router/RouteConstants";
 import { useNavigate } from "react-router-dom";
 
 const AuthLayout = () => {
-  const { userToken } = useAppSelector((state) => state.authentication);
+  const userToken = localStorage.getItem('accessToken')
   const navigate = useNavigate();
 
   useEffect(() => {

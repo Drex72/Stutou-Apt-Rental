@@ -4,8 +4,9 @@ import { useForm } from '../../../hooks/useForm';
 import { IApartment } from '../../../interfaces/IApartment';
 import { emptyValidator } from '../../../utils/validators/emptyValidator';
 import { useApartmentActions } from '../../../hooks/useReduxActions';
+import { IAPIResponse, IApartment as ApiResponseApartment } from '../../../interfaces/IAPIResponse';
 
-const useCreateApartment = (handleClose:any) => {
+const useCreateApartment = (handleClose: any) => {
     const { addApartment } = useApartmentActions()
     const apartmentForm = useForm<IApartment>(
         {
@@ -43,7 +44,7 @@ const useCreateApartment = (handleClose:any) => {
 
     const createApartment = (data: FormData) => apartmentService.createApartment(data);
 
-    const createApartmentRequest = useApi<IGetApartmentAPIResponse, FormData>(createApartment);
+    const createApartmentRequest = useApi<IAPIResponse<ApiResponseApartment>, FormData>(createApartment);
 
     const createApartmentHandler: React.FormEventHandler<HTMLFormElement> = async (e) => {
         e.preventDefault();

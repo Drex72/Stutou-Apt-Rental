@@ -9,6 +9,9 @@ class AuthenticationService {
   getUserInfo = async (userId: string) => {
     return await axiosInstance.get(`/user/${userId}`)
   }
+  getAllUsers = async () => {
+    return await axiosInstance.get(`/users`)
+  }
   studentSignUp = async (data: UserRegister) => {
     return await axios.put(`${baseURL}/user/signup`, data)
   }

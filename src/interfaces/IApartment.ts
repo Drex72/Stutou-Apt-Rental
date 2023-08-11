@@ -8,3 +8,12 @@ export interface IApartment {
   lowestPrice: string
   highestPrice: string
 }
+
+export interface IApartmentFilter {
+  categories?: string[]
+  noOfRooms?: string
+  lowestPrice?: string
+  highestPrice?: string
+  postCode?: string[]
+  isVerified?: boolean
+}

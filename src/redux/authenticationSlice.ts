@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit'
 import { BasicUser } from '../interfaces/IAuthInterface'
-import accessToken from '../utils/accessToken/AccessToken'
+import { IUser, ILoginAPIResponse } from '../interfaces/IAPIResponse'
 
 const initialStateValue: BasicUser = {
   id: '',
@@ -14,9 +14,7 @@ const initialStateValue: BasicUser = {
 export const authenticationSlice = createSlice({
   name: 'auth',
   initialState: {
-    userInfo: initialStateValue,
-    userloggedIn: false,
-    userToken: '' as string
+    userInfo: initialStateValue
   },
   reducers: {
     login: (
@@ -27,26 +25,16 @@ export const authenticationSlice = createSlice({
     ) => {
       const { token, userId } = action.payload
       localStorage.setItem('accessToken', token)
-      state.userToken = token
       state.userInfo = { ...state.userInfo, id: userId }
-    },
-    setToken: (
-      state,
-      action: {
-        payload: string
-      }
-    ) => {
-      const { payload } = action
-      state.userToken = payload
     },
 
     getUserDetails: (
       state,
       action: {
-        payload: IGetStudentAPIResponse
+        payload: IUser
       }
     ) => {
-      const { _id, email, firstname, lastname, status } = action.payload.data
+      const { _id, email, firstname, lastname, status } = action.payload
 
       state.userInfo = {
         id: _id,
@@ -59,13 +47,12 @@ export const authenticationSlice = createSlice({
 
     logout: (state) => {
       localStorage.removeItem('accessToken')
-      state.userToken = ''
       state.userInfo = initialStateValue
     }
   }
 })
 
-export const { login, getUserDetails, logout, setToken } =
+export const { login, getUserDetails, logout } =
   authenticationSlice.actions
 
 export default authenticationSlice.reducer

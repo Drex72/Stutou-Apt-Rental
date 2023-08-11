@@ -7,6 +7,7 @@ import { ILoginInput } from "../interfaces/ILoginInput";
 import { useAuthActions } from "../../../hooks/useReduxActions";
 import authService from "../../../services/authenticationService";
 import { AllRouteConstants } from "../../../router/RouteConstants";
+import { ILoginAPIResponse } from "../../../interfaces/IAPIResponse";
 
 const useLogin = () => {
     const navigate = useNavigate();

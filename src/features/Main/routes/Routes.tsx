@@ -1,6 +1,6 @@
 import { Route } from "react-router-dom";
 import { AllRouteConstants } from "../../../router/RouteConstants";
-import { Home } from "../pages";
+import { Home, SingleApartment } from "../pages";
 
 const SocialMediaRoutes = () => {
 
@@ -17,6 +17,11 @@ const SocialMediaRoutes = () => {
         element={<Home />}
       />
 
+
+      <Route
+        path={AllRouteConstants.main.apartment.singleApartment}
+        element={<SingleApartment />}
+      />
 
     </>
   );

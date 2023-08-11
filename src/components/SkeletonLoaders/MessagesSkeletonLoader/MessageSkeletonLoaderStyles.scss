@@ -1,0 +1,30 @@
+.message_skeleton_loader {
+    padding: .5rem 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    transition: all 300ms ease-in-out;
+
+    &_info {
+        color: #363636;
+        text-align: start;
+        transition: all 300ms ease-in-out;
+
+        .heading {
+            background: #d7ecfc;
+            width: 200px;
+            height: 10px;
+        }
+
+        .text {
+            background: #d7ecfc;
+            margin-top: 1em;
+            width: 100px;
+            height: 10px;
+        }
+
+
+    }
+
+}

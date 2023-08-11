@@ -1,0 +1,45 @@
+@import "../../../styles/color-palette";
+
+.single_apartment {
+    @include themify($themes) {
+
+        &_header {
+            &_image {
+                width: 100%;
+                height: fit-content;
+                position: relative;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 10px;
+                }
+            }
+
+            &_back_button {
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                border: 1px solid themed('primary');
+                cursor: pointer;
+                padding: 1rem 1.5rem;
+                background: white;
+                outline: none;
+                border-radius: 5px;
+                color: themed('primary');
+                display: flex;
+                align-items: center;
+                gap: 1em;
+            }
+
+            &_tag_container {
+                display: flex;
+                align-items: center;
+                gap: 1em;
+                margin-top: 1em;
+            }
+        }
+
+    }
+}

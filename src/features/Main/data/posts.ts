@@ -1,4 +1,3 @@
-
 export const apartmentPosts: IApartment[] = [
   {
     _id: '1',
@@ -13,6 +12,7 @@ export const apartmentPosts: IApartment[] = [
     highestPrice: 2500,
     owner: 'John Doe',
     comments: [],
+    postCode: '',
     isVerified: true
   },
   {
@@ -28,6 +28,7 @@ export const apartmentPosts: IApartment[] = [
     highestPrice: 1100,
     owner: 'Jane Smith',
     comments: [],
+    postCode: '',
     isVerified: false
   },
   {
@@ -43,13 +44,15 @@ export const apartmentPosts: IApartment[] = [
     highestPrice: 2800,
     owner: 'Michael Johnson',
     comments: [],
+    postCode: '',
     isVerified: true
   },
   {
     _id: '4',
     name: 'Modern Downtown Loft',
     description: 'Chic and modern loft in the heart of downtown.',
-    image: 'https://lid.zoocdn.com/645/430/de0c34a00ae6eccbecb97b4f8f67acc0821ffbd1.jpg:p',
+    image:
+      'https://lid.zoocdn.com/645/430/de0c34a00ae6eccbecb97b4f8f67acc0821ffbd1.jpg:p',
     location: '567 Main Street, City Center, CC 56789',
     rooms: 1,
     categories: ['urban', 'modern'],
@@ -57,13 +60,15 @@ export const apartmentPosts: IApartment[] = [
     highestPrice: 1800,
     owner: 'Amanda Lee',
     comments: [],
+    postCode: '',
     isVerified: true
   },
   {
     _id: '5',
     name: 'Penthouse Suite',
     description: 'Exquisite penthouse with panoramic views.',
-    image: 'https://lid.zoocdn.com/645/430/0e875c1522e8171b3b528bc84e9be4ce02f51644.jpg:p',
+    image:
+      'https://lid.zoocdn.com/645/430/0e875c1522e8171b3b528bc84e9be4ce02f51644.jpg:p',
     location: '890 Skyline Avenue, Heights, HT 89012',
     rooms: 4,
     categories: ['luxury', 'panoramic-view'],
@@ -71,13 +76,15 @@ export const apartmentPosts: IApartment[] = [
     highestPrice: 5000,
     owner: 'Robert Williams',
     comments: [],
+    postCode: '',
     isVerified: false
   },
   {
     _id: '6',
     name: 'Riverside Retreat',
     description: 'Tranquil apartment by the river, perfect for nature lovers.',
-    image: 'https://lid.zoocdn.com/645/430/8630c60c13546c84598f1cefc0f6304ac4a3d965.jpg:p',
+    image:
+      'https://lid.zoocdn.com/645/430/8630c60c13546c84598f1cefc0f6304ac4a3d965.jpg:p',
     location: '345 River Road, Serenity Valley, SV 34567',
     rooms: 2,
     categories: ['scenic', 'nature'],
@@ -85,13 +92,15 @@ export const apartmentPosts: IApartment[] = [
     highestPrice: 1600,
     owner: 'Emily Turner',
     comments: [],
+    postCode: '',
     isVerified: false
   },
   {
     _id: '7',
     name: 'Vintage Charm',
     description: 'Elegant vintage apartment with timeless appeal.',
-    image: 'https://lid.zoocdn.com/645/430/141f4c541a67327adce5d5eaec42f3a217fc6cba.jpg:p',
+    image:
+      'https://lid.zoocdn.com/645/430/141f4c541a67327adce5d5eaec42f3a217fc6cba.jpg:p',
     location: '678 Antique Avenue, Classicville, CV 67890',
     rooms: 3,
     categories: ['vintage', 'elegant'],
@@ -99,13 +108,15 @@ export const apartmentPosts: IApartment[] = [
     highestPrice: 2000,
     owner: 'David Martin',
     comments: [],
+    postCode: '',
     isVerified: true
   },
   {
     _id: '8',
     name: 'Sunny Garden Flat',
     description: 'Bright and airy garden flat with a sunny patio.',
-    image: 'https://lid.zoocdn.com/645/430/bbd2d19722ea7089ee0e6c80e6b997cad030b8bf.jpg:p',
+    image:
+      'https://lid.zoocdn.com/645/430/bbd2d19722ea7089ee0e6c80e6b997cad030b8bf.jpg:p',
     location: '123 Sunflower Lane, Gardenia, GA 12345',
     rooms: 2,
     categories: ['garden', 'sunny'],
@@ -113,13 +124,15 @@ export const apartmentPosts: IApartment[] = [
     highestPrice: 1500,
     owner: 'Olivia Anderson',
     comments: [],
+    postCode: '',
     isVerified: true
   },
   {
     _id: '9',
     name: 'Urban Oasis',
     description: 'Urban oasis with modern amenities and a touch of green.',
-    image: 'https://lid.zoocdn.com/645/430/c40888ac29617164565fc46a12a33275c5868458.jpg:p',
+    image:
+      'https://lid.zoocdn.com/645/430/c40888ac29617164565fc46a12a33275c5868458.jpg:p',
     location: '456 Oasis Boulevard, Metropolis, MP 45678',
     rooms: 1,
     categories: ['modern', 'oasis'],
@@ -127,13 +140,15 @@ export const apartmentPosts: IApartment[] = [
     highestPrice: 1300,
     owner: 'Daniel Martinez',
     comments: [],
+    postCode: '',
     isVerified: false
   },
   {
     _id: '10',
     name: 'Executive Suite',
     description: 'Executive suite for business travelers seeking comfort.',
-    image: 'https://lid.zoocdn.com/645/430/e94ce72316dd5e20e03f5b0258d1b2786260ebf2.jpg:p',
+    image:
+      'https://lid.zoocdn.com/645/430/e94ce72316dd5e20e03f5b0258d1b2786260ebf2.jpg:p',
     location: '789 Business Avenue, Biztown, BZ 78901',
     rooms: 1,
     categories: ['business', 'comfort'],
@@ -141,8 +156,9 @@ export const apartmentPosts: IApartment[] = [
     highestPrice: 1800,
     owner: 'Sophia White',
     comments: [],
+    postCode: '',
     isVerified: true
-  },
+  }
   // {
   //   _id: '11',
   //   name: 'Seaside Paradise',
@@ -154,7 +170,7 @@ export const apartmentPosts: IApartment[] = [
   //   lowestPrice: 1600,
   //   highestPrice: 2200,
   //   owner: 'Liam Johnson',
-  //   comments: [],
+  //   comments: [],postCode:'',
   //   isVerified: false
   // },
   // {
@@ -168,7 +184,7 @@ export const apartmentPosts: IApartment[] = [
   //   lowestPrice: 800,
   //   highestPrice: 1100,
   //   owner: 'Mia Davis',
-  //   comments: [],
+  //   comments: [],postCode:'',
   //   isVerified: true
   // },
   // {
@@ -182,7 +198,7 @@ export const apartmentPosts: IApartment[] = [
   //   lowestPrice: 1000,
   //   highestPrice: 1400,
   //   owner: 'Ethan Wilson',
-  //   comments: [],
+  //   comments: [],postCode:'',
   //   isVerified: false
   // },
   // {
@@ -196,7 +212,7 @@ export const apartmentPosts: IApartment[] = [
   //   lowestPrice: 1100,
   //   highestPrice: 1600,
   //   owner: 'Ava Garcia',
-  //   comments: [],
+  //   comments: [],postCode:'',
   //   isVerified: true
   // },
   // {
@@ -210,7 +226,7 @@ export const apartmentPosts: IApartment[] = [
   //   lowestPrice: 950,
   //   highestPrice: 1300,
   //   owner: 'Noah Smith',
-  //   comments: [],
+  //   comments: [],postCode:'',
   //   isVerified: false
   // },
   // {
@@ -224,7 +240,7 @@ export const apartmentPosts: IApartment[] = [
   //   lowestPrice: 1200,
   //   highestPrice: 1600,
   //   owner: 'Oliver Taylor',
-  //   comments: [],
+  //   comments: [],postCode:'',
   //   isVerified: true
   // },
   // {
@@ -239,7 +255,7 @@ export const apartmentPosts: IApartment[] = [
   //   lowestPrice: 1000,
   //   highestPrice: 1400,
   //   owner: 'Emma Brown',
-  //   comments: [],
+  //   comments: [],postCode:'',
   //   isVerified: false
   // },
   // {
@@ -253,7 +269,7 @@ export const apartmentPosts: IApartment[] = [
   //   lowestPrice: 1300,
   //   highestPrice: 1800,
   //   owner: 'Liam Wilson',
-  //   comments: [],
+  //   comments: [],postCode:'',
   //   isVerified: true
   // },
   // {
@@ -267,7 +283,7 @@ export const apartmentPosts: IApartment[] = [
   //   lowestPrice: 1500,
   //   highestPrice: 2200,
   //   owner: 'Grace Miller',
-  //   comments: [],
+  //   comments: [],postCode:'',
   //   isVerified: false
   // },
   // {
@@ -281,7 +297,7 @@ export const apartmentPosts: IApartment[] = [
   //   lowestPrice: 1400,
   //   highestPrice: 2000,
   //   owner: 'William Davis',
-  //   comments: [],
+  //   comments: [],postCode:'',
   //   isVerified: true
   // }
 ]

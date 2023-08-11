@@ -1,7 +1,32 @@
-import React from 'react'
+import { useEffect, useState } from 'react'
 import './MessageBarStyles.scss'
+import { useAppSelector } from '../../../../hooks/useAppSelector'
+import { IUser } from '../../../../interfaces/IAPIResponse'
+import MessageList from './MessageList'
+import { GroupedUserChat, groupChatsBySenderReceiver } from '../../../../utils/groupChatsByReceiver'
+import UserMessage from './UserMessage'
+import { useMessageActions } from '../../../../hooks/useReduxActions'
 
 const MessageBar = () => {
+
+    const { messages, users, authentication } = useAppSelector(state => state)
+    const { messages: userMessages, singleUserMessage } = messages
+    const { messageSingleUser } = useMessageActions()
+
+    const [allUserMessages, setAllUserMessages] = useState<GroupedUserChat[]>([])
+
+    useEffect(() => {
+        const chats = groupChatsBySenderReceiver(userMessages, users.users, authentication.userInfo.id)
+        setAllUserMessages(chats)
+
+        if (singleUserMessage) {
+            let selectedChat = chats.find((item) => item.user._id === singleUserMessage?.user._id)
+            if (selectedChat) {
+                messageSingleUser({ chat: selectedChat })
+            }
+        }
+    }, [users, userMessages])
+
     return (
         <div>
             <>
@@ -23,14 +48,12 @@ const MessageBar = () => {
                             </div>
                         </div>
                     </label>
-                    <input className="search-bar" type="text" />
-                    <a
-                        className="connect"
-                        href="https://www.linkedin.com/in/devrimos/"
-                        target="_blank"
-                    >
-                        Make new connections
-                    </a>
+                    {singleUserMessage ? (
+                        <UserMessage selectedMessage={singleUserMessage} />
+                    ) : (
+                        <MessageList allUserMessages={allUserMessages} />
+                    )}
+
                 </div>
             </>
 

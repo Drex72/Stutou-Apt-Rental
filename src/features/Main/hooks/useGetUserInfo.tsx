@@ -2,36 +2,50 @@ import { useEffect } from 'react'
 import authService from '../../../services/authenticationService';
 import { useAppSelector } from '../../../hooks/useAppSelector';
 import useApi from '../../../hooks/useApi';
-import { useAuthActions } from '../../../hooks/useReduxActions';
+import { useAuthActions, useUserActions } from '../../../hooks/useReduxActions';
+import { IAPIResponse, IUser } from '../../../interfaces/IAPIResponse';
+import useGetMessages from './useGetMessages';
 
 const useGetUserInfo = () => {
     const { userInfo } = useAppSelector(state => state.authentication)
     const { getUserDetails } = useAuthActions()
-    const getUserInfo = (userId: string) => authService.getUserInfo(userId);
+    const { initializeUsers } = useUserActions()
+    const { getAllMessages, loading: getMessagesLoading } = useGetMessages({ method: 'get' })
 
-    const getUserInfoRequest = useApi<IGetStudentAPIResponse, string>(getUserInfo);
+
+    const getUserInfo = (userId: string) => authService.getUserInfo(userId);
+    const getAllUsers = () => authService.getAllUsers();
+
+    const getUserInfoRequest = useApi<IAPIResponse<IUser>, string>(getUserInfo);
+    const getAllUsersRequest = useApi<IAPIResponse<IUser[]>, null>(getAllUsers);
 
     const getUserInfoHandler = async (userId?: string) => {
         getUserInfoRequest.reset();
         try {
-            const user = await getUserInfoRequest.request(userId ?? userInfo.id);
-            if (user && !userId) {
-                getUserDetails(user)
+            if (!userInfo?.email) {
+                const user = await getUserInfoRequest.request(userId ?? userInfo.id);
+
+                if (user && !userId) {
+                    getUserDetails(user.data)
+                }
             }
-            return user
+            const users = await getAllUsersRequest.request()
+
+            if (users) {
+                initializeUsers(users.data)
+            }
         } catch (error) { }
 
     };
 
     useEffect(() => {
-        if (!userInfo?.email) {
-            getUserInfoHandler()
-        }
+        getUserInfoHandler()
+        getAllMessages()
     }, [])
 
     return {
-        loading: getUserInfoRequest.loading,
-        error: getUserInfoRequest.error,
+        loading: getUserInfoRequest.loading || getAllUsersRequest.loading || getMessagesLoading,
+        error: getUserInfoRequest.error || getAllUsersRequest.error,
         data: getUserInfoRequest.data,
         requestUserInfo: getUserInfoHandler
     }

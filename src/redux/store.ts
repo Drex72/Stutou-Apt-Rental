@@ -6,6 +6,8 @@ import authenticationSlice from './authenticationSlice'
 import themeSlice from './themeSlice'
 import messageSlice from './messageSlice'
 import apartmentsSlice from './aparmentsSlice'
+import layoutSlice from './layoutSlice'
+import usersSlice from './usersSlice'
 
 const persistConfig = {
   key: 'root',
@@ -18,7 +20,9 @@ const rootReducer = combineReducers({
   authentication: authenticationSlice,
   theme: themeSlice,
   apartments: apartmentsSlice,
-  messages: messageSlice
+  messages: messageSlice,
+  layout: layoutSlice,
+  users: usersSlice
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
