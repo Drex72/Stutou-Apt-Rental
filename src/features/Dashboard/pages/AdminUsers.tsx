@@ -10,8 +10,8 @@ import '../styles/admin_users_styles.scss'
 import { IUser, Status } from '../../../interfaces/IAPIResponse'
 import { filterUsersBySearch, filterUsersByStatus } from '../utils/filterUsers'
 
+export const usersTableHead = ['First Name', 'Last Name', 'Email', 'Status', 'Actions']
 export const AdminUsers = () => {
-    const tableHead = ['First Name', 'Last Name', 'Email', 'Status', 'Actions']
     const { users } = useAppSelector(state => state.users)
 
     const [adminUsers, setAdminUsers] = useState({
@@ -87,7 +87,7 @@ export const AdminUsers = () => {
                         <EmptyTableState header='User List' message="Looks like no Users yet" />
                     ) : (
                         <div className="users_table_container">
-                            <UserTable tableData={adminUsers.filteredUsers} tableHead={tableHead} />
+                            <UserTable tableData={adminUsers.filteredUsers} tableHead={usersTableHead} />
                         </div>
                     )}
                 </div>
