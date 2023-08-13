@@ -29,7 +29,7 @@ export interface IApartment {
 }
 
 
-type Status = 'owner' | 'student'
+export type Status = 'owner' | 'student'
 
 export interface IUser {
   _id: string

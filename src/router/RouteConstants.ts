@@ -18,14 +18,31 @@ export const AllRouteConstants = {
     forgotPassword: '/auth/forgot-password',
     resetPassword: '/auth/reset-password'
   },
+  admin: {
+    index: '/stu-admin',
+    auth: {
+      index: '/stu-admin/auth',
+      login: '/stu-admin/auth/login',
+      register: '/stu-admin/auth/register'
+    },
+    users: {
+      index: '/stu-admin/users'
+    },
+    apartments: {
+      index: '/stu-admin/apartments'
+    },
+    addresses: {
+      index: '/stu-admin/addresses'
+    }
+  },
   main: {
     index: '/main',
     apartment: {
       singleApartment: '/main/apartments/:id'
     },
     owner: {
-      singleOwner:'/main/owner/:id',
-      singleOwnerProperties:''
+      singleOwner: '/main/owner/:id',
+      singleOwnerProperties: ''
     }
   }
 }

@@ -2,22 +2,21 @@ import { useEffect } from 'react'
 import authService from '../../../services/authenticationService';
 import { useAppSelector } from '../../../hooks/useAppSelector';
 import useApi from '../../../hooks/useApi';
-import { useAuthActions, useUserActions } from '../../../hooks/useReduxActions';
+import { useAuthActions } from '../../../hooks/useReduxActions';
 import { IAPIResponse, IUser } from '../../../interfaces/IAPIResponse';
 import useGetMessages from './useGetMessages';
+import useGetUsers from './useGetUsers';
 
 const useGetUserInfo = () => {
     const { userInfo } = useAppSelector(state => state.authentication)
     const { getUserDetails } = useAuthActions()
-    const { initializeUsers } = useUserActions()
     const { getAllMessages, loading: getMessagesLoading } = useGetMessages({ method: 'get' })
+    const { loading: getUsersLoading, getAllUsers } = useGetUsers()
 
 
     const getUserInfo = (userId: string) => authService.getUserInfo(userId);
-    const getAllUsers = () => authService.getAllUsers();
 
     const getUserInfoRequest = useApi<IAPIResponse<IUser>, string>(getUserInfo);
-    const getAllUsersRequest = useApi<IAPIResponse<IUser[]>, null>(getAllUsers);
 
     const getUserInfoHandler = async (userId?: string) => {
         getUserInfoRequest.reset();
@@ -29,11 +28,6 @@ const useGetUserInfo = () => {
                     getUserDetails(user.data)
                 }
             }
-            const users = await getAllUsersRequest.request()
-
-            if (users) {
-                initializeUsers(users.data)
-            }
         } catch (error) { }
 
     };
@@ -41,11 +35,12 @@ const useGetUserInfo = () => {
     useEffect(() => {
         getUserInfoHandler()
         getAllMessages()
+        getAllUsers()
     }, [])
 
     return {
-        loading: getUserInfoRequest.loading || getAllUsersRequest.loading || getMessagesLoading,
-        error: getUserInfoRequest.error || getAllUsersRequest.error,
+        loading: getUserInfoRequest.loading || getUsersLoading || getMessagesLoading,
+        error: getUserInfoRequest.error,
         data: getUserInfoRequest.data,
         requestUserInfo: getUserInfoHandler
     }

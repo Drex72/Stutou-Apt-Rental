@@ -9,7 +9,7 @@ type IMessageService = { method: "get" } | { method: 'post', chat: ISendChat, re
 interface SendChat { receiverId: string; chat: ISendChat }
 const useGetMessages = (data: IMessageService) => {
     const { userInfo } = useAppSelector(state => state.authentication)
-    const { getSingleUserChat, addChat } = useMessageActions()
+    const { initializeChats, addChat } = useMessageActions()
 
     const getAllMessages = () => messageService.getAllMessages()
     const sendMessage = (data: SendChat) => messageService.sendMessage({ receiverId: data.receiverId, chat: data.chat })
@@ -24,7 +24,7 @@ const useGetMessages = (data: IMessageService) => {
             const messages = await getAllMessagesRequest.request()
             console.log(messages, 'message')
             if (messages) {
-                getSingleUserChat({ chats: messages.data, userId: userInfo.id })
+                initializeChats({ chats: messages.data, userId: userInfo.id })
             }
 
         } catch (error) { }

@@ -1,0 +1,30 @@
+.users_header_components {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 10px;
+
+
+
+
+    @media screen and (min-width: 768px) {
+        flex-direction: row;
+
+        .users_search {
+            flex: 1 0 130px;
+            max-width: 450px;
+        }
+
+        .users_filter {
+            flex: 1 0 130px;
+            width: 200px;
+        }
+
+
+    }
+}
+
+.users_table_container {
+    margin-top: 2em;
+}

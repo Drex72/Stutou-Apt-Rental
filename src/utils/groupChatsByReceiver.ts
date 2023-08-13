@@ -12,18 +12,18 @@ export function groupChatsBySenderReceiver(
 ): GroupedUserChat[] {
   const groupedChats: GroupedUserChat[] = []
 
-  users.forEach((user) => {
-    if (user._id !== userId) {
-      const userChats: IChat[] = chats.filter(
-        (chat) => chat.senderId === user._id || chat.receiverId === user._id
-      )
+  const usersExceptForCurrent = users.filter((user) => user._id !== userId)
 
-      if (userChats.length > 0) {
-        groupedChats.push({
-          user: user,
-          chats: userChats
-        })
-      }
+  usersExceptForCurrent.forEach((user) => {
+    const userChats = chats.filter(
+      (item) => item.receiverId === user._id || item.senderId === user._id
+    )
+
+    if (userChats.length > 0) {
+      groupedChats.push({
+        user: user,
+        chats: userChats
+      })
     }
   })
 

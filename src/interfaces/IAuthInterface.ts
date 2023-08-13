@@ -4,11 +4,10 @@ export interface ILogin {
 }
 
 export interface BasicUser extends Omit<ILogin, 'password'> {
-  id:string
+  id: string
   firstname: string
   lastname: string
   status: 'owner' | 'student'
-
 }
 
 export interface UserRegister extends ILogin {
@@ -17,7 +16,13 @@ export interface UserRegister extends ILogin {
   status: 'owner' | 'student'
 }
 
+export interface AdminRegister extends ILogin {
+  fullname: string
+}
 
 export interface IForgotPassword {
-  email: string;
+  email: string
 }
+
+
+export type IUserType  = 'admin' | 'user'

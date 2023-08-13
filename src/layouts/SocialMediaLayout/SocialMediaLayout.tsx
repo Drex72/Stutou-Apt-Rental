@@ -14,7 +14,7 @@ function SocialMediaLayout() {
     const { leftComponent } = useAppSelector(state => state.layout)
 
     return (
-        <RequireAuth>
+        <RequireAuth type="user">
             {loading ? (
                 <PageLoader />
             ) : (

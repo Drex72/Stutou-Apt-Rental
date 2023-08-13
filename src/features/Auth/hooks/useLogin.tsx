@@ -32,7 +32,7 @@ const useLogin = () => {
             try {
                 const user = await loginApiRequest.request(loginForm.form);
                 if (user) {
-                    login(user);
+                    login({ response: user, userType: 'user' });
                     navigate(AllRouteConstants.main.index);
                 }
             } catch (error) { }

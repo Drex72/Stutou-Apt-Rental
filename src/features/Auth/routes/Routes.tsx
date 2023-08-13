@@ -9,7 +9,6 @@ const AuthRoutes = () => {
       <Route path={AllRouteConstants.auth.login} element={<Login />} />
       <Route path={AllRouteConstants.auth.signup} element={<Register />} />
       <Route path={AllRouteConstants.auth.forgotPassword} element={<ForgotPassword />} />
-
     </>
   );
 };

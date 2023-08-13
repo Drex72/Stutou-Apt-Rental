@@ -21,7 +21,7 @@ export const messageSlice = createSlice({
       state.messageStatus = payload
     },
 
-    getSingleUserChat: (
+    initializeChats: (
       state,
       action: {
         payload: {
@@ -31,14 +31,9 @@ export const messageSlice = createSlice({
       }
     ) => {
       const { chats, userId } = action.payload
-      console.log(userId, chats)
-      const userChats: IChat[] = []
-      chats.map((chat) => {
-        if (chat.receiverId === userId || chat.senderId === userId) {
-          userChats.push(chat)
-        }
-      })
-      state.messages = userChats
+      state.messages = chats.filter(
+        (chat) => chat.receiverId === userId || chat.senderId === userId
+      )
     },
 
     addChat: (
@@ -74,7 +69,7 @@ export const messageSlice = createSlice({
 
 export const {
   toggleMessageStatus,
-  getSingleUserChat,
+  initializeChats,
   addChat,
   messageSingleUser,
   clearMessageSingleUser

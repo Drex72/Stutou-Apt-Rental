@@ -15,7 +15,7 @@ const MessageList = (props: IMessageList) => {
     const { messageSingleUser } = useMessageActions()
 
     return (
-        <div className='animate__animated animate__fadeIn'>
+        <div className='animate__animated animate__fadeIn message_users'>
             <div className='message_users_header'>
                 <input className="search-bar" type="text" />
                 <div className='message_users_refresh_container'>

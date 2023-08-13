@@ -7,7 +7,7 @@
     margin-right: 5px;
     margin-left: 5px;
     margin-top: 16.5vh;
-    overflow: hidden;
+    overflow-y: scroll;
     position: fixed;
     right: 5px;
     bottom: 0px;
@@ -114,11 +114,14 @@
 }
 
 .message_users {
+
     &_container {
         display: flex;
         flex-direction: column;
         gap: 1em;
         margin-top: 1em;
+
+        overflow-y: scroll;
     }
 
     &_header {

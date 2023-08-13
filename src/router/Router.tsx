@@ -8,6 +8,8 @@ import AuthLayout from "../layouts/authLayout/AuthLayout";
 import AuthRoutes from "../features/Auth/routes/Routes";
 import SocialMediaLayout from "../layouts/SocialMediaLayout/SocialMediaLayout";
 import SocialMediaRoutes from "../features/Main/routes/Routes";
+import { DashboardAuthRoutes, DashboardMainRoutes } from "../features/Dashboard/routes";
+import DashboardLayout from "../layouts/dashboardLayout/DashboardLayout";
 
 /**
  * These are the routes Container for all the routes in the application
@@ -46,6 +48,24 @@ function Router() {
         >
           {SocialMediaRoutes()}
         </Route>
+
+        {/* Routes for the Admin Auth Dashboard (The Same concept for the Landing Page) */}
+        <Route
+          path={AllRouteConstants.admin.auth.index}
+          element={<AuthLayout />}
+        >
+          {DashboardAuthRoutes()}
+        </Route>
+
+        {/* Routes for the Admin Dashboard (The Same concept for the Landing Page) */}
+        <Route
+          path={AllRouteConstants.admin.index}
+          element={<DashboardLayout />}
+        >
+          {DashboardMainRoutes()}
+        </Route>
+
+
 
 
         <Route path="*" element={<NotFound />} />

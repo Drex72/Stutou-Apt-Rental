@@ -29,7 +29,7 @@ export const SingleApartment = () => {
     return (
         <div className="single_apartment animate__animated animate__fadeIn">
             <div className="single_apartment_header_image">
-                <button className='single_apartment_header_back_button'><AiOutlineArrowLeft />Back to Apartments</button>
+                <button className='single_apartment_header_back_button' onClick={() => navigate(AllRouteConstants.main.index)}><AiOutlineArrowLeft />Back to Apartments</button>
                 <img src={selectedApartment?.image} alt='Apartment' />
             </div>
             <div className='single_apartment_header_tag_container'>
