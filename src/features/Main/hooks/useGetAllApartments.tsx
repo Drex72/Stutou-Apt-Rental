@@ -37,6 +37,7 @@ const useGetAllApartments = (dummy: boolean) => {
             // Sending the API request using the 'request' function from 'getAllApartmentsRequest'.
             const apartments = await getAllApartmentsRequest.request();
             const filteredApartments: IApartment[] = []
+            console.log(apartments)
             if (apartments) {
                 apartments.data.map((apartment) => {
                     users.map((user) => {
