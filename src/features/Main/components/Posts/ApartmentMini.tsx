@@ -15,6 +15,18 @@ const ApartmentMini = ({ apartment }: IApartmentMini) => {
     navigate(`/main/apartments/${_id}`)
     selectApartment({ apartmentid: _id })
   }
+
+  function truncateText(text: string, maxLength: number) {
+    if (text.length <= maxLength) {
+      return text; // No need to truncate
+    }
+
+    const firstPart = text.slice(0, maxLength);
+    const secondPart = text.slice(maxLength);
+
+    return `${firstPart}...`;
+  }
+
   return (
     <div className='apartment_mini  animate__animated animate__fadeIn' onClick={handleApartmentClick}>
       <div className="apartment_mini_image_container">
@@ -40,7 +52,7 @@ const ApartmentMini = ({ apartment }: IApartmentMini) => {
               <p className="postCode">
                 <span>Post Code</span>: {postCode}
               </p>
-              <p className="description">{description}</p>
+              <p className="description">{truncateText(description, 130)}</p>
             </div>
           </div>
           <div className="bottom">
