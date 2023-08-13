@@ -7,6 +7,7 @@ import { Popover } from '@mui/material';
 import { verificationClassName } from '../../utils/customTableActions';
 import useApartmentsTable from '../../hooks/useApartmentsTable';
 import Button from '../../../../components/Button/Button';
+import { truncateText } from '../../../Main/components/Posts/ApartmentMini';
 
 
 interface IApartmentsTable {
@@ -38,7 +39,7 @@ const ApartmentTable = (props: IApartmentsTable) => {
                         {tableData.map((item, index) => (
                             <TableBodyRow key={index}>
                                 <TableBodyRowChild>{item.name}</TableBodyRowChild>
-                                <TableBodyRowChild>{item.description}</TableBodyRowChild>
+                                <TableBodyRowChild>{truncateText(item.description, 20)}</TableBodyRowChild>
                                 <TableBodyRowChild nonCapitalize>{item.location}</TableBodyRowChild>
                                 <TableBodyRowChild nonCapitalize>{item.highestPrice}</TableBodyRowChild>
                                 <TableBodyRowChild nonCapitalize>{item.lowestPrice}</TableBodyRowChild>

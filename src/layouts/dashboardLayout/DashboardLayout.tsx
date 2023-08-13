@@ -8,12 +8,19 @@ import { useEffect } from "react";
 import useGetAllApartments from "../../features/Main/hooks/useGetAllApartments";
 
 const DashboardLayout = () => {
-  const { loading, getAllUsers } = useGetUsers()
-  const { loading: apartmentsLoading,getAllApartmentsHandler } = useGetAllApartments(false)
+  const { loading, getAllUsers,data:allUsers } = useGetUsers()
+  const { loading: apartmentsLoading, getAllApartmentsHandler } = useGetAllApartments(false)
 
-  useEffect(() => {
+  const getData = async () => {
     getAllUsers()
     getAllApartmentsHandler()
+  }
+
+  useEffect(() => {
+    getAllApartmentsHandler(allUsers?.data)
+  }, [allUsers])
+  useEffect(() => {
+    getData()
   }, [])
   return (
     <RequireAuth type="admin">

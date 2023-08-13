@@ -6,7 +6,7 @@ import useApi from '../../../hooks/useApi'; // Custom hook for handling API requ
 import { useApartmentActions } from '../../../hooks/useReduxActions'; // Custom hook for using Redux actions related to apartments.
 import apartmentService from '../../../services/apartmentService'; // Service module for interacting with apartment-related APIs.
 import { apartmentPosts } from '../data/posts'; // An array containing dummy apartment data.
-import { IAPIResponse, IApartment } from '../../../interfaces/IAPIResponse';
+import { IAPIResponse, IApartment, IUser } from '../../../interfaces/IAPIResponse';
 
 // Defining a custom hook named 'useGetAllApartments' which takes a 'dummy' boolean parameter.
 const useGetAllApartments = (dummy: boolean) => {
@@ -25,7 +25,7 @@ const useGetAllApartments = (dummy: boolean) => {
     const getAllApartmentsRequest = useApi<IAPIResponse<IApartment[]>, null>(getAllApartments);
 
     // Defining a function to handle getting all apartments from the API.
-    const getAllApartmentsHandler = async () => {
+    const getAllApartmentsHandler = async (allUsers?: IUser[] | null) => {
         // Resetting the API request status using the 'reset' function from 'getAllApartmentsRequest'.
         getAllApartmentsRequest.reset();
 
@@ -36,15 +36,24 @@ const useGetAllApartments = (dummy: boolean) => {
         try {
             // Sending the API request using the 'request' function from 'getAllApartmentsRequest'.
             const apartments = await getAllApartmentsRequest.request();
-            const filteredApartments: IApartment[] = []
-            if (apartments) {
+            if (apartments?.data.length) {
+                const filteredApartments: IApartment[] = []
                 apartments.data.map((apartment) => {
-                    users.map((user) => {
-                        if (apartment.owner === user._id) {
-                            filteredApartments.push(apartment)
-                        }
-                    })
+                    if (allUsers) {
+                        allUsers.map((user) => {
+                            if (apartment.owner === user._id) {
+                                filteredApartments.push(apartment)
+                            }
+                        })
+                    } else {
+                        users.map((user) => {
+                            if (apartment.owner === user._id) {
+                                filteredApartments.push(apartment)
+                            }
+                        })
+                    }
                 })
+
                 // initialize apartments with data from the API response.
                 initializeApartments(filteredApartments)
             }

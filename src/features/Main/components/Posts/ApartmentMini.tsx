@@ -7,6 +7,16 @@ import { IApartment } from '../../../../interfaces/IAPIResponse'
 interface IApartmentMini {
   apartment: IApartment
 }
+export 
+function truncateText(text: string, maxLength: number) {
+  if (text.length <= maxLength) {
+    return text; 
+  }
+
+  const firstPart = text.slice(0, maxLength);
+
+  return `${firstPart}...`;
+}
 const ApartmentMini = ({ apartment }: IApartmentMini) => {
   const { categories, description, highestPrice, image, location, lowestPrice, name, isVerified, _id, postCode } = apartment
   const navigate = useNavigate()
@@ -16,15 +26,6 @@ const ApartmentMini = ({ apartment }: IApartmentMini) => {
     selectApartment({ apartmentid: _id })
   }
 
-  function truncateText(text: string, maxLength: number) {
-    if (text.length <= maxLength) {
-      return text; // No need to truncate
-    }
-
-    const firstPart = text.slice(0, maxLength);
-
-    return `${firstPart}...`;
-  }
 
   return (
     <div className='apartment_mini  animate__animated animate__fadeIn' onClick={handleApartmentClick}>
