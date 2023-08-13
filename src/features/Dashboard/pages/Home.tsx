@@ -25,6 +25,8 @@ export const Home = () => {
 
   const { userInfo } = useAppSelector((state => state.authentication))
   const { users } = useAppSelector(state => state.users)
+  const { allApartments } = useAppSelector(state => state.apartments)
+
   return (
     <div className="dashboard_main_container">
       <h1 className="dashboard_main_container_header">
@@ -34,12 +36,12 @@ export const Home = () => {
 
       <div className="dashboard_main_container_card_container">
         <DashboardCard
-          value={11}
+          value={users.length}
           label="Total Amount of Users"
           icon={<FiUsers className="image_icon" />}
         />
         <DashboardCard
-          value={11}
+          value={allApartments.length}
           label="Total Amount of Apartments"
           icon={<BsHouses className="image_icon" />}
         />
