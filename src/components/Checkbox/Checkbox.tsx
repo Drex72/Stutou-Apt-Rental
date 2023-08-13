@@ -1,4 +1,3 @@
-import React from "react";
 import "./CheckboxStyles.scss";
 
 interface CheckboxProps {

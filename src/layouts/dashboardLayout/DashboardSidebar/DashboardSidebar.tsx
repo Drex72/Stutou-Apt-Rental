@@ -7,15 +7,17 @@ import {
   AiOutlineHome, AiOutlineUser,
 } from "react-icons/ai";
 import { BsFillHouseDoorFill } from 'react-icons/bs'
-import {CiLocationOn} from 'react-icons/ci'
+import { CiLocationOn } from 'react-icons/ci'
 
 import Logo from "../../../components/Logo/Logo";
 import { AllRouteConstants } from "../../../router/RouteConstants";
+import { useAuthActions } from "../../../hooks/useReduxActions";
 const DashboardSidebar = () => {
   const navigate = useNavigate();
-  // const { data } = useAppSelector((store) => store.userReducer);
+  const { logout } = useAuthActions()
 
   const handleLogout = async () => {
+    logout()
     navigate(AllRouteConstants.admin.auth.login);
 
   };

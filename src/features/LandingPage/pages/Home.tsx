@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Hero, HowItWorks, AccomodationEasy, TestimonialContainer, FAQ } from "../components"
+import { Hero, HowItWorks, AccomodationEasy, TestimonialContainer, } from "../components"
 import { getAllImages } from "../hooks/useFetch"
 import { HeroImage } from "../../../utils/getImageLinksFromApi"
 import PageLoader from "../../../components/PageLoader/PageLoader"
@@ -35,7 +35,6 @@ export const Home = () => {
           <AccomodationEasy />
           <HowItWorks />
           <TestimonialContainer />
-          <FAQ />
         </div>
       )}
     </div>

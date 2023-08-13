@@ -19,15 +19,15 @@ export const testimonials = [
   },
   {
     message:
-      "Medusa is one of the rising stars of open-source ecommerce and it's definitely a huge step forward for the whole industry in making headless commerce more approachable",
+      "StuApt is one of the rising stars of open-source ecommerce and it's definitely a huge step forward for the whole industry in making headless commerce more approachable",
     name: 'Filip Rakowski',
     role: 'CTO &amp; Co-founder @ Vue Storefront'
   },
   {
     message:
-      "We thought of building a custom setup that would allow us to manage multiple DTC brands, but I didn't want to re-invent the wheel, so I started to look for building blocks to extend from - Medusa seems like a perfect fit",
+      "We thought of building a custom setup that would allow us to manage multiple DTC brands, but I didn't want to re-invent the wheel, so I started to look for building blocks to extend from - StuApt seems like a perfect fit",
     name: 'Danish Iqbal',
-    role: 'CEO @ MedusaDistribution'
+    role: 'CEO @ StuAptDistribution'
   },
   {
     message:
@@ -37,26 +37,26 @@ export const testimonials = [
   },
   {
     message:
-      ' Medusa is simple to use, deploy and manage. One doesn’t require an army of developers with varying skill sets. I was able to get everything up and running in a couple of minutes.',
+      ' StuApt is simple to use, deploy and manage. One doesn’t require an army of developers with varying skill sets. I was able to get everything up and running in a couple of minutes.',
     name: 'Thomas Blanc',
     role: 'Tech Manager @ Herewecome'
   },
 
   {
     message:
-      "We've used Medusa since day one and are incredibly happy with our choice. Great team and product. Highly recommend!",
+      "We've used StuApt since day one and are incredibly happy with our choice. Great team and product. Highly recommend!",
     name: 'Nikolaj Hansson',
     role: 'CEO @ Palmes'
   },
   {
     message:
-      'Medusa is the most exciting open-source project I’ve seen since Vue or Svelte. Having worked with Shopify for 7 years, let me just say how excited I am to have found this beautiful replacement.',
+      'StuApt is the most exciting open-source project I’ve seen since Vue or Svelte. Having worked with Shopify for 7 years, let me just say how excited I am to have found this beautiful replacement.',
     name: 'Brian Lovin',
     role: 'Founder Campsite'
   },
   {
     message:
-      'Medusa is the most exciting open-source project I’ve seen since Vue or Svelte. Having worked with Shopify for 7 years, let me just say how excited I am to have found this beautiful replacement.',
+      'StuApt is the most exciting open-source project I’ve seen since Vue or Svelte. Having worked with Shopify for 7 years, let me just say how excited I am to have found this beautiful replacement.',
     name: 'Brian Lovin',
     role: 'Founder Campsite'
   }

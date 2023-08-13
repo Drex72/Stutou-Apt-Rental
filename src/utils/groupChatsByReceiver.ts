@@ -18,6 +18,7 @@ export function groupChatsBySenderReceiver(
     const userChats = chats.filter(
       (item) => item.receiverId === user._id || item.senderId === user._id
     )
+    console.log(userChats, usersExceptForCurrent, chats)
 
     if (userChats.length > 0) {
       groupedChats.push({

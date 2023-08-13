@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 const AuthLayout = () => {
   const userToken = localStorage.getItem('accessToken')
+  
   const navigate = useNavigate();
 
   useEffect(() => {

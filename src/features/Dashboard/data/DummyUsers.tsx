@@ -14,6 +14,7 @@ export const dummyUsers: IUser[] = [
 ]
 
 export const UserFilterOptions = [
+    { value: "all", label: "All" },
     { value: "owner", label: "Owner" },
     { value: "student", label: "Student" },
 ];

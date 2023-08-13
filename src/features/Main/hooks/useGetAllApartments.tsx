@@ -12,6 +12,7 @@ import { IAPIResponse, IApartment } from '../../../interfaces/IAPIResponse';
 const useGetAllApartments = (dummy: boolean) => {
     // Using the custom 'useAppSelector' hook to extract the 'allApartments' state from the Redux store.
     const { allApartments } = useAppSelector(state => state.apartments)
+    const { users } = useAppSelector((state) => state.users)
 
     // Using the custom 'useApartmentActions' hook to get the 'initializeApartments' Redux action.
     const { initializeApartments } = useApartmentActions()
@@ -35,9 +36,18 @@ const useGetAllApartments = (dummy: boolean) => {
         try {
             // Sending the API request using the 'request' function from 'getAllApartmentsRequest'.
             const apartments = await getAllApartmentsRequest.request();
+            const filteredApartments: IApartment[] = []
             if (apartments) {
+                apartments.data.map((apartment) => {
+                    users.map((user) => {
+                        if (apartment.owner === user._id) {
+                            filteredApartments.push(apartment)
+                        }
+                    })
+                })
+
                 // initialize apartments with data from the API response.
-                initializeApartments(apartments.data)
+                initializeApartments(filteredApartments)
             }
         } catch (error) {
             // If there's an error during the API request, it's caught and ignored here.

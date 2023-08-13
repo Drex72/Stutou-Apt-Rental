@@ -45,7 +45,6 @@ export const ContactUs = () => {
     <div>
       <LandingPageNavbar heroPage={false} sidebarOpened={false} openSideBar={() => console.log('hey')} />
       <motion.div className="mb_contact_us">
-
         <div className="mb_contact_us_content_wrapper">
           <motion.div className="mb_contact_us_content_wrapper-left">
             <motion.img

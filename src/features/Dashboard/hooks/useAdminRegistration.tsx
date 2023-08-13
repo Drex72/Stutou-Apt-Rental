@@ -4,7 +4,6 @@ import { AdminRegister } from '../../../interfaces/IAuthInterface';
 import { emailValidator } from '../../../utils/validators/emailValidator';
 import { emptyValidator } from '../../../utils/validators/emptyValidator';
 import { useForm } from '../../../hooks/useForm';
-import authService from '../../../services/authenticationService';
 import useApi from '../../../hooks/useApi';
 import { AllRouteConstants } from '../../../router/RouteConstants';
 import toast from 'react-hot-toast';

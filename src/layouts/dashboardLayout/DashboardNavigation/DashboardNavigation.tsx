@@ -1,17 +1,16 @@
-import React from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import "./DashboardNavigationStyles.scss";
-import { useAppSelector } from "../../../hooks/useAppSelector";
 import Logo from "../../../components/Logo/Logo";
-import { useDispatch } from "react-redux";
+import { useAppSelector } from "../../../hooks/useAppSelector";
+import { useLayoutActions } from "../../../hooks/useReduxActions";
 
 const DashboardNavigation = () => {
   // const dispatch = useDispatch();
-  // const { sidebarOpened } = useAppSelector((state) => state.sidebarReducer);
-  // const sidebarOpened = false
+  const { sidebarOpened } = useAppSelector((state) => state.layout);
+  const { toggleSideBar } = useLayoutActions()
 
   const handleOpenSide = () => {
-    // dispatch(toggleSideBar(!sidebarOpened));
+    toggleSideBar(!sidebarOpened)
   };
 
   return (

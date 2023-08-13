@@ -22,6 +22,9 @@ export const RequireAuth: React.FC<RequireAuthProps> = ({ children, type }) => {
     if (!userToken || isTokenExpired(userToken)
     ) {
       localStorage.removeItem('accessToken')
+      if (type === 'admin') {
+        return navigate(AllRouteConstants.admin.auth.index);
+      }
       return navigate(AllRouteConstants.auth.index);
     }
 

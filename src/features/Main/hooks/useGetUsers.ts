@@ -13,7 +13,6 @@ const useGetUsers = () => {
   const getAllUsersHandler = async () => {
     try {
       const users = await getAllUsersRequest.request()
-      console.log(users)
 
       if (users) {
         initializeUsers(users.data)

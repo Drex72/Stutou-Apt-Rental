@@ -5,7 +5,6 @@ import { emailValidator } from "../../../utils/validators/emailValidator";
 import { emptyValidator } from "../../../utils/validators/emptyValidator";
 import { ILoginInput } from "../interfaces/ILoginInput";
 import { useAuthActions } from "../../../hooks/useReduxActions";
-import authService from "../../../services/authenticationService";
 import { AllRouteConstants } from "../../../router/RouteConstants";
 import { ILoginAPIResponse } from "../../../interfaces/IAPIResponse";
 import adminService from "../../../services/adminService";

@@ -5,16 +5,18 @@ import PageLoader from "../../components/PageLoader/PageLoader";
 import useGetUsers from "../../features/Main/hooks/useGetUsers";
 import { RequireAuth } from "../../HoC/RequireAuth";
 import { useEffect } from "react";
+import useGetAllApartments from "../../features/Main/hooks/useGetAllApartments";
 
 const DashboardLayout = () => {
   const { loading, getAllUsers } = useGetUsers()
+  const { loading: apartmentsLoading } = useGetAllApartments(false)
   useEffect(() => {
     getAllUsers()
   }, [])
   return (
     <RequireAuth type="admin">
       <>
-        {loading ? (
+        {loading || apartmentsLoading ? (
           <PageLoader />
         ) : (
           <div className="dashboard_layout_container animate__animated animate__fadeIn">

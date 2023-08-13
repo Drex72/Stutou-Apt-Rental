@@ -40,7 +40,7 @@ export const TableBodyContainer = ({
   children: ReactElement;
   className?: string;
 }) => {
-  return <tbody>{children}</tbody>;
+  return <tbody className={className}>{children}</tbody>;
 };
 
 export const TableHead = ({

@@ -1,4 +1,3 @@
-import React from "react";
 // import NotificationsAndAvatar from "../../../components/NotificationsAndAvatar/NotificationsAndAvatar";
 
 const DashboardNavigationDesktop = () => {

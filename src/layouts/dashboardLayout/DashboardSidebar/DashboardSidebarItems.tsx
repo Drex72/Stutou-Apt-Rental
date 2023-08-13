@@ -16,9 +16,9 @@ const DashboardSidebarItem: React.FC<NavItemProps> = ({
   onClick,
 }) => {
   const { pathname } = useLocation();
-  let sidebarItemCurrentPath: any = paths[0]?.split("/")[1];
+  let sidebarItemCurrentPath: any = paths[1]?.split("/")[2];
 
-  if (pathname.split("/")[2] == undefined && sidebarItemCurrentPath == "") {
+  if (pathname.split("/")[1] == undefined && sidebarItemCurrentPath == "") {
     sidebarItemCurrentPath = undefined;
   }
 

@@ -1,3 +1,4 @@
+
 export const RE_DIGIT = new RegExp(/^\d+$/)
 
 /**
@@ -29,7 +30,8 @@ export const AllRouteConstants = {
       index: '/stu-admin/users'
     },
     apartments: {
-      index: '/stu-admin/apartments'
+      index: '/stu-admin/apartments',
+      singleApartment: '/stu-admin/apartments/:id'
     },
     addresses: {
       index: '/stu-admin/addresses'

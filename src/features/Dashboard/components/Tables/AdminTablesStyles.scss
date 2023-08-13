@@ -4,16 +4,15 @@
     margin: 0 auto;
 }
 
-.owner_status_button {
-    background-color: rgb(148, 248, 148);
-    color: rgb(53, 124, 53);
+.verified_status_button {
+    background-color: #5CA6CE;
+    color: white;
 }
 
-.student_status_button {
-    background-color: rgb(238, 234, 108);
-    color: rgb(167, 162, 14);
+.unverified_status_button {
+    background-color: rgb(201, 31, 31);
+    color: white;
 }
-
 
 //   User Table
 .userActions {

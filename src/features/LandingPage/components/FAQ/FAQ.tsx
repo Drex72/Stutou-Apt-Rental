@@ -2,7 +2,6 @@ import { useRef, useState } from "react";
 import { IoIosArrowUp } from "react-icons/io";
 import "./FAQStyles.scss";
 import { motion } from "framer-motion";
-import ScrollAnimation from "react-animate-on-scroll";
 
 interface IAccordion {
     heading: string;
@@ -12,7 +11,7 @@ interface IAccordion {
 export const FAQ = () => {
 
     return (
-        <ScrollAnimation animateIn="zoomIn" className="mb_about_us-bottom">
+        <div className="mb_about_us-bottom">
             <h2 className="header">Frequently Asked Questions</h2>
             <div className="mb_about_us-bottom_questions">
                 <FAQCard
@@ -36,7 +35,7 @@ export const FAQ = () => {
                     content="We have a dedicated customer support team available to assist you. If you encounter any issues or have questions during your stay, simply reach out to our support team, and they will be happy to help."
                 />
             </div>
-        </ScrollAnimation>
+        </div>
     );
 };
 
@@ -49,8 +48,8 @@ const FAQCard = (props: IAccordion) => {
     const { heading, content } = props;
 
     return (
-        <ScrollAnimation
-            animateIn="fadeInUp"
+        <div
+            // animateIn="fadeInUp"
             className="mb_frequently_asked_question"
         >
             <div
@@ -81,7 +80,7 @@ const FAQCard = (props: IAccordion) => {
                     {content}
                 </motion.p>
             </div>
-        </ScrollAnimation>
+        </div>
     );
 };
 

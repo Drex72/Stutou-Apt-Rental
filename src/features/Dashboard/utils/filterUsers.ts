@@ -12,13 +12,17 @@ export const filterUsersBySearch = (users: IUser[], searchKeyword: string) => {
     return { message: 'No Value Searched', data: users }
   }
 }
-export const filterUsersByStatus = (users: IUser[], status: Status) => {
+export const filterUsersByStatus = (users: IUser[], status: Status | 'all') => {
   if (status) {
-    const result = users.filter(
-      (user) =>
-        user?.status?.toLocaleLowerCase() === status?.toLocaleLowerCase()
-    )
-    return { message: 'Successfully Searched', data: result }
+    if (status === 'all') {
+      return { message: 'Successfully Searched', data: users }
+    } else {
+      const result = users.filter(
+        (user) =>
+          user?.status?.toLocaleLowerCase() === status?.toLocaleLowerCase()
+      )
+      return { message: 'Successfully Searched', data: result }
+    }
   } else {
     return { message: 'No Value Filtered', data: users }
   }
