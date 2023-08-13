@@ -9,9 +9,11 @@ import useGetAllApartments from "../../features/Main/hooks/useGetAllApartments";
 
 const DashboardLayout = () => {
   const { loading, getAllUsers } = useGetUsers()
-  const { loading: apartmentsLoading } = useGetAllApartments(false)
+  const { loading: apartmentsLoading,getAllApartmentsHandler } = useGetAllApartments(false)
+
   useEffect(() => {
     getAllUsers()
+    getAllApartmentsHandler()
   }, [])
   return (
     <RequireAuth type="admin">

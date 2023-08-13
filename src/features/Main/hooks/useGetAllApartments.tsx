@@ -37,7 +37,6 @@ const useGetAllApartments = (dummy: boolean) => {
             // Sending the API request using the 'request' function from 'getAllApartmentsRequest'.
             const apartments = await getAllApartmentsRequest.request();
             const filteredApartments: IApartment[] = []
-            console.log(apartments)
             if (apartments) {
                 apartments.data.map((apartment) => {
                     users.map((user) => {
@@ -46,7 +45,6 @@ const useGetAllApartments = (dummy: boolean) => {
                         }
                     })
                 })
-
                 // initialize apartments with data from the API response.
                 initializeApartments(filteredApartments)
             }
@@ -67,7 +65,8 @@ const useGetAllApartments = (dummy: boolean) => {
     return {
         loading: getAllApartmentsRequest.loading, // Boolean indicating if the request is loading.
         error: getAllApartmentsRequest.error, // Any error that occurred during the request.
-        data: getAllApartmentsRequest.data // Data received from the API response.
+        data: getAllApartmentsRequest.data,// Data received from the API response.
+        getAllApartmentsHandler
     }
 }
 
