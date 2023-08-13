@@ -22,7 +22,6 @@ const ApartmentMini = ({ apartment }: IApartmentMini) => {
     }
 
     const firstPart = text.slice(0, maxLength);
-    const secondPart = text.slice(maxLength);
 
     return `${firstPart}...`;
   }
