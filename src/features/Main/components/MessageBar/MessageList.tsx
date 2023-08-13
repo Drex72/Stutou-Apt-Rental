@@ -18,9 +18,9 @@ const MessageList = (props: IMessageList) => {
         <div className='animate__animated animate__fadeIn message_users'>
             <div className='message_users_header'>
                 <input className="search-bar" type="text" />
-                <div className='message_users_refresh_container'>
+                <div className='message_users_refresh_container' onClick={getAllMessages}>
                     <div className='message_users_refresh'>
-                        <FiRefreshCcw onClick={getAllMessages} />
+                        <FiRefreshCcw  />
                     </div>
                     <span className="tooltiptext">Refresh Messages</span>
 
