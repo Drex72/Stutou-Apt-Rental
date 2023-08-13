@@ -51,12 +51,12 @@ const DashboardSidebar = () => {
           sidebarIcon={<BsFillHouseDoorFill />}
           sidebarItemName="Apartments"
         />
-        <DashboardSidebarItem
+        {/* <DashboardSidebarItem
           paths={["/stu-admin/users", AllRouteConstants.admin.addresses.index]}
           onClick={goToPage(AllRouteConstants.admin.addresses.index)}
           sidebarIcon={<CiLocationOn />}
           sidebarItemName="Addresses"
-        />
+        /> */}
       </div>
 
       <div className="dashboard_sidebar_logout" onClick={handleLogout}>

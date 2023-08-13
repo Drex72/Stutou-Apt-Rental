@@ -47,7 +47,6 @@ const ViewUserDrawer = (props: IViewUserDrawer) => {
                   id="First Name"
                   label="First Name"
                   error={null}
-                  animation="animate__animated animate__fadeInLeft"
                   inputProps={{
                     placeholder: "First Name",
                     value: selectedUser.firstname,
@@ -62,7 +61,6 @@ const ViewUserDrawer = (props: IViewUserDrawer) => {
                   id="Last Name"
                   label="Last Name"
                   error={null}
-                  animation="animate__animated animate__fadeInLeft"
                   inputProps={{
                     placeholder: "Last Name",
                     value: selectedUser.lastname,
@@ -78,10 +76,23 @@ const ViewUserDrawer = (props: IViewUserDrawer) => {
                   id="email"
                   label="Email"
                   error={null}
-                  animation="animate__animated animate__fadeInLeft"
                   inputProps={{
                     placeholder: "Email",
                     value: selectedUser.email,
+                    required: true,
+                    readOnly: true
+                  }}
+                />
+              </div>
+
+              <div className="auth-field">
+                <Input
+                  id="status"
+                  label="Status"
+                  error={null}
+                  inputProps={{
+                    placeholder: "Status",
+                    value: selectedUser.status,
                     required: true,
                     readOnly: true
                   }}
