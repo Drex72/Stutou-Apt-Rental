@@ -18,12 +18,18 @@ export function groupChatsBySenderReceiver(
     const userChats = chats.filter(
       (item) => item.receiverId === user._id || item.senderId === user._id
     )
-    console.log(userChats, usersExceptForCurrent, chats)
+    // Convert the createdAt strings back to Date objects
+    const formattedChats = userChats.map((chat) => {
+      console.log( new Date(chat.createdAt))
+      return { ...chat, createdAt: new Date(chat.createdAt) }
+    })
 
-    if (userChats.length > 0) {
+    formattedChats.sort((a, b) => a.createdAt.getTime() - b.createdAt.getTime())
+
+    if (formattedChats.length > 0) {
       groupedChats.push({
         user: user,
-        chats: userChats
+        chats: formattedChats
       })
     }
   })

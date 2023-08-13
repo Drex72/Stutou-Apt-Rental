@@ -1,4 +1,3 @@
-import axios from 'axios'
 import axiosInstance, { baseURL } from './axios'
 
 class ApartmentService {
@@ -9,10 +8,10 @@ class ApartmentService {
     return await axiosInstance.get(`/owner/apartments`)
   }
   getAnApartment = async (apartmentId: string) => {
-    return await axios.post(`${baseURL}/owner/apartment/${apartmentId}`)
+    return await axiosInstance.post(`${baseURL}/owner/apartment/${apartmentId}`)
   }
   getPostCodes = async () => {
-    return await axios.get(`${baseURL}/admin/postcodes`)
+    return await axiosInstance.get(`${baseURL}/admin/postcodes`)
   }
   //   updateAnApartment = async (data: IForgotPassword) => {
   //     return await axios.post(`${baseURL}/student/resetpassword`, data)

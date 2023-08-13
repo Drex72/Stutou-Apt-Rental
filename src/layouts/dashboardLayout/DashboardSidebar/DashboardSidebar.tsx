@@ -7,7 +7,6 @@ import {
   AiOutlineHome, AiOutlineUser,
 } from "react-icons/ai";
 import { BsFillHouseDoorFill } from 'react-icons/bs'
-import { CiLocationOn } from 'react-icons/ci'
 
 import Logo from "../../../components/Logo/Logo";
 import { AllRouteConstants } from "../../../router/RouteConstants";
